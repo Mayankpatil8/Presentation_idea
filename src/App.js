@@ -8,6 +8,7 @@ import Quality from './pages/Quality';
 import Certifications from './pages/Certifications';
 import Testimonials from './pages/Testimonials';
 import Contact from './pages/Contact';
+import Leadership from './pages/Leadership';
 
 export default function App() {
   const [page, setPage] = useState('home');
@@ -25,6 +26,7 @@ export default function App() {
     quality:        <Quality setPage={navigate} />,
     certifications: <Certifications setPage={navigate} />,
     testimonials:   <Testimonials setPage={navigate} />,
+    leadership: <Leadership setPage={navigate} />,
     contact:        <Contact setPage={navigate} />,
   };
 

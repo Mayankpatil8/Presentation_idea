@@ -30,7 +30,7 @@ export default function Quality({ setPage }) {
   return (
     <div className="page">
       <PageHero
-        bgImage="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1400&q=80"
+        bgImage="/images/ai.png"
         label="Our Commitment"
         title="Quality"
         subtitle="ISO-certified quality management ensuring every component meets dimensional accuracy, surface quality, and material specification requirements before shipment."
@@ -39,7 +39,7 @@ export default function Quality({ setPage }) {
       <section style={{ background: 'var(--navy-mid)' }}>
         <div className="qual-inner">
           <div className="qual-img">
-            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80" alt="CMM Inspection" />
+            <img src="/images/ai.png" alt="CMM Inspection" />
             <div className="qual-cert-badge">ISO Certified</div>
           </div>
           <div>

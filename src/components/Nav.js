@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { id: 'quality',        label: 'Quality' },
   { id: 'certifications', label: 'Certifications' },
   { id: 'testimonials',   label: 'Testimonials' },
+  { id: 'leadership', label: 'Leadership' },
   { id: 'contact',        label: 'Request Quote', cta: true },
 ];
 

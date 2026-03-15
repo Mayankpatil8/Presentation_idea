@@ -1,0 +1,141 @@
+import React from 'react';
+import PageHero from '../components/PageHero';
+import Footer from '../components/Footer';
+
+const LEADERS = [
+  {
+    region: 'India Head',
+    name: '[Name]',
+    role: 'Managing Director',
+    avatar: 'MD',
+    avcls: 'av-blue',
+    flag: '🇮🇳',
+    bio: 'Leads Microcraft\'s manufacturing operations and strategic growth. Oversees CNC production for aerospace, defence, and industrial machinery. Ensures ISO compliance, high-quality standards, and reliable production for European clients.',
+    tags: ['Manufacturing Operations', 'Strategic Growth', 'ISO Compliance'],
+  },
+  {
+    region: 'European Head',
+    name: 'Swati Chaudhari',
+    role: 'Director, European Business Development',
+    avatar: 'SC',
+    avcls: 'av-gold',
+    flag: '🇪🇺',
+    bio: 'Leads European market operations, coordinating with aerospace, defence, and industrial clients. Ensures timely communication, project management, and customer satisfaction across EU markets.',
+    tags: ['European Markets', 'Client Relations', 'Project Management'],
+  },
+];
+
+const PHILOSOPHY = [
+  { icon: '⚙️', title: 'Engineering Excellence', desc: 'Every decision is driven by technical precision and manufacturing best practice — from CNC programming to quality inspection.' },
+  { icon: '🏅', title: 'Quality Focus', desc: 'ISO-certified thinking at every level of the organisation. Quality is not a department — it is our culture.' },
+  { icon: '💬', title: 'Transparent Communication', desc: 'Honest, proactive communication with every European client — on lead times, quality updates, and project milestones.' },
+  { icon: '🤝', title: 'Long-Term Customer Partnerships', desc: 'We build lasting relationships with European manufacturers, becoming a trusted precision supplier they return to repeatedly.' },
+];
+
+export default function Leadership({ setPage }) {
+  return (
+    <div className="page">
+      <PageHero
+        bgImage="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=1400&q=80"
+        label="Our Team"
+        title="Leadership"
+        subtitle="Meet the people who lead Microcraft Engineering's manufacturing operations and European business development."
+      />
+
+      {/* LEADERSHIP CARDS */}
+      <section style={{ background: 'var(--off-white)' }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+          <div className="sec-label">Meet the Team</div>
+          <h2 className="sec-title">Our Leadership Team</h2>
+          <p className="sec-desc" style={{ marginBottom: '52px' }}>
+            Two dedicated leaders — one driving precision manufacturing in India, one championing European client relationships.
+          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
+            {LEADERS.map(l => (
+              <div
+                key={l.name}
+                style={{
+                  background: 'var(--white)',
+                  borderRadius: '6px',
+                  overflow: 'hidden',
+                  border: '1px solid var(--grey-pale)',
+                  boxShadow: '0 4px 24px rgba(0,0,0,.07)',
+                  transition: 'transform .3s, box-shadow .3s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(0,0,0,.12)'; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 24px rgba(0,0,0,.07)'; }}
+              >
+                {/* Card top banner */}
+                <div style={{ background: 'linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%)', padding: '40px 32px 28px', position: 'relative' }}>
+                  {/* Region tag */}
+                  <div style={{ position: 'absolute', top: '16px', right: '16px', background: 'rgba(232,160,32,.15)', border: '1px solid rgba(232,160,32,.35)', color: 'var(--accent)', fontSize: '10px', fontWeight: 700, letterSpacing: '.16em', textTransform: 'uppercase', padding: '5px 10px', borderRadius: '3px' }}>
+                    {l.flag}&ensp;{l.region}
+                  </div>
+
+                  {/* Avatar */}
+                  <div style={{ width: '72px', height: '72px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--fd)', fontWeight: 800, fontSize: '26px', color: 'var(--white)', marginBottom: '16px', border: '3px solid rgba(232,160,32,.4)', background: l.avcls === 'av-blue' ? 'linear-gradient(135deg,#1a4a8a,#1e6abf)' : 'linear-gradient(135deg,#b37a10,#e8a020)' }}>
+                    {l.avatar}
+                  </div>
+
+                  <div style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: '26px', color: 'var(--white)', marginBottom: '4px' }}>{l.name}</div>
+                  <div style={{ fontSize: '13px', color: 'var(--accent)', fontWeight: 600, letterSpacing: '.04em' }}>{l.role}</div>
+                </div>
+
+                {/* Card body */}
+                <div style={{ padding: '28px 32px' }}>
+                  <p style={{ fontSize: '14px', color: 'var(--grey-mid)', lineHeight: '1.8', fontWeight: 300, marginBottom: '24px' }}>{l.bio}</p>
+
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    {l.tags.map(tag => (
+                      <span key={tag} style={{ background: 'var(--off)', border: '1px solid var(--grey-pale)', color: 'var(--grey-dark)', fontSize: '11px', fontWeight: 600, letterSpacing: '.06em', padding: '5px 12px', borderRadius: '100px' }}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PHILOSOPHY */}
+      <section style={{ background: 'var(--navy)' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <div className="sec-label" style={{ color: 'var(--accent)' }}>How We Work</div>
+          <h2 className="sec-title lt">Leadership Philosophy</h2>
+          <p className="sec-desc lt" style={{ marginBottom: '52px' }}>
+            The values that guide every decision our leadership team makes — from production floor to European client meetings.
+          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '2px' }}>
+            {PHILOSOPHY.map((p, i) => (
+              <div
+                key={p.title}
+                style={{ background: 'rgba(255,255,255,.03)', border: '1px solid rgba(255,255,255,.06)', padding: '36px 28px', position: 'relative', overflow: 'hidden', transition: 'background .2s', cursor: 'default' }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(30,106,191,.12)'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,.03)'; }}
+              >
+                {/* top accent line on hover — using a pseudo-element trick via inline */}
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'var(--accent)', opacity: i === 0 ? 1 : 0.3 }} />
+                <div style={{ fontSize: '34px', marginBottom: '16px' }}>{p.icon}</div>
+                <div style={{ fontFamily: 'var(--fd)', fontWeight: 700, fontSize: '20px', color: 'var(--white)', marginBottom: '10px' }}>{p.title}</div>
+                <div style={{ fontSize: '13px', color: 'var(--grey-light)', fontWeight: 300, lineHeight: '1.7' }}>{p.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <div className="cta-strip">
+        <h2>Work With Our Team</h2>
+        <p>Reach out to our European or India team for a detailed quotation within 48 hours.</p>
+        <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>▶&ensp;Request a Quote</button>
+      </div>
+
+      <Footer setPage={setPage} />
+    </div>
+  );
+}

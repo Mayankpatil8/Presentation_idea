@@ -2,8 +2,9 @@ import React from 'react';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
 
+
 const INDUSTRIES = [
-  { img: 'https://images.unsplash.com/photo-1540553016722-983e48a2cd10?w=800&q=80', n: 'Aerospace Manufacturing', d: 'Precision structural components, housings, brackets, and assemblies for commercial and defence aerospace applications. Full material traceability and FAI documentation included.' },
+  {  img: '/images/aero.jpg', n: 'Aerospace Manufacturing', d: 'Precision structural components, housings, brackets, and assemblies for commercial and defence aerospace applications. Full material traceability and FAI documentation included.' },
   { img: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=800&q=80', n: 'Defence Equipment', d: 'Safety-critical components machined to MIL-SPEC tolerances. Experience with armour, optics, and electronic enclosure components for European defence primes.' },
   { img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80', n: 'Industrial Machinery', d: 'High-volume precision parts for industrial machinery — shafts, gears, housings, and custom components meeting DIN and ISO standards for European OEMs.' },
   { img: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80', n: 'Robotics & Automation', d: 'Lightweight, high-precision aluminium and stainless components for robotic arms, end-effectors, and automation assemblies requiring tight dimensional control.' },

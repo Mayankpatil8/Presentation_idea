@@ -4,11 +4,46 @@ import Footer from '../components/Footer';
 
 
 const INDUSTRIES = [
-  {  img: '/images/aero.jpg', n: 'Aerospace Manufacturing', d: 'Precision structural components, housings, brackets, and assemblies for commercial and defence aerospace applications. Full material traceability and FAI documentation included.' },
-  { img: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=800&q=80', n: 'Defence Equipment', d: 'Safety-critical components machined to MIL-SPEC tolerances. Experience with armour, optics, and electronic enclosure components for European defence primes.' },
-  { img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80', n: 'Industrial Machinery', d: 'High-volume precision parts for industrial machinery — shafts, gears, housings, and custom components meeting DIN and ISO standards for European OEMs.' },
-  { img: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80', n: 'Robotics & Automation', d: 'Lightweight, high-precision aluminium and stainless components for robotic arms, end-effectors, and automation assemblies requiring tight dimensional control.' },
-  { img: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80', n: 'Automotive Engineering', d: 'Engine, transmission, and chassis components machined to European automotive standards. High-volume production with consistent quality across batches.' },
+  { 
+    img: '/images/aero.jpg', 
+    n: 'Aerospace', 
+    sub: 'Manufacturing Applications',
+    d: 'Delivering mission-critical precision for structural components, complex aerospace housings, brackets, and full assemblies. We specialize in working with exotic alloys capable of withstanding extreme environmental stressors while guaranteeing lightweight performance. Full material traceability and First Article Inspection (FAI) documentation are rigorously maintained.',
+    features: ['AS9100D Compliant', 'Turbine & Engine Parts', 'Titanium & Inconel'],
+    num: '01'
+  },
+  { 
+    img: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=800&q=80', 
+    n: 'Defence', 
+    sub: 'Tactical Equipment',
+    d: 'Manufacturing safety-critical components machined flawlessly to MIL-SPEC tolerances. Extensive experience producing complex geometries for heavy armour mounting systems, sophisticated optics enclosures, and tactical electronic components deployed by top European defence primes.',
+    features: ['MIL-SPEC Tolerances', 'Secure Enclosures', '100% Traceability'],
+    num: '02'
+  },
+  { 
+    img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80', 
+    n: 'Industrial', 
+    sub: 'Heavy Machinery',
+    d: 'Powering global manufacturing with high-volume precision parts for industrial machinery. From heavy-duty transmission shafts and gears to robust hydraulic housings and custom actuators, we meet stringent DIN and ISO standards to guarantee seamless integration for OEM production lines.',
+    features: ['DIN & ISO Standards', 'High-volume Scaling', 'Hydraulics & Actuators'],
+    num: '03'
+  },
+  { 
+    img: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80', 
+    n: 'Robotics', 
+    sub: 'Automation Systems',
+    d: 'Engineering lightweight, ultra-high-precision aluminium and stainless steel structural components for modern robotics. Our bespoke machining supports next-generation robotic arms, custom end-effectors, and automated assembly solutions requiring absolute dimensional stability and zero backlash.',
+    features: ['Zero-backlash Tolerances', 'Custom End-effectors', 'Lightweight Kinematics'],
+    num: '04'
+  },
+  { 
+    img: '/images/cnc_automotive.png', 
+    n: 'Automotive', 
+    sub: 'Advanced Engineering',
+    d: 'Providing engine blocks, transmission components, and performance chassis parts machined to strict European automotive standards. Our facility is optimized for high-volume production, ensuring every single batch maintains identical quality, supported by comprehensive PPAP validation.',
+    features: ['Tier-1 Automotive Supply', 'Engine & Transmission', 'PPAP Validation'],
+    num: '05'
+  },
 ];
 
 export default function Industries({ setPage }) {
@@ -21,11 +56,11 @@ export default function Industries({ setPage }) {
         subtitle="Trusted by procurement and engineering teams across five high-performance European industries."
       />
 
-      <section style={{ background: 'var(--white)' }}>
+      <section style={{ background: 'var(--white)', padding: '80px 20px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div className="sec-label">Our Sectors</div>
-          <h2 className="sec-title">Precision Manufacturing Across Industries</h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '56px', marginTop: '48px' }}>
+          <div className="sec-label" style={{ textAlign: 'center' }}>Our Sectors</div>
+          <h2 className="sec-title" style={{ textAlign: 'center', marginBottom: '64px' }}>Precision Manufacturing Across Industries</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
             {INDUSTRIES.map((ind, i) => (
               <div
                 key={ind.n}
@@ -34,30 +69,96 @@ export default function Industries({ setPage }) {
                   gridTemplateColumns: i % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr',
                   gap: '52px',
                   alignItems: 'center',
+                  background: 'var(--off-white)',
+                  borderRadius: '16px',
+                  padding: '40px',
+                  position: 'relative',
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.03)'
                 }}
               >
+                {/* Giant faint background number */}
+                <div style={{
+                  position: 'absolute',
+                  top: '-40px',
+                  [i % 2 === 0 ? 'right' : 'left']: '40px',
+                  fontSize: '200px',
+                  fontWeight: 900,
+                  color: 'rgba(37, 99, 235, 0.03)',
+                  fontFamily: 'var(--fd)',
+                  zIndex: 0,
+                  pointerEvents: 'none'
+                }}>
+                  {ind.num}
+                </div>
+
                 {i % 2 === 0 ? (
                   <>
-                    <div style={{ borderRadius: '4px', overflow: 'hidden', height: '320px' }}>
+                    {/* Image Left */}
+                    <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', height: '420px', boxShadow: '0 24px 48px rgba(0,0,0,0.12)', zIndex: 1 }}>
+                      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)', zIndex: 1 }} />
                       <img src={ind.img} alt={ind.n} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <div style={{ position: 'absolute', bottom: '24px', left: '24px', zIndex: 2 }}>
+                        <div style={{ fontSize: '13px', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 700, color: '#fff', background: 'var(--accent)', padding: '4px 10px', borderRadius: '4px', display: 'inline-block' }}>
+                          Sector {ind.num}
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <div className="sec-label">Sector 0{i + 1}</div>
-                      <h3 style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: 'clamp(24px,3vw,36px)', color: 'var(--navy)', marginBottom: '12px' }}>{ind.n}</h3>
-                      <p style={{ fontSize: '15px', color: 'var(--grey-mid)', fontWeight: 300, lineHeight: '1.8', marginBottom: '24px' }}>{ind.d}</p>
-                      <button className="btn-p" onClick={() => setPage('contact')}>Get a Quote</button>
+
+                    {/* Content Right */}
+                    <div style={{ zIndex: 1, paddingRight: '20px' }}>
+                      <div style={{ display: 'inline-block', padding: '6px 14px', background: 'rgba(37, 99, 235, 0.1)', color: 'var(--accent)', borderRadius: '20px', fontSize: '13px', fontWeight: 700, marginBottom: '20px', letterSpacing: '1px', textTransform: 'uppercase' }}>
+                        {ind.sub}
+                      </div>
+                      <h3 style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: 'clamp(32px, 4vw, 42px)', color: 'var(--navy)', marginBottom: '24px', lineHeight: '1.1' }}>
+                        {ind.n}
+                      </h3>
+                      <p style={{ fontSize: '16px', color: '#555', fontWeight: 300, lineHeight: '1.8', marginBottom: '32px' }}>
+                        {ind.d}
+                      </p>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '40px' }}>
+                        {ind.features.map(f => (
+                          <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                            <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(37, 99, 235, 0.1)', color: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', flexShrink: 0 }}>✓</div>
+                            <span style={{ fontSize: '14px', color: 'var(--navy-mid)', fontWeight: 600 }}>{f}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <button className="btn-p" onClick={() => setPage('contact')}>Request a Quote</button>
                     </div>
                   </>
                 ) : (
                   <>
-                    <div>
-                      <div className="sec-label">Sector 0{i + 1}</div>
-                      <h3 style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: 'clamp(24px,3vw,36px)', color: 'var(--navy)', marginBottom: '12px' }}>{ind.n}</h3>
-                      <p style={{ fontSize: '15px', color: 'var(--grey-mid)', fontWeight: 300, lineHeight: '1.8', marginBottom: '24px' }}>{ind.d}</p>
-                      <button className="btn-p" onClick={() => setPage('contact')}>Get a Quote</button>
+                    {/* Content Left */}
+                    <div style={{ zIndex: 1, paddingLeft: '20px' }}>
+                      <div style={{ display: 'inline-block', padding: '6px 14px', background: 'rgba(37, 99, 235, 0.1)', color: 'var(--accent)', borderRadius: '20px', fontSize: '13px', fontWeight: 700, marginBottom: '20px', letterSpacing: '1px', textTransform: 'uppercase' }}>
+                        {ind.sub}
+                      </div>
+                      <h3 style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: 'clamp(32px, 4vw, 42px)', color: 'var(--navy)', marginBottom: '24px', lineHeight: '1.1' }}>
+                        {ind.n}
+                      </h3>
+                      <p style={{ fontSize: '16px', color: '#555', fontWeight: 300, lineHeight: '1.8', marginBottom: '32px' }}>
+                        {ind.d}
+                      </p>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '40px' }}>
+                        {ind.features.map(f => (
+                          <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                            <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(37, 99, 235, 0.1)', color: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', flexShrink: 0 }}>✓</div>
+                            <span style={{ fontSize: '14px', color: 'var(--navy-mid)', fontWeight: 600 }}>{f}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <button className="btn-p" onClick={() => setPage('contact')}>Request a Quote</button>
                     </div>
-                    <div style={{ borderRadius: '4px', overflow: 'hidden', height: '320px' }}>
+
+                    {/* Image Right */}
+                    <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', height: '420px', boxShadow: '0 24px 48px rgba(0,0,0,0.12)', zIndex: 1 }}>
+                      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)', zIndex: 1 }} />
                       <img src={ind.img} alt={ind.n} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <div style={{ position: 'absolute', bottom: '24px', left: '24px', zIndex: 2 }}>
+                        <div style={{ fontSize: '13px', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 700, color: '#fff', background: 'var(--accent)', padding: '4px 10px', borderRadius: '4px', display: 'inline-block' }}>
+                          Sector {ind.num}
+                        </div>
+                      </div>
                     </div>
                   </>
                 )}

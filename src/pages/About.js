@@ -29,7 +29,7 @@ export default function About({ setPage }) {
       <section style={{ background: 'var(--off-white)' }}>
         <div className="about-inner">
           <div className="about-img-wrap">
-            <img src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=900&q=80" alt="CNC Workshop" />
+            <img src="/images/cylinder_piston.png" alt="Cylinder Piston CNC" className="img-cover" />
             <div className="about-img-badge">Est. India · Serving Europe</div>
           </div>
           <div>

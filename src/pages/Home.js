@@ -3,39 +3,50 @@ import Footer from '../components/Footer';
 
 const SLIDES = [
   {
-    img: 'https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1200&q=80',
-    tag: '5-Axis CNC Milling',
-    title: 'Complex Aerospace Components\nwith Micron-Level Precision',
+    img: '/images/photoking.jpg',
+    tag: 'Welding & Fabrication',
+    title: 'High-Quality Welding Solutions\nfor Strong and Durable Structures',
   },
   {
-    img: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80',
-    tag: 'CNC Turning',
-    title: 'Precision Shafts & Rotational\nComponents to Tight Tolerances',
+    img: '/images/photo2.jpg',
+    tag: 'Automotive Components',
+    title: 'Precision Automotive Parts\nEngineered for Performance & Reliability',
   },
   {
-    img: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1200&q=80',
-    tag: 'ISO Quality Control',
-    title: 'CMM Inspection & Full\nDimensional Certification',
+    img: '/images/photo7.jpg',
+    tag: 'Aerospace Components',
+    title: 'Advanced Aerospace Components\nManufactured with Extreme Accuracy',
   },
   {
-    img: 'https://images.unsplash.com/photo-1540539234-c14a20fb7c7b?w=1200&q=80',
-    tag: 'Aerospace Manufacturing',
-    title: 'Flight-Critical Components\nfor Global OEMs',
+    img: '/images/photo1.jpg',
+    tag: 'Large Machine Manufacturing',
+    title: 'Heavy-Duty Industrial Machinery\nBuilt for Strength and Scale',
   },
   {
-    img: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=1200&q=80',
-    tag: 'Industrial Automation',
-    title: 'High-Precision Parts\nfor Energy & Automation Systems',
+    img: '/images/photo3.jpg',
+    tag: 'Internal Engine Components',
+    title: 'High-Precision Engine Parts\nDesigned for Maximum Efficiency',
+  },
+  {
+    img: '/images/photo5.jpg',
+    tag: 'Mechanical Parts',
+    title: 'Precision Mechanical Components\nBuilt to Tight Tolerances',
+  },
+  {
+    img: '/images/photo6.jpg',
+    tag: 'CNC Machining',
+    title: 'Advanced CNC Machining Solutions\nfor High Accuracy Production',
   },
 ];
 
 const CAPABILITIES = [
-  { label: 'CNC Milling', detail: '3-Axis, 4-Axis, 5-Axis' },
-  { label: 'CNC Turning', detail: 'Precision rotational components' },
-  { label: 'Wire-Cut EDM Machining', detail: 'Complex profiles & hard materials' },
-  { label: 'Tooling and Fixtures', detail: 'Custom jigs & production tooling' },
-  { label: 'Precision Mechanical Components', detail: 'Close tolerance assemblies' },
-  { label: 'Prototype and Batch Production', detail: 'From single units to production runs' },
+  { label: 'CNC Milling', detail: '3-Axis, 4-Axis & 5-Axis precision machining' },
+  { label: 'CNC Turning', detail: 'High-accuracy rotational components' },
+  { label: 'Wire-Cut EDM', detail: 'Precision cutting for complex geometries' },
+  { label: 'Welding & Fabrication', detail: 'Robust structural and custom fabrication' },
+  { label: 'Tooling & Fixtures', detail: 'Custom jigs, dies & production tooling' },
+  { label: 'Mechanical Components', detail: 'Tight tolerance precision parts' },
+  { label: 'Prototype & Production', detail: 'From single prototypes to batch production' },
 ];
 
 const MATERIALS = [
@@ -132,10 +143,10 @@ export default function Home({ setPage }) {
               </div>
             </div>
           ))}
-          <div className="hero-float">
+          {/* <div className="hero-float">
             <div className="hf-num">5-Axis</div>
             <div className="hf-label">CNC Technology</div>
-          </div>
+          </div> */}
           <button
             className="slider-arrow slider-prev"
             onClick={() => setSlide(s => (s - 1 + SLIDES.length) % SLIDES.length)}

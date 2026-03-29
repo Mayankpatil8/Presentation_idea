@@ -11,11 +11,7 @@ const TESTIMONIALS = [
   { stars: '★★★★★', quote: '"Microcraft not only delivered perfectly machined stainless components, but their documentation — material declarations, surface treatment certificates — was exactly what our REACH compliance team required. Truly a professional supplier for European standards."', initials: 'MF', avcls: 'av-gold', name: 'Marco Ferrari', role: 'Head of Procurement', company: '🇮🇹 Comau Industrial Systems, Italy', badge: '✓ Verified Client · Industrial Machinery' },
 ];
 
-const RATINGS = [
-  { p: 'Trustpilot', s: '★★★★★', sc: '4.9 / 5.0', c: 'Based on 34 reviews', w: '98%' },
-  { p: 'Google Reviews', s: '★★★★★', sc: '4.8 / 5.0', c: 'Based on 21 reviews', w: '96%' },
-  { p: 'IndiaMart', s: '★★★★★', sc: '4.9 / 5.0', c: 'Based on 47 reviews', w: '98%' },
-];
+
 
 export default function Testimonials({ setPage }) {
   return (
@@ -58,23 +54,7 @@ export default function Testimonials({ setPage }) {
         </div>
       </section>
 
-      <section style={{ background: 'var(--white)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div className="sec-label">Platform Ratings</div>
-          <h2 className="sec-title">Verified Across Platforms</h2>
-          <div className="ratings-grid">
-            {RATINGS.map(r => (
-              <div className="rating-card" key={r.p}>
-                <div className="rating-platform">{r.p}</div>
-                <div className="rating-stars">{r.s}</div>
-                <div className="rating-score">{r.sc}</div>
-                <div className="rating-count">{r.c}</div>
-                <div className="rating-bar"><div className="rating-fill" style={{ width: r.w }} /></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       <div className="cta-strip">
         <h2>Ready to Experience Microcraft Quality?</h2>

@@ -5,23 +5,27 @@ import Footer from '../components/Footer';
 const LEADERS = [
   {
     region: 'India Head',
-    name: '[Name]',
+    name: 'Ashvin Chaudhari',
     role: 'Managing Director',
-    avatar: 'MD',
+    avatar: 'AC',
     avcls: 'av-blue',
     flag: '🇮🇳',
-    bio: 'Leads Microcraft\'s manufacturing operations and strategic growth. Oversees CNC production for aerospace, defence, and industrial machinery. Ensures ISO compliance, high-quality standards, and reliable production for European clients.',
+    linkedin: 'https://www.linkedin.com/in/ashvin-chaudhari-6485853b/',
+    email: 'ashvin@microcraft.co.in',
+    bio: 'Leads Microcraft\'s manufacturing operations and strategic growth. With profound expertise in mechanical engineering and precision machining, Ashvin oversees CNC production for aerospace, defence, and industrial machinery, ensuring strict ISO compliance and unparalleled precision.',
     tags: ['Manufacturing Operations', 'Strategic Growth', 'ISO Compliance'],
   },
   {
     region: 'European Head',
     name: 'Swati Chaudhari',
-    role: 'Director, European Business Development',
+    role: 'Director, Business Development',
     avatar: 'SC',
     avcls: 'av-gold',
     flag: '🇪🇺',
-    bio: 'Leads European market operations, coordinating with aerospace, defence, and industrial clients. Ensures timely communication, project management, and customer satisfaction across EU markets.',
-    tags: ['European Markets', 'Client Relations', 'Project Management'],
+    linkedin: 'https://www.linkedin.com/in/schaudhari23/',
+    email: 'swati@microcraft.co.in',
+    bio: 'Drives strategic business development and European market operations. Swati coordinates seamlessly with international aerospace, defence, and industrial clients, ensuring robust project management, supply chain reliability, and outstanding customer satisfaction.',
+    tags: ['International Business', 'Client Relations', 'Project Management'],
   },
 ];
 
@@ -83,15 +87,40 @@ export default function Leadership({ setPage }) {
                 </div>
 
                 {/* Card body */}
-                <div style={{ padding: '28px 32px' }}>
-                  <p style={{ fontSize: '14px', color: 'var(--grey-mid)', lineHeight: '1.8', fontWeight: 300, marginBottom: '24px' }}>{l.bio}</p>
+                <div style={{ padding: '28px 32px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                  <p style={{ fontSize: '14px', color: 'var(--grey-mid)', lineHeight: '1.8', fontWeight: 300, marginBottom: '24px', flex: 1 }}>{l.bio}</p>
 
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '24px' }}>
                     {l.tags.map(tag => (
                       <span key={tag} style={{ background: 'var(--off)', border: '1px solid var(--grey-pale)', color: 'var(--grey-dark)', fontSize: '11px', fontWeight: 600, letterSpacing: '.06em', padding: '5px 12px', borderRadius: '100px' }}>
                         {tag}
                       </span>
                     ))}
+                  </div>
+
+                  {/* Contact Block */}
+                  <div style={{ padding: '16px 0 0', borderTop: '1px solid var(--grey-pale)', marginTop: 'auto' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                      {l.email && (
+                        <div>
+                          <a href={`mailto:${l.email}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'var(--navy)', textDecoration: 'none', fontSize: '14px', fontWeight: 700 }}>
+                            <span style={{ fontSize: '16px' }}>✉</span> {l.email}
+                          </a>
+                          <div style={{ fontSize: '11px', color: 'var(--accent)', fontWeight: 600, marginTop: '2px', marginLeft: '26px', letterSpacing: '.03em' }}>
+                            ✓ Expect a reply within 1 business day
+                          </div>
+                        </div>
+                      )}
+                      
+                      {l.linkedin && (
+                        <a href={l.linkedin} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'var(--blue)', textDecoration: 'none', fontSize: '13px', fontWeight: 700 }}>
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                          </svg>
+                          Connect on LinkedIn
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

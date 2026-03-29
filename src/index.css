@@ -1386,7 +1386,7 @@ section {
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: var(--grey-mid);
+  color: var(--navy);
 }
 
 .fg input,
@@ -1397,10 +1397,15 @@ section {
   padding: 11px 14px;
   font-family: var(--fb);
   font-size: 14px;
-  color: var(--grey-dark);
-  background: var(--off);
+  color: var(--navy);
+  background: var(--white);
   outline: none;
   transition: border-color .2s, box-shadow .2s;
+}
+
+.fg input::placeholder,
+.fg textarea::placeholder {
+  color: var(--grey-mid);
 }
 
 .fg input:focus,

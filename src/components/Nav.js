@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
 const NAV_ITEMS = [
-  { id: 'home',           label: 'Home' },
-  { id: 'about',          label: 'About' },
-  { id: 'capabilities',   label: 'Capabilities' },
-  { id: 'industries',     label: 'Industries' },
-  { id: 'quality',        label: 'Quality' },
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'capabilities', label: 'Capabilities' },
+  { id: 'industries', label: 'Industries' },
+  { id: 'quality', label: 'Quality' },
   { id: 'certifications', label: 'Certifications' },
-  { id: 'testimonials',   label: 'Testimonials' },
+  { id: 'testimonials', label: 'Testimonials' },
   { id: 'leadership', label: 'Leadership' },
-  { id: 'contact',        label: 'Request Quote', cta: true },
+  { id: 'contact', label: 'Request Quote', cta: true },
 ];
 
 export default function Nav({ page, setPage }) {

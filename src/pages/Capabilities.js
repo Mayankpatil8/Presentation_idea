@@ -21,7 +21,7 @@ export default function Capabilities({ setPage }) {
   return (
     <div className="page">
       <PageHero
-        bgImage="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1400&q=80"
+        bgImage="../images/cap1.jpg"
         label="What We Do"
         title="Manufacturing Capabilities"
         subtitle="Advanced CNC machining capabilities from 3-axis milling to 5-axis simultaneous machining, CNC turning, and complete surface finishing services."

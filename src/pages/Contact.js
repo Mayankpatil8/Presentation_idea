@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
 
+
 const COUNTRIES = ['India', 'Germany', 'France', 'United Kingdom', 'Netherlands', 'Sweden', 'Italy', 'Spain', 'Poland', 'Belgium', 'Switzerland', 'Austria', 'Denmark', 'Norway', 'Finland', 'United States', 'Canada', 'Japan', 'South Korea', 'Other'];
 
 const DETAILS = [
@@ -23,6 +24,15 @@ export default function Contact({ setPage }) {
   const [dragging, setDragging] = useState(false);
   const uploadRef = useRef(null);
 
+  // ── NEW: form state & loading/error ──
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [form, setForm] = useState({
+    name: '', company: '', email: '', country: '',
+    quantity: '', material: '', description: '',
+  });
+  const set = (field) => (e) => setForm(prev => ({ ...prev, [field]: e.target.value }));
+
   const addFiles = (incoming) => {
     const valid = Array.from(incoming).filter(f => f.size <= 25 * 1024 * 1024);
     setFiles(prev => {
@@ -32,7 +42,34 @@ export default function Contact({ setPage }) {
   };
   const removeFile = (name) => setFiles(prev => prev.filter(f => f.name !== name));
   const onDrop = (e) => { e.preventDefault(); setDragging(false); addFiles(e.dataTransfer.files); };
-  const fmtSize = (b) => b < 1048576 ? (b/1024).toFixed(1)+' KB' : (b/1048576).toFixed(1)+' MB';
+  const fmtSize = (b) => b < 1048576 ? (b / 1024).toFixed(1) + ' KB' : (b / 1048576).toFixed(1) + ' MB';
+
+  // ── NEW: submit handler ──
+  const handleSubmit = async () => {
+    setError('');
+    if (!form.name || !form.email || !form.description) {
+      setError('Please fill in Name, Email, and Project Description.');
+      return;
+    }
+    setLoading(true);
+    try {
+      const res = await fetch('http://localhost:5000/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, fileNames: files.map(f => f.name) }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setError(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setError('Could not reach the server. Please email us at info@microcraft.in');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="page">
@@ -67,7 +104,7 @@ export default function Contact({ setPage }) {
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px' }}>
                 {[
-                  { abbr: 'IN', label: 'India',  color: '#e07820', bg: 'rgba(224,120,32,0.15)', desc: 'Domestic manufacturing for all sectors' },
+                  { abbr: 'IN', label: 'India', color: '#e07820', bg: 'rgba(224,120,32,0.15)', desc: 'Domestic manufacturing for all sectors' },
                   { abbr: 'EU', label: 'Europe', color: '#4a90d9', bg: 'rgba(74,144,217,0.15)', desc: 'EU & UK export-ready supply' },
                   { abbr: 'GL', label: 'Global', color: '#2ecc8a', bg: 'rgba(46,204,138,0.15)', desc: 'USA, Asia & international projects' },
                 ].map(r => (
@@ -106,19 +143,19 @@ export default function Contact({ setPage }) {
                 <div style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: '26px', color: 'var(--navy)', marginBottom: '6px' }}>Request for Quotation</div>
                 <div style={{ fontSize: '13px', color: 'var(--grey-mid)', marginBottom: '28px' }}>Fill in your details — we respond within 24 hours.</div>
                 <div className="form-grid">
-                  <div className="fg"><label>Full Name *</label><input type="text" placeholder="Your name" /></div>
-                  <div className="fg"><label>Company *</label><input type="text" placeholder="Company name" /></div>
-                  <div className="fg"><label>Email *</label><input type="email" placeholder="you@company.com" /></div>
+                  <div className="fg"><label>Full Name *</label><input type="text" placeholder="Your name" onChange={set('name')} /></div>
+                  <div className="fg"><label>Company *</label><input type="text" placeholder="Company name" onChange={set('company')} /></div>
+                  <div className="fg"><label>Email *</label><input type="email" placeholder="you@company.com" onChange={set('email')} /></div>
                   <div className="fg">
                     <label>Country *</label>
-                    <select defaultValue="">
+                    <select defaultValue="" onChange={set('country')}>
                       <option value="" disabled>Select country</option>
                       {COUNTRIES.map(c => <option key={c}>{c}</option>)}
                     </select>
                   </div>
-                  <div className="fg form-full"><label>Quantity / Batch Size</label><input type="text" placeholder="e.g. 500 pcs / month" /></div>
-                  <div className="fg form-full"><label>Material Specification</label><input type="text" placeholder="e.g. Aluminium 7075, Stainless 316L, Titanium Ti-6Al-4V" /></div>
-                  <div className="fg form-full"><label>Project Description *</label><textarea placeholder="Describe your component, application, tolerance requirements..." /></div>
+                  <div className="fg form-full"><label>Quantity / Batch Size</label><input type="text" placeholder="e.g. 500 pcs / month" onChange={set('quantity')} /></div>
+                  <div className="fg form-full"><label>Material Specification</label><input type="text" placeholder="e.g. Aluminium 7075, Stainless 316L, Titanium Ti-6Al-4V" onChange={set('material')} /></div>
+                  <div className="fg form-full"><label>Project Description *</label><textarea placeholder="Describe your component, application, tolerance requirements..." onChange={set('description')} /></div>
                   <div className="fg form-full">
                     <label>Upload Engineering Drawings</label>
                     <div
@@ -165,7 +202,13 @@ export default function Contact({ setPage }) {
                     )}
                   </div>
                   <div className="form-full">
-                    <button className="form-btn" onClick={() => setSubmitted(true)}>▶&ensp;Submit Request for Quotation</button>
+                    {/* ── NEW: error message (no styling change to anything else) ── */}
+                    {error && (
+                      <p style={{ color: '#c0392b', fontSize: '13px', marginBottom: '10px', fontWeight: 500 }}>{error}</p>
+                    )}
+                    <button className="form-btn" onClick={handleSubmit} disabled={loading}>
+                      {loading ? 'Sending…' : '▶\u2005Submit Request for Quotation'}
+                    </button>
                   </div>
                 </div>
               </>

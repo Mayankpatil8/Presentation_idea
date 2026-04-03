@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Footer from '../components/Footer';
 
 const SLIDES = [
@@ -28,35 +28,29 @@ const SLIDES = [
     title: 'High-Precision Engine Parts\nDesigned for Maximum Efficiency',
   },
   {
-    img: '/images/photo5.jpg',
+    img: '/images/photo5.png',
     tag: 'Mechanical Parts',
     title: 'Precision Mechanical Components\nBuilt to Tight Tolerances',
   },
-  {
-    img: '/images/photo6.jpg',
-    tag: 'CNC Machining',
-    title: 'Advanced CNC Machining Solutions\nfor High Accuracy Production',
+    {
+    img: '/images/cap1.jpg',
+    tag: 'CNC Machine',
+    title: 'CNC Mechanical Machine\nDesign to Tight Tolerances',
   },
 ];
 
 const CAPABILITIES = [
-  { label: 'CNC Milling', detail: '3-Axis, 4-Axis & 5-Axis precision machining' },
-  { label: 'CNC Turning', detail: 'High-accuracy rotational components' },
-  { label: 'Wire-Cut EDM', detail: 'Precision cutting for complex geometries' },
-  { label: 'Welding & Fabrication', detail: 'Robust structural and custom fabrication' },
-  { label: 'Tooling & Fixtures', detail: 'Custom jigs, dies & production tooling' },
-  { label: 'Mechanical Components', detail: 'Tight tolerance precision parts' },
-  { label: 'Prototype & Production', detail: 'From single prototypes to batch production' },
+  { label: 'CNC Milling',            detail: '3-Axis, 4-Axis & 5-Axis precision machining' },
+  { label: 'CNC Turning',            detail: 'High-accuracy rotational components' },
+  { label: 'Wire-Cut EDM',           detail: 'Precision cutting for complex geometries' },
+  { label: 'Welding & Fabrication',  detail: 'Robust structural and custom fabrication' },
+  { label: 'Tooling & Fixtures',     detail: 'Custom jigs, dies & production tooling' },
+  { label: 'Mechanical Components',  detail: 'Tight tolerance precision parts' },
 ];
 
 const MATERIALS = [
-  'Carbon Steel',
-  'Alloy Steel',
-  'Stainless Steel',
-  'Aluminium Alloys',
-  'Titanium',
-  'Inconel & High-Temp Alloys',
-  'Engineering Plastics',
+  'Carbon Steel', 'Alloy Steel', 'Stainless Steel',
+  'Aluminium Alloys', 'Titanium', 'Inconel & High-Temp Alloys', 'Engineering Plastics',
 ];
 
 const TRUST_POINTS = [
@@ -68,23 +62,133 @@ const TRUST_POINTS = [
   { icon: '📦', text: 'Reliable delivery performance' },
 ];
 
-const sectionPad = { padding: '72px 24px' };
+/* ── Scroll-reveal hook ── */
+function useReveal() {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold: 0.12 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return [ref, visible];
+}
+
+function Reveal({ children, delay = 0, direction = 'up', style = {} }) {
+  const [ref, visible] = useReveal();
+  const transforms = { up: 'translateY(32px)', left: 'translateX(-32px)', right: 'translateX(32px)', none: 'none' };
+  return (
+    <div
+      ref={ref}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'none' : transforms[direction],
+        transition: `opacity 0.75s ease ${delay}s, transform 0.75s ease ${delay}s`,
+        ...style,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function Home({ setPage }) {
   const [slide, setSlide] = useState(0);
+  const [heroLoaded, setHeroLoaded] = useState(false);
 
   useEffect(() => {
-    const t = setInterval(() => setSlide(s => (s + 1) % SLIDES.length), 5000);
+    const t = setInterval(() => setSlide(s => (s + 1) % SLIDES.length), 5500);
     return () => clearInterval(t);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setHeroLoaded(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <div className="page">
 
-      {/* ── HERO ─────────────────────────────────────────────────────── */}
-      <section className="hero" style={{ padding: 0 }}>
-        <div className="hero-left">
-          <div className="hero-strip">
+      {/* ══════════════════════════════════════════════════
+          HERO — Cinematic full-bleed background slider
+      ══════════════════════════════════════════════════ */}
+<section style={{ 
+  position: 'relative', 
+  height: 'calc(100vh - 90px)',  // 🔥 PERFECT FIX
+  display: 'flex',
+  alignItems: 'center',
+  overflow: 'hidden',
+  background: '#020408'
+}}>
+
+        {/* Background image slides */}
+        {SLIDES.map((s, i) => (
+          <div
+            key={i}
+            style={{
+              position: 'absolute', inset: 0,
+              opacity: i === slide ? 1 : 0,
+              transform: i === slide ? 'scale(1)' : 'scale(1.06)',
+              transition: 'opacity 1.4s ease, transform 1.8s ease',
+              zIndex: 0,
+            }}
+          >
+<img
+  src={s.img}
+  alt=""
+  style={{
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center',
+    display: 'block',
+    filter: 'saturate(0.6) brightness(0.9)'
+  }}
+/>
+          </div>
+        ))}
+
+        {/* Cinematic overlays — layered depth */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 1,
+          background: 'linear-gradient(105deg, rgba(2,4,8,0.92) 0%, rgba(2,4,8,0.75) 45%, rgba(2,4,8,0.35) 100%)',
+        }} />
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 1,
+          background: 'linear-gradient(0deg, rgba(2,4,8,0.85) 0%, transparent 50%)',
+        }} />
+        {/* Subtle blue-tinted vignette top */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 1,
+          background: 'radial-gradient(ellipse at 20% 50%, rgba(10, 10, 12, 0.36) 0%, transparent 100%)',
+        }} />
+
+        {/* ── Hero content ── */}
+        <div style={{
+  position: 'relative',
+  zIndex: 3,
+  height: '100%',              // 🔥 ADD THIS
+  display: 'flex',             // 🔥 ADD
+  flexDirection: 'column',     // 🔥 ADD
+  justifyContent: 'center',    // 🔥 ADD
+  padding: '0 5%',
+  maxWidth: '620px',
+          }}>
+
+          {/* Strip */}
+          <div
+            className="hero-strip"
+            style={{
+              opacity: heroLoaded ? 1 : 0,
+              transform: heroLoaded ? 'none' : 'translateY(16px)',
+              transition: 'opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s',
+            }}
+          >
             <div className="hero-strip-line" />
             <span className="hero-strip-text">Precision CNC Manufacturing</span>
             <div className="live-dot" />
@@ -93,327 +197,485 @@ export default function Home({ setPage }) {
             </span>
           </div>
 
-          <h1>
-            Precision CNC Machining for Global{' '}
-            <em>Engineering Industries</em>
+          {/* H1 */}
+<h1 style={{
+  fontFamily: 'var(--fd)',
+  fontWeight: 800,
+  fontSize: 'clamp(25px, 4.0vw, 45px)',  // 🔥 MEDIUM SIZE
+  lineHeight: 1.05,
+  color: '#f0f4fa',
+  marginBottom: '18px',
+  letterSpacing: '-0.01em'
+}}>
+            Precision CNC Machining{' '}
+            <br />
+            for Global{' '}
+            <em style={{
+              color: 'transparent',
+              backgroundImage: 'linear-gradient(135deg, #c8921a 0%, #e0a830 50%, #f0c050 100%)',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              fontStyle: 'normal',
+            }}>
+              Engineering Industries
+            </em>
           </h1>
-          <div className="hero-divider" />
 
-          <p style={{ marginBottom: '10px' }}>
-            Microcraft Engineering is a precision machining company delivering high-accuracy CNC
-            components for demanding engineering applications.
-          </p>
-          <p style={{ marginBottom: '10px' }}>
-            With more than 25 years of manufacturing experience, our facility produces complex
-            components with consistent quality, reliable delivery, and competitive manufacturing
-            efficiency.
-          </p>
-          <p>
-            We support engineering companies in India and internationally with precision machining
-            solutions used in aerospace, industrial automation, energy systems, and industrial
-            machinery.
-          </p>
+          {/* Gold divider */}
+          <div style={{
+            width: heroLoaded ? '64px' : '0px',
+            height: '2px',
+            background: 'linear-gradient(90deg, #c8921a, #e0a830, transparent)',
+            marginBottom: '28px',
+            borderRadius: '1px',
+            transition: 'width 0.8s ease 0.45s',
+          }} />
 
-          <div className="hero-pills" style={{ marginTop: '24px' }}>
-            {['5-Axis CNC Machining', '25+ Years Experience', 'Global Supply', '±0.01mm Tolerance'].map(t => (
-              <div className="hero-pill" key={t}>
-                <div className="pill-dot" />{t}
-              </div>
-            ))}
+          {/* Body text */}
+          <div style={{
+            opacity: heroLoaded ? 1 : 0,
+            transform: heroLoaded ? 'none' : 'translateY(20px)',
+            transition: 'opacity 0.8s ease 0.55s, transform 0.8s ease 0.55s',
+          }}>
+<p style={{
+  fontSize: '15px',
+  lineHeight: 1.7,
+  color: 'rgba(200,216,235,0.85)',
+  fontWeight: 300,
+  maxWidth: '520px',
+  marginBottom: '20px'
+}}>
+  Delivering <span style={{ color: '#e0a830', fontWeight: 500 }}>high-precision CNC components</span> 
+  for aerospace and industrial applications, with over 25 years of manufacturing excellence.
+</p>
+<p style={{ fontSize: '16px', lineHeight: 1.82, color: 'rgba(200,216,235,0.75)', fontWeight: 300, maxWidth: '620px' }}> We support engineering companies in India and internationally with precision machining solutions used in aerospace, industrial automation, energy systems, and industrial machinery. </p>
           </div>
 
-          <div className="hero-btns">
-            <button className="btn-p" onClick={() => setPage('contact')}>
-              ▶&ensp;Upload Drawing & Request Quote
-            </button>
-            <button className="btn-s" onClick={() => setPage('capabilities')}>
-              →&ensp;Our Capabilities
-            </button>
-          </div>
-        </div>
-
-        <div className="hero-right">
-          <div className="hero-right-ov" />
-          {SLIDES.map((s, i) => (
-            <div key={i} className={`hero-slide ${i === slide ? 'active' : ''}`}>
-              <img src={s.img} alt={s.tag} />
-              <div className="slide-cap">
-                <div className="slide-tag">{s.tag}</div>
-                <div className="slide-title">{s.title}</div>
-              </div>
-            </div>
-          ))}
-          {/* <div className="hero-float">
-            <div className="hf-num">5-Axis</div>
-            <div className="hf-label">CNC Technology</div>
-          </div> */}
-          <button
-            className="slider-arrow slider-prev"
-            onClick={() => setSlide(s => (s - 1 + SLIDES.length) % SLIDES.length)}
-          >‹</button>
-          <button
-            className="slider-arrow slider-next"
-            onClick={() => setSlide(s => (s + 1) % SLIDES.length)}
-          >›</button>
-          <div className="slider-dots">
+          {/* Slide indicator dots */}
+          <div style={{
+            display: 'flex', gap: '8px', marginTop: '44px',
+            opacity: heroLoaded ? 1 : 0,
+            transition: 'opacity 0.8s ease 0.8s',
+          }}>
             {SLIDES.map((_, i) => (
               <button
                 key={i}
-                className={`slider-dot ${i === slide ? 'active' : ''}`}
                 onClick={() => setSlide(i)}
+                style={{
+                  width: i === slide ? '28px' : '8px',
+                  height: '3px',
+                  borderRadius: '2px',
+                  background: i === slide
+                    ? 'linear-gradient(90deg,#c8921a,#e0a830)'
+                    : 'rgba(255,255,255,0.2)',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: 0,
+                  transition: 'all 0.4s ease',
+                  flexShrink: 0,
+                }}
               />
             ))}
           </div>
-          <div className="hero-stats">
-            {[
-              { n: '25+', l: 'Years Experience' },
-              { n: '5-Axis', l: 'CNC Machining' },
-              { n: 'ISO', l: 'Certified Quality' },
-              { n: 'Global', l: 'Export Ready' },
-            ].map(s => (
-              <div className="stat" key={s.l}>
-                <div className="stat-num">{s.n}</div>
-                <div className="stat-lbl">{s.l}</div>
-              </div>
-            ))}
-          </div>
         </div>
+
+        {/* Slide caption — bottom right */}
+        <div style={{
+          position: 'absolute',
+          bottom: '20px', right: '5%',
+          zIndex: 4,
+          textAlign: 'right',
+        }}>
+          {SLIDES.map((s, i) => (
+            <div
+              key={i}
+              style={{
+                opacity: i === slide ? 1 : 0,
+                transform: i === slide ? 'translateY(0)' : 'translateY(10px)',
+                transition: 'opacity 0.7s ease 0.5s, transform 0.7s ease 0.5s',
+                position: i === 0 ? 'relative' : 'absolute',
+                bottom: i === 0 ? 'auto' : 0,
+                right: i === 0 ? 'auto' : 0,
+                pointerEvents: 'none',
+              }}
+            >
+              <div style={{
+                display: 'inline-block',
+                background: 'linear-gradient(135deg,#c8921a,#e0a830)',
+                color: '#04091a',
+                fontFamily: 'var(--fd)',
+                fontSize: '9px', fontWeight: 900,
+                letterSpacing: '0.2em', textTransform: 'uppercase',
+                padding: '5px 12px', borderRadius: '3px', marginBottom: '6px',
+              }}>
+                {s.tag}
+              </div>
+              <div style={{
+                fontFamily: 'var(--fd)',
+                fontSize: '15px', fontWeight: 700,
+                color: 'rgba(240,244,250,0.9)',
+                lineHeight: 1.3,
+                whiteSpace: 'pre-line',
+                textShadow: '0 2px 20px rgba(0,0,0,0.9)',
+              }}>
+                {s.title}
+              </div>
+            </div>
+          ))}
+        </div>
+
+
       </section>
 
-      {/* ── TRUSTED EXPERIENCE ───────────────────────────────────────── */}
-      <section style={{ background: 'var(--off)', ...sectionPad }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
+      {/* ══════════════════════════════════════════════════
+          STATS BAR
+      ══════════════════════════════════════════════════ */}
+      <div style={{
+        background: 'linear-gradient(90deg, #0f1833e4 0%, #10172f 50%, #132254 100%)',
+        borderTop: '1px solid rgba(200,146,26,0.25)',
+        borderBottom: '1px solid rgba(255,255,255,0.05)',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(4,1fr)',
+      }}>
+        {[
+          { n: '25+', l: 'Years Experience' },
+          { n: '5-Axis', l: 'CNC Technology' },
+          { n: 'ISO', l: 'Certified QMS' },
+          { n: '40+', l: 'Global Clients' },
+        ].map((s, i) => (
+          <div key={s.l} style={{
+            padding: '22px 20px',
+            borderRight: i < 3 ? '1px solid rgba(255,255,255,0.05)' : 'none',
+            textAlign: 'center',
+            cursor: 'default',
+            transition: 'background 0.2s',
+          }}
+            onMouseEnter={e => e.currentTarget.style.background = 'rgba(200,146,26,0.08)'}
+            onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+          >
+            <div style={{
+              fontFamily: 'var(--fd)', fontWeight: 900,
+              fontSize: '30px', color: '#c8921a', lineHeight: 1,
+            }}>{s.n}</div>
+            <div style={{
+              fontSize: '9px', color: 'rgba(120,150,180,0.8)',
+              letterSpacing: '0.16em', textTransform: 'uppercase',
+              marginTop: '5px', fontWeight: 600,
+            }}>{s.l}</div>
+          </div>
+        ))}
+      </div>
 
-            <div>
+      {/* ══════════════════════════════════════════════════
+          TRUSTED EXPERIENCE
+      ══════════════════════════════════════════════════ */}
+      <section style={{ background: 'var(--off)', padding: '96px 5%' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '72px', alignItems: 'center' }}>
+
+            <Reveal direction="left">
               <div className="sec-label">Our Track Record</div>
               <h2 className="sec-title" style={{ marginBottom: '20px' }}>
                 Trusted Engineering Experience
               </h2>
-              <p style={{ fontSize: '15px', lineHeight: 1.75, color: 'var(--muted)', marginBottom: '16px' }}>
+              <p style={{ fontSize: '15px', lineHeight: 1.82, color: 'var(--text-secondary)', marginBottom: '16px', fontWeight: 300 }}>
                 Our machining expertise has supported projects connected with respected organisations
-                such as <strong style={{ color: 'var(--text)' }}>ABB</strong> and the{' '}
-                <strong style={{ color: 'var(--text)' }}>Indian Space Research Organisation</strong>.
+                such as <strong style={{ color: 'var(--text-primary)', fontWeight: 600 }}>ABB</strong> and the{' '}
+                <strong style={{ color: 'var(--text-primary)', fontWeight: 600 }}>Indian Space Research Organisation</strong>.
               </p>
-              <p style={{ fontSize: '15px', lineHeight: 1.75, color: 'var(--muted)' }}>
+              <p style={{ fontSize: '15px', lineHeight: 1.82, color: 'var(--text-secondary)', fontWeight: 300 }}>
                 Working with technically demanding industries has helped us develop strong
                 manufacturing processes and quality systems that meet strict engineering standards.
               </p>
-            </div>
+            </Reveal>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {[
-                { name: 'ABB', sub: 'Automation & Electrical Technology' },
-                { name: 'ISRO', sub: 'Indian Space Research Organisation' },
+                { name: 'ABB',  sub: 'Automation & Electrical Technology',  delay: 0.1 },
+                { name: 'ISRO', sub: 'Indian Space Research Organisation',   delay: 0.25 },
               ].map(org => (
-                <div
-                  key={org.name}
-                  style={{
+                <Reveal key={org.name} direction="right" delay={org.delay}>
+                  <div style={{
                     display: 'flex',
                     alignItems: 'center',
                     gap: '20px',
-                    background: '#fff',
-                    border: '1px solid #e2e6ed',
-                    borderLeft: '4px solid var(--accent)',
-                    borderRadius: '8px',
-                    padding: '20px 28px',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+                    background: 'rgba(255,255,255,0.02)',
+                    border: '1px solid rgba(200,146,26,0.2)',
+                    borderLeft: '3px solid #c8921a',
+                    borderRadius: '10px',
+                    padding: '22px 28px',
+                    transition: 'all 0.3s ease',
+                    cursor: 'default',
                   }}
-                >
-                  <div
-                    style={{
-                      width: '52px',
-                      height: '52px',
-                      borderRadius: '50%',
-                      background: 'var(--navy)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: '#fff',
-                      fontWeight: 800,
-                      fontSize: '13px',
-                      letterSpacing: '0.06em',
-                      flexShrink: 0,
-                    }}
+                    onMouseEnter={e => { e.currentTarget.style.background = 'rgba(200,146,26,0.06)'; e.currentTarget.style.transform = 'translateX(4px)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.02)'; e.currentTarget.style.transform = 'none'; }}
                   >
-                    {org.name}
-                  </div>
-                  <div>
-                    <div style={{ fontWeight: 700, fontSize: '16px', color: 'var(--navy)', marginBottom: '2px' }}>
+                    <div style={{
+                      width: '52px', height: '52px',
+                      borderRadius: '10px',
+                      background: 'linear-gradient(135deg,#0a1628,#0f1e38)',
+                      border: '1px solid rgba(200,146,26,0.3)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      color: '#c8921a', fontWeight: 900,
+                      fontSize: org.name === 'ISRO' ? '11px' : '13px',
+                      letterSpacing: '0.06em', flexShrink: 0,
+                      fontFamily: 'var(--fd)',
+                    }}>
                       {org.name}
                     </div>
-                    <div style={{ fontSize: '13px', color: 'var(--muted)' }}>{org.sub}</div>
+                    <div>
+                      <div style={{ fontWeight: 700, fontSize: '16px', color: 'var(--text-primary)', marginBottom: '3px', fontFamily: 'var(--fd)' }}>
+                        {org.name}
+                      </div>
+                      <div style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>{org.sub}</div>
+                    </div>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── CORE CAPABILITIES ────────────────────────────────────────── */}
-      <section style={{ background: 'var(--navy)', ...sectionPad }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <div className="sec-label">What We Do</div>
-          <h2 className="sec-title lt" style={{ marginBottom: '48px' }}>Core Capabilities</h2>
+      {/* ══════════════════════════════════════════════════
+          CORE CAPABILITIES
+      ══════════════════════════════════════════════════ */}
+      <section style={{ background: 'var(--navy)', padding: '96px 5%', position: 'relative', overflow: 'hidden' }}>
+        {/* Ambient glow */}
+        <div style={{
+          position: 'absolute', top: '50%', left: '50%',
+          transform: 'translate(-50%,-50%)',
+          width: '700px', height: '400px',
+          background: 'radial-gradient(ellipse, rgba(200,146,26,0.06) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }} />
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
-            {CAPABILITIES.map(cap => (
-              <div
-                key={cap.label}
-                style={{
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  borderRadius: '10px',
-                  padding: '26px 22px',
-                }}
-              >
+        <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
+          <Reveal>
+            <div className="sec-label">What We Do</div>
+            <h2 className="sec-title lt" style={{ marginBottom: '52px' }}>Core Capabilities</h2>
+          </Reveal>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '14px' }}>
+            {CAPABILITIES.map((cap, i) => (
+              <Reveal key={cap.label} delay={i * 0.07}>
                 <div style={{
-                  width: '32px',
-                  height: '3px',
-                  background: 'var(--accent)',
-                  borderRadius: '2px',
-                  marginBottom: '16px',
-                }} />
-                <div style={{ fontWeight: 700, fontSize: '15px', color: '#fff', marginBottom: '6px' }}>
-                  {cap.label}
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  borderRadius: '12px',
+                  padding: '28px 24px',
+                  transition: 'all 0.3s ease',
+                  cursor: 'default',
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.background = 'rgba(200,146,26,0.07)';
+                    e.currentTarget.style.border = '1px solid rgba(200,146,26,0.25)';
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 12px 40px rgba(200,146,26,0.1)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
+                    e.currentTarget.style.border = '1px solid rgba(255,255,255,0.07)';
+                    e.currentTarget.style.transform = 'none';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
+                  <div style={{
+                    width: '28px', height: '2px',
+                    background: 'linear-gradient(90deg,#c8921a,#e0a830)',
+                    borderRadius: '1px', marginBottom: '18px',
+                  }} />
+                  <div style={{ fontWeight: 700, fontSize: '15px', color: '#e8eef6', marginBottom: '8px', fontFamily: 'var(--fd)', letterSpacing: '0.02em', fontSize: '17px' }}>
+                    {cap.label}
+                  </div>
+                  <div style={{ fontSize: '13px', color: 'rgba(150,175,200,0.75)', lineHeight: 1.65, fontWeight: 300 }}>
+                    {cap.detail}
+                  </div>
                 </div>
-                <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.55)', lineHeight: 1.5 }}>
-                  {cap.detail}
-                </div>
-              </div>
+              </Reveal>
             ))}
           </div>
 
-          <div style={{ marginTop: '36px' }}>
+          <Reveal delay={0.3} style={{ marginTop: '44px' }}>
             <button className="btn-p" onClick={() => setPage('capabilities')}>
               View Full Capabilities →
             </button>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* ── MATERIALS EXPERTISE ──────────────────────────────────────── */}
-      <section style={{ background: 'var(--off)', ...sectionPad }}>
+      {/* ══════════════════════════════════════════════════
+          MATERIALS EXPERTISE
+      ══════════════════════════════════════════════════ */}
+      <section style={{ background: 'var(--off)', padding: '96px 5%' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '64px', alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '72px', alignItems: 'center' }}>
 
-            <div>
+            <Reveal direction="left">
               <div className="sec-label">Raw Materials</div>
-              <h2 className="sec-title" style={{ marginBottom: '16px' }}>Materials Expertise</h2>
-              <p style={{ fontSize: '15px', lineHeight: 1.75, color: 'var(--muted)' }}>
+              <h2 className="sec-title" style={{ marginBottom: '18px' }}>Materials Expertise</h2>
+              <p style={{ fontSize: '15px', lineHeight: 1.82, color: 'var(--text-secondary)', fontWeight: 300 }}>
                 We machine a wide range of engineering materials including carbon steels, exotic
                 alloys, titanium, and high-temperature materials for the most demanding industrial
                 and aerospace applications.
               </p>
-            </div>
+            </Reveal>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-              {MATERIALS.map(mat => (
-                <div
-                  key={mat}
-                  style={{
+              {MATERIALS.map((mat, i) => (
+                <Reveal key={mat} delay={i * 0.06}>
+                  <div style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '10px',
-                    background: '#fff',
-                    border: '1px solid #e2e6ed',
-                    borderRadius: '6px',
-                    padding: '12px 16px',
-                    fontSize: '14px',
-                    fontWeight: 600,
-                    color: 'var(--navy)',
-                    boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
+                    gap: '12px',
+                    background: 'rgba(255,255,255,0.02)',
+                    border: '1px solid rgba(255,255,255,0.07)',
+                    borderRadius: '8px',
+                    padding: '13px 18px',
+                    fontSize: '13px',
+                    fontWeight: 500,
+                    color: 'var(--text-primary)',
+                    transition: 'all 0.25s ease',
+                    cursor: 'default',
                   }}
-                >
-                  <span style={{
-                    width: '8px',
-                    height: '8px',
-                    borderRadius: '50%',
-                    background: 'var(--accent)',
-                    flexShrink: 0,
-                  }} />
-                  {mat}
-                </div>
+                    onMouseEnter={e => {
+                      e.currentTarget.style.border = '1px solid rgba(200,146,26,0.3)';
+                      e.currentTarget.style.background = 'rgba(200,146,26,0.05)';
+                      e.currentTarget.style.transform = 'translateX(3px)';
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.border = '1px solid rgba(255,255,255,0.07)';
+                      e.currentTarget.style.background = 'rgba(255,255,255,0.02)';
+                      e.currentTarget.style.transform = 'none';
+                    }}
+                  >
+                    <span style={{
+                      width: '6px', height: '6px',
+                      borderRadius: '50%',
+                      background: 'linear-gradient(135deg,#c8921a,#e0a830)',
+                      flexShrink: 0,
+                      boxShadow: '0 0 6px rgba(200,146,26,0.5)',
+                    }} />
+                    {mat}
+                  </div>
+                </Reveal>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── WHY TRUST US ─────────────────────────────────────────────── */}
-      <section style={{ background: 'var(--navy)', ...sectionPad }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
-          <div className="sec-label" style={{ justifyContent: 'center' }}>Our Promise</div>
-          <h2 className="sec-title lt" style={{ textAlign: 'center', margin: '0 auto 48px' }}>
-            Why Companies Trust Microcraft Engineering
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', textAlign: 'left' }}>
-            {TRUST_POINTS.map(pt => (
-              <div
-                key={pt.text}
-                style={{
+      {/* ══════════════════════════════════════════════════
+          WHY TRUST US
+      ══════════════════════════════════════════════════ */}
+      <section style={{ background: 'var(--navy)', padding: '96px 5%', position: 'relative', overflow: 'hidden' }}>
+        <div style={{
+          position: 'absolute', bottom: '-100px', right: '-100px',
+          width: '500px', height: '500px',
+          background: 'radial-gradient(circle, rgba(200,146,26,0.05) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }} />
+        <div style={{ maxWidth: '1050px', margin: '0 auto', textAlign: 'center', position: 'relative' }}>
+          <Reveal>
+            <div className="sec-label" style={{ justifyContent: 'center' }}>Our Promise</div>
+            <h2 className="sec-title lt" style={{ textAlign: 'center', margin: '0 auto 52px' }}>
+              Why Companies Trust Microcraft Engineering
+            </h2>
+          </Reveal>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '14px', textAlign: 'left' }}>
+            {TRUST_POINTS.map((pt, i) => (
+              <Reveal key={pt.text} delay={i * 0.08}>
+                <div style={{
                   display: 'flex',
                   alignItems: 'flex-start',
-                  gap: '14px',
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  borderRadius: '10px',
-                  padding: '20px 18px',
+                  gap: '16px',
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  borderRadius: '12px',
+                  padding: '22px 20px',
+                  transition: 'all 0.3s ease',
+                  cursor: 'default',
+                  height: '100%',
                 }}
-              >
-                <div style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '50%',
-                  background: 'rgba(62,207,110,0.15)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '16px',
-                  flexShrink: 0,
-                }}>
-                  {pt.icon}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.background = 'rgba(200,146,26,0.07)';
+                    e.currentTarget.style.border = '1px solid rgba(200,146,26,0.25)';
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
+                    e.currentTarget.style.border = '1px solid rgba(255,255,255,0.07)';
+                    e.currentTarget.style.transform = 'none';
+                  }}
+                >
+                  <div style={{
+                    width: '40px', height: '40px',
+                    borderRadius: '10px',
+                    background: 'linear-gradient(135deg,rgba(200,146,26,0.15),rgba(200,146,26,0.08))',
+                    border: '1px solid rgba(200,146,26,0.25)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: '18px', flexShrink: 0,
+                  }}>
+                    {pt.icon}
+                  </div>
+                  <span style={{ color: 'rgba(200,216,235,0.85)', fontSize: '14px', fontWeight: 400, lineHeight: 1.65, paddingTop: '9px' }}>
+                    {pt.text}
+                  </span>
                 </div>
-                <span style={{ color: '#dde2ed', fontSize: '14px', fontWeight: 500, lineHeight: 1.55, paddingTop: '8px' }}>
-                  {pt.text}
-                </span>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── INDUSTRIES TEASER ────────────────────────────────────────── */}
-      <section style={{ background: 'var(--off)', textAlign: 'center', ...sectionPad }}>
-        <div style={{ maxWidth: '700px', margin: '0 auto' }}>
-          <div className="sec-label" style={{ justifyContent: 'center' }}>What We Serve</div>
-          <h2 className="sec-title" style={{ textAlign: 'center', margin: '0 auto 16px' }}>
-            Industries We Serve
-          </h2>
-          <p className="sec-desc" style={{ margin: '0 auto 36px', textAlign: 'center' }}>
-            Aerospace, Defence, Industrial Machinery, Robotics &amp; Automation, and Automotive —
-            trusted by manufacturers across five sectors in India and internationally.
-          </p>
-          <button className="btn-p" onClick={() => setPage('industries')}>
-            Explore Industries →
-          </button>
-        </div>
+      {/* ══════════════════════════════════════════════════
+          INDUSTRIES TEASER
+      ══════════════════════════════════════════════════ */}
+      <section style={{ background: 'var(--off)', textAlign: 'center', padding: '96px 5%' }}>
+        <Reveal>
+          <div style={{ maxWidth: '700px', margin: '0 auto' }}>
+            <div className="sec-label" style={{ justifyContent: 'center' }}>What We Serve</div>
+            <h2 className="sec-title" style={{ textAlign: 'center', margin: '0 auto 18px' }}>
+              Industries We Serve
+            </h2>
+            <p className="sec-desc" style={{ margin: '0 auto 36px', textAlign: 'center' }}>
+              Aerospace, Defence, Industrial Machinery, Robotics &amp; Automation, and Automotive —
+              trusted by manufacturers across five sectors in India and internationally.
+            </p>
+            <button className="btn-p" onClick={() => setPage('industries')}>
+              Explore Industries →
+            </button>
+          </div>
+        </Reveal>
       </section>
 
-      {/* ── CTA ──────────────────────────────────────────────────────── */}
+      {/* ══════════════════════════════════════════════════
+          CTA
+      ══════════════════════════════════════════════════ */}
       <div className="cta-strip">
-        <h2>Ready to Source Precision Components?</h2>
-        <p>
-          Upload your CAD drawing and request a quotation. We respond with a detailed
-          quote within 48 hours.
-        </p>
-        <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>
-          ▶&ensp;Upload Drawing & Request Quote
-        </button>
+        <Reveal>
+          <h2>Ready to Source Precision Components?</h2>
+          <p>
+            Upload your CAD drawing and request a quotation. We respond with a detailed
+            quote within 48 hours.
+          </p>
+          <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>
+            ▶&ensp;Upload Drawing & Request Quote
+          </button>
+        </Reveal>
       </div>
 
       <Footer setPage={setPage} />
+
+      {/* ── Global hero animation keyframe ── */}
+      <style>{`
+        @keyframes progressBar {
+          from { transform: scaleX(0); transform-origin: left; }
+          to   { transform: scaleX(1); transform-origin: left; }
+        }
+      `}</style>
     </div>
   );
 }

@@ -84,11 +84,15 @@ export default function Quality({ setPage }) {
         </div>
       </section>
 
+
+
       <section style={{ background: 'var(--off-white)', padding: '80px 20px' }}>
         <div className="qual-inner" style={{ alignItems: 'center' }}>
           <div>
             <div className="sec-label" style={{ color: 'var(--navy-mid)' }}>Quality Control</div>
+
             <h2 className="sec-title" style={{ color: '#111' }}>Quality Assurance</h2>
+
             <p style={{ fontSize: '15px', color: '#555', marginBottom: '28px', fontWeight: 300, lineHeight: '1.8' }}>
               Quality is central to every stage of production at Microcraft Engineering. All components are inspected to ensure compliance with customer drawings and specifications.
             </p>
@@ -104,9 +108,68 @@ export default function Quality({ setPage }) {
           </div>
           <div className="qual-img">
             <img src="/images/qa_inspection.png" alt="Quality Assurance" className="img-cover" />
+            <div
+              style={{
+                background: 'linear-gradient(135deg, #0f172a, #1e293b)',
+                borderRadius: '12px',
+                padding: '25px',
+                marginBottom: '30px',
+                color: 'white',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                border: '1px solid rgba(255,255,255,0.08)'
+              }}
+            >
+              <div style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '8px' }}>
+                QUALITY DOCUMENTATION
+              </div>
+
+              <h3 style={{ margin: '0 0 10px 0', fontSize: '20px' }}>
+                Instrument Calibration Records
+              </h3>
+
+              <p style={{ fontSize: '14px', color: '#cbd5f5', marginBottom: '20px', lineHeight: '1.6' }}>
+                Comprehensive list of calibrated instruments, accuracy standards, and inspection capabilities ensuring precision compliance.
+              </p>
+
+              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+
+                <a
+                  href="/docs/instruction.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    padding: '10px 18px',
+                    background: 'white',
+                    color: '#111',
+                    borderRadius: '6px',
+                    textDecoration: 'none',
+                    fontWeight: '500'
+                  }}
+                >
+                  👁 View Document
+                </a>
+
+                <a
+                  href="/docs/instruments.pdf"
+                  download
+                  style={{
+                    padding: '10px 18px',
+                    background: 'var(--accent)',
+                    color: '#fff',
+                    borderRadius: '6px',
+                    textDecoration: 'none',
+                    fontWeight: '500'
+                  }}
+                >
+                  📄 Download PDF
+                </a>
+
+              </div>
+            </div>
             <div className="qual-cert-badge" style={{ background: 'var(--accent)', color: 'white' }}>Microcraft Engineering</div>
           </div>
         </div>
+
       </section>
 
       <section style={{ background: 'var(--off-white)' }}>

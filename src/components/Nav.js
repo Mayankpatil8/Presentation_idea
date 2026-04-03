@@ -20,14 +20,34 @@ export default function Nav({ page, setPage }) {
   return (
     <>
       <nav className="nav">
-        <button className="logo" onClick={() => go('home')}>
-          <div className="logo-hex"><span>M</span></div>
-          <div className="logo-text">
-            <span className="logo-name">Microcraft</span>
-            <span className="logo-sub">Engineering</span>
-          </div>
-        </button>
+        <button
+          className="logo"
+          onClick={() => go('home')}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            padding: '5px 0'
+          }}
+        >
+          <img
+            src="../images/logo3.png"
+            alt="Microcraft Engineering"
+            style={{
+              height: '55px',          // 🔥 adjust between 60–80 based on navbar height
+              width: 'auto',
+              objectFit: 'contain',
 
+              // 🔥 Make logo POP on black navbar
+              filter: 'brightness(1.3) contrast(1.2)',
+
+              // 🔥 subtle glow for visibility
+              dropShadow: '0 0 8px rgba(255,140,0,0.6)'
+            }}
+          />
+        </button>
         <ul className="nav-links">
           {NAV_ITEMS.map(item => (
             <li key={item.id} className={page === item.id ? 'active' : ''}>

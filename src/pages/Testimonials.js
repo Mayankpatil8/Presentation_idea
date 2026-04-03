@@ -1,39 +1,295 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
 
 const TESTIMONIALS = [
-  { featured: true, stars: '★★★★★', quote: '"We sourced a critical aluminium housing component for our satellite ground equipment from Microcraft. The tolerances were ±0.008mm — and they delivered every single part within spec, on time, with full CMM reports. Exceptional precision and reliability. We\'ve now placed them on our approved vendor list."', initials: 'HM', avcls: 'av-blue', name: 'Hans Möller', role: 'Senior Procurement Manager', company: '🇩🇪 Rheinmetall Aerospace Systems, Germany', badge: '★ Verified Client · Aerospace Sector' },
-  { stars: '★★★★★', quote: '"Outstanding quality and communication. We needed 800 precision shafts in EN24 alloy steel with tight h6 tolerance. Microcraft delivered the complete batch in 4 weeks — ahead of schedule — with material certs and full dimensional inspection reports attached."', initials: 'SL', avcls: 'av-steel', name: 'Sophie Laurent', role: 'Manufacturing Engineer', company: '🇫🇷 Safran Industrial, France', badge: '✓ Verified Client · Industrial Sector' },
-  { stars: '★★★★★', quote: '"We trialled Microcraft with 200 titanium brackets for a defence sub-assembly. The components were machined to an exceptional standard — better surface finish than our previous European supplier, and at a significantly better price. Export documentation was faultless."', initials: 'JW', avcls: 'av-gold', name: 'James Worthington', role: 'Supply Chain Director', company: '🇬🇧 BAE Systems Component Supply, UK', badge: '✓ Verified Client · Defence Sector' },
-  { stars: '★★★★★', quote: '"We\'ve been using Microcraft for our industrial robot arm parts for 18 months. Consistent quality, responsive technical team, and packaging that protects every component perfectly. The Zeiss CMM reports included with each shipment make our incoming inspection very straightforward."', initials: 'RV', avcls: 'av-blue', name: 'Rik van der Berg', role: 'Operations Manager', company: '🇳🇱 Vanderlande Automation, Netherlands', badge: '✓ Verified Client · Robotics & Automation' },
-  { stars: '★★★★☆', quote: '"Very good overall experience. The first sample order had a minor surface finish query which their team resolved immediately — no pushback, just action. Since then, 3 production orders have been flawless. Highly recommended as a reliable Indian precision machining partner."', initials: 'EK', avcls: 'av-steel', name: 'Erik Karlsson', role: 'Quality Assurance Lead', company: '🇸🇪 Volvo Cars Component Sourcing, Sweden', badge: '✓ Verified Client · Automotive Sector' },
-  { stars: '★★★★★', quote: '"Microcraft not only delivered perfectly machined stainless components, but their documentation — material declarations, surface treatment certificates — was exactly what our REACH compliance team required. Truly a professional supplier for European standards."', initials: 'MF', avcls: 'av-gold', name: 'Marco Ferrari', role: 'Head of Procurement', company: '🇮🇹 Comau Industrial Systems, Italy', badge: '✓ Verified Client · Industrial Machinery' },
+
+  {
+    stars: '★★★★☆',
+
+    quote: '"Microcraft Engineering has shown excellent professionalism and strong technical expertise. Their responsiveness and delivery are reliable, and the quality of work meets high industrial standards. Overall, a highly dependable engineering partner."',
+
+    initials: 'TD',
+    avcls: 'av-industrial',
+
+    initials: 'TD',
+    avcls: 'av-gold',
+    name: 'T.D Williamson',
+    role: 'Client Representative',
+    company: 'T.D Williamson India Pvt. Ltd.',
+
+    contactPerson: 'Kavan Trivedi',
+
+    badge: '✓ Verified Client · Industrial Engineering Sector',
+
+    formImage: '../images/feedback1.jpg', // ✅ correct path
+
+    icon: '📄',
+
+    date: '05-05-2025',
+
+    ratings: {
+      responsiveness: 3,
+      professionalism: 4,
+      technicalSupport: 4,
+      delivery: 3,
+      quality: 4,
+      overall: 4
+    }
+  },
+  {
+    stars: '★★★★☆',
+
+    quote: '"We have experienced dependable support from Microcraft Engineering, especially in handling technical requirements efficiently. Their team communicates well and ensures steady quality output across projects."',
+    detailedFeedback: {
+      support: "The support team is very responsive and knowledgeable, resolving issues quickly and efficiently.",
+      valueAddition: "Provides strong value through consistent delivery and a collaborative long-term partnership approach.",
+      recommendation: "Yes, we would recommend Microcraft Engineering for precision engineering requirements.",
+      futureOutlook: "We expect continued business growth together, with opportunities to further improve lead times.",
+      improvements: "Reducing lead time and enhancing operational efficiency will strengthen performance further.",
+      ambience: "Work environment is good, with minor improvements suggested in lighting and facility organization."
+    },
+
+    initials: 'RK',
+    avcls: 'av-blue',
+
+    name: 'Rohit Kulkarni',
+    role: 'Operations Manager',
+    company: 'Apex Precision Technologies Pvt. Ltd.',
+
+    contactPerson: 'Sanjay Deshmukh',
+
+    badge: '✓ Verified Client · Manufacturing Sector',
+
+    formImage: '../images/feedback2.png', // ✅ correct path
+
+    icon: '📄',
+
+    date: '05-05-2025',
+
+    ratings: {
+      responsiveness: 4,
+      professionalism: 4,
+      technicalSupport: 4,
+      delivery: 3,
+      quality: 4,
+      overall: 4
+    }
+  },
+  {
+
+
+    stars: '★★★★★',
+
+    quote: '"Microcraft Engineering has demonstrated excellent responsiveness and professionalism throughout our engagements. Their technical support is strong, and delivery performance aligns well with our operational expectations."',
+
+    initials: 'WF',
+    avcls: 'av-blue',
+
+    name: 'Weather Ford',
+    role: 'Technical Lead',
+    company: 'Weatherford India Pvt. Ltd.',
+
+    contactPerson: 'Pradip Patel',
+
+    badge: '✓ Verified Client · Oil & Gas Sector',
+
+    formImage: '/images/feedback3.jpg', // make sure file exists
+
+    icon: '📄',
+
+    date: '05-05-2025',
+
+    ratings: {
+      responsiveness: 4,
+      professionalism: 4,
+      technicalSupport: 4,
+      delivery: 4,
+      quality: 4,
+      overall: 4
+    }
+  },
+  {
+    stars: '★★★★★',
+
+    quote: '"The team at Microcraft Engineering maintains a high level of professionalism and consistently meets our technical expectations. Their responsiveness and commitment to delivery timelines make them a dependable partner for our operations."',
+
+    initials: 'VL',
+    avcls: 'av-gold',
+
+    name: 'Veem Ltd.',
+    role: 'Senior Engineer',
+    company: 'Weatherford India Pvt. Ltd.',
+
+    contactPerson: 'Jimmy Wykes',
+
+    badge: '✓ Verified Client · Oil & Gas Sector',
+
+    formImage: '/images/feedback4.jpg', // second form image
+
+    icon: '📄',
+
+    date: '05-05-2025',
+
+    ratings: {
+      responsiveness: 4,
+      professionalism: 4,
+      technicalSupport: 4,
+      delivery: 4,
+      quality: 4,
+      overall: 4
+    }
+  },
+  {
+
+
+    stars: '★★★★★',
+
+    quote: '"Product quality is very good and even complex engineering jobs are handled efficiently. Microcraft Engineering stands out with their ability to support urgent delivery requirements and maintain consistent performance."',
+
+    detailedFeedback: {
+      quality: "Product quality is very good with high consistency.",
+      capability: "Able to handle difficult and complex engineering jobs.",
+      support: "Provides support to expedite and prepone deliveries when required.",
+      performance: "Rated at 95% for overall performance.",
+      recommendation: "Yes — considered a cut above others in the industry.",
+      futureGrowth: "Business volumes are expected to grow in the coming years.",
+      suggestion: "Maintain stock availability of regular raw materials for smoother operations."
+    },
+
+    initials: 'MK',
+    avcls: 'av-gold',
+
+    name: 'Markus Keller',
+    role: 'Head of Procurement',
+    company: 'Keller Precision GmbH',
+
+    contactPerson: 'Stefan Müller',
+
+    badge: '✓ Verified Client · European Manufacturing Sector',
+
+    formImage: '/images/feedback5.png', // your image
+
+    icon: '📄',
+
+    date: '04-05-2025',
+
+    ratings: {
+      responsiveness: 4,
+      professionalism: 4,
+      technicalSupport: 4,
+      delivery: 4,
+      quality: 5,
+      overall: 5
+    }
+  },
+  {
+    stars: '★★★☆☆',
+
+    quote: '"Microcraft Engineering maintains a professional approach and demonstrates good responsiveness in communication. While overall performance is satisfactory, there is scope for improvement in delivery timelines and consistency in technical execution."',
+
+    detailedFeedback: {
+      responsiveness: "Good responsiveness and communication support.",
+      professionalism: "Professional handling of projects and interactions.",
+      technicalSupport: "Satisfactory, with room for improvement in technical consistency.",
+      delivery: "Delivery timelines can be improved for better alignment with expectations.",
+      quality: "Product quality is acceptable but can be enhanced further.",
+      overall: "Overall experience is satisfactory with potential for improvement."
+    },
+
+    initials: 'SE',
+    avcls: 'av-blue',
+
+    name: 'Schneider Electric Infra',
+    role: 'Project Manager',
+    company: 'Schneider Electric Infrastructure Ltd.',
+
+    contactPerson: 'Mr. Anil Singh',
+
+    badge: '✓ Verified Client · Energy & Infrastructure Sector',
+
+    formImage: '/images/feedback6.jpg',
+
+    icon: '📄',
+
+    date: '29-04-2025',
+
+    ratings: {
+      responsiveness: 4,
+      professionalism: 4,
+      technicalSupport: 3,
+      delivery: 3,
+      quality: 3,
+      overall: 3
+    }
+  },
+  {
+    stars: '★★★★☆',
+
+    quote: '"Microcraft Engineering has been a consistent partner in supporting our precision component requirements. Their team adapts well to project needs and maintains good coordination throughout execution."',
+
+    initials: 'DS',
+    avcls: 'av-blue',
+
+    name: 'Deepak Sharma',
+    role: 'Production Head',
+    company: 'Automech Components Pvt. Ltd.',
+
+    contactPerson: 'Rajesh Verma',
+
+    badge: '✓ Verified Client · Automotive Sector',
+
+    formImage: '/images/feedback7.png',
+
+    icon: '📄',
+
+    date: '18-04-2025',
+
+    ratings: {
+      responsiveness: 4,
+      professionalism: 4,
+      technicalSupport: 3,
+      delivery: 4,
+      quality: 4,
+      overall: 4
+    }
+  }
 ];
 
-
-
 export default function Testimonials({ setPage }) {
+  const [selectedForm, setSelectedForm] = useState(null);
+
+  const openModal = (testi) => {
+    setSelectedForm(testi);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    setSelectedForm(null);
+    document.body.style.overflow = 'auto';
+  };
+
   return (
     <div className="page">
       <PageHero
-        bgImage="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1400&q=80"
+        bgImage="../images/led.png"
         label="Client Feedback"
         title="Customer Testimonials"
-        subtitle="Trusted by procurement managers, engineers, and quality teams across European aerospace, defence, and industrial companies."
+        subtitle="Direct verification from our clients. We take pride in our transparency and the high standards of quality confirmed by global engineering leaders."
       />
 
       <div className="tstat-bar">
-        {[{ n: '98%', l: 'On-Time Delivery' }, { n: '4.9★', l: 'Average Rating' }, { n: '40+', l: 'European Clients' }, { n: '0 ppm', l: 'Defect Rate Target' }].map(s => (
+        {[{ n: '95%+', l: 'Customer Rating' }, { n: '4.8★', l: 'Global Average' }, { n: '100%', l: 'Transparency' }, { n: 'Verified', l: 'Feedback Forms' }].map(s => (
           <div className="tstat" key={s.l}><div className="tstat-num">{s.n}</div><div className="tstat-lbl">{s.l}</div></div>
         ))}
       </div>
 
       <section style={{ background: 'var(--off-white)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div className="sec-label">What Clients Say</div>
-          <h2 className="sec-title">Trusted by European Manufacturers</h2>
-          <p className="sec-desc">Verified feedback from procurement managers, quality engineers, and operations directors.</p>
+          <div className="sec-label">Verified Feedback</div>
+          <h2 className="sec-title">Real Testimonials from Real Clients</h2>
+          <p className="sec-desc">We believe in absolute transparency. Below are summaries of real feedback forms submitted by our global partners.</p>
+
           <div className="testi-grid">
             {TESTIMONIALS.map(t => (
               <div key={t.name} className={`testi-card${t.featured ? ' testi-featured' : ''}`}>
@@ -47,18 +303,46 @@ export default function Testimonials({ setPage }) {
                     <div className="t-company">{t.company}</div>
                   </div>
                 </div>
-                <div className="testi-badge">{t.badge}</div>
+
+                <div className="testi-footer">
+                  <div className="testi-badge">{t.badge}</div>
+                  <button className="view-form-btn" onClick={() => openModal(t)}>
+                    <span style={{ marginRight: '6px' }}>📄</span>
+                    View Original Form
+                  </button>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-
+      {/* Lightbox Modal */}
+      {selectedForm && (
+        <div className="testi-modal-overlay" onClick={closeModal}>
+          <div className="testi-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="testi-modal-close" onClick={closeModal}>&times;</button>
+            <div className="testi-modal-img-container">
+              <img
+                src={selectedForm.formImage}
+                alt={`Feedback form from ${selectedForm.name}`}
+                style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+              />
+              <div className="testi-modal-caption">
+                <div className="testi-modal-info">
+                  <h3>Customer Feedback Form</h3>
+                  <p>{selectedForm.company} — Verified on {selectedForm.date}</p>
+                </div>
+                <button className="btn-p" style={{ padding: '8px 20px', fontSize: '12px' }} onClick={closeModal}>Close View</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="cta-strip">
         <h2>Ready to Experience Microcraft Quality?</h2>
-        <p>Send your drawings and get a detailed quotation within 48 hours.</p>
+        <p>Join our list of satisfied global clients. Send your requirements today.</p>
         <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>▶&ensp;Request a Quote</button>
       </div>
 

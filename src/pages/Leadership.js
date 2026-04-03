@@ -40,7 +40,7 @@ export default function Leadership({ setPage }) {
   return (
     <div className="page">
       <PageHero
-        bgImage="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=1400&q=80"
+        bgImage="../images/test.png"
         label="Our Team"
         title="Leadership"
         subtitle="Meet the people who lead Microcraft Engineering's manufacturing operations and European business development."

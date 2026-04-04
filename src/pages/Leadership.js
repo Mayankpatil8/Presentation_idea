@@ -1,6 +1,7 @@
 import React from 'react';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
+import Reveal from '../components/Reveal';
 
 const LEADERS = [
   {
@@ -49,18 +50,20 @@ export default function Leadership({ setPage }) {
       {/* LEADERSHIP CARDS */}
       <section style={{ background: 'var(--off-white)' }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-          <div className="sec-label">Meet the Team</div>
-          <h2 className="sec-title">Our Leadership Team</h2>
-          <p className="sec-desc" style={{ marginBottom: '52px' }}>
-            Two dedicated leaders — one driving precision manufacturing in India, one championing European client relationships.
-          </p>
+          <Reveal>
+            <div className="sec-label">Meet the Team</div>
+            <h2 className="sec-title">Our Leadership Team</h2>
+            <p className="sec-desc" style={{ marginBottom: '52px' }}>
+              Two dedicated leaders — one driving precision manufacturing in India, one championing European client relationships.
+            </p>
+          </Reveal>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
-            {LEADERS.map(l => (
-              <div
-                key={l.name}
-                style={{
-                  background: 'var(--white)',
+            {LEADERS.map((l, i) => (
+              <Reveal delay={i * 0.15} key={l.name} style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                <div
+                  style={{
+                    background: 'var(--white)',
                   borderRadius: '12px',
                   overflow: 'hidden',
                   border: '1px solid rgba(15, 23, 42, 0.12)',
@@ -133,6 +136,7 @@ export default function Leadership({ setPage }) {
                   </div>
                 </div>
               </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -141,17 +145,19 @@ export default function Leadership({ setPage }) {
       {/* PHILOSOPHY */}
       <section style={{ background: 'var(--navy)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <div className="sec-label" style={{ color: 'var(--accent)' }}>How We Work</div>
-          <h2 className="sec-title lt">Leadership Philosophy</h2>
-          <p className="sec-desc lt" style={{ marginBottom: '52px' }}>
-            The values that guide every decision our leadership team makes — from production floor to European client meetings.
-          </p>
+          <Reveal>
+            <div className="sec-label" style={{ color: 'var(--accent)' }}>How We Work</div>
+            <h2 className="sec-title lt">Leadership Philosophy</h2>
+            <p className="sec-desc lt" style={{ marginBottom: '52px' }}>
+              The values that guide every decision our leadership team makes — from production floor to European client meetings.
+            </p>
+          </Reveal>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '2px' }}>
             {PHILOSOPHY.map((p, i) => (
-              <div
-                key={p.title}
-                style={{ background: 'rgba(255,255,255,.03)', border: '1px solid rgba(255,255,255,.06)', padding: '36px 28px', position: 'relative', overflow: 'hidden', transition: 'background .2s', cursor: 'default' }}
+              <Reveal delay={i * 0.1} key={p.title} style={{ height: '100%', display: 'flex' }}>
+                <div
+                  style={{ background: 'rgba(255,255,255,.03)', border: '1px solid rgba(255,255,255,.06)', padding: '36px 28px', position: 'relative', overflow: 'hidden', transition: 'background .2s', cursor: 'default' }}
                 onMouseEnter={e => { e.currentTarget.style.background = 'rgba(30,106,191,.12)'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,.03)'; }}
               >
@@ -160,18 +166,21 @@ export default function Leadership({ setPage }) {
                 <div style={{ fontSize: '34px', marginBottom: '16px' }}>{p.icon}</div>
                 <div style={{ fontFamily: 'var(--fd)', fontWeight: 700, fontSize: '20px', color: 'var(--white)', marginBottom: '10px' }}>{p.title}</div>
                 <div style={{ fontSize: '13.5px', color: 'rgba(255,255,255,0.92)', fontWeight: 400, lineHeight: '1.7' }}>{p.desc}</div>
-              </div>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <div className="cta-strip">
-        <h2>Work With Our Team</h2>
-        <p>Reach out to our European or India team for a detailed quotation within 48 hours.</p>
-        <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>▶&ensp;Request a Quote</button>
-      </div>
+      <Reveal delay={0.1}>
+        <div className="cta-strip">
+          <h2>Work With Our Team</h2>
+          <p>Reach out to our European or India team for a detailed quotation within 48 hours.</p>
+          <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>▶&ensp;Request a Quote</button>
+        </div>
+      </Reveal>
 
       <Footer setPage={setPage} />
     </div>

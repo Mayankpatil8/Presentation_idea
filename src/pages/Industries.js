@@ -1,6 +1,7 @@
 import React from 'react';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
+import Reveal from '../components/Reveal';
 
 
 const INDUSTRIES = [
@@ -66,16 +67,18 @@ export default function Industries({ setPage }) {
 
       <section style={{ background: 'var(--white)', padding: '80px 20px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div className="sec-label" style={{ textAlign: 'center' }}>Our Sectors</div>
-          <h2 className="sec-title" style={{ textAlign: 'center', marginBottom: '64px' }}>Precision Manufacturing Across Industries</h2>
+          <Reveal>
+            <div className="sec-label" style={{ textAlign: 'center' }}>Our Sectors</div>
+            <h2 className="sec-title" style={{ textAlign: 'center', marginBottom: '64px' }}>Precision Manufacturing Across Industries</h2>
+          </Reveal>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
             {INDUSTRIES.map((ind, i) => (
-              <div
-                key={ind.n}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: i % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr',
-                  gap: '52px',
+              <Reveal delay={0.1} key={ind.n}>
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: i % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr',
+                    gap: '52px',
                   alignItems: 'center',
                   background: 'var(--white)',
                   borderRadius: '16px',
@@ -184,6 +187,7 @@ export default function Industries({ setPage }) {
                   </>
                 )}
               </div>
+              </Reveal>
             ))}
           </div>
         </div>

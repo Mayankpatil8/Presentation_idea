@@ -1,6 +1,7 @@
 import React from 'react';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
+import Reveal from '../components/Reveal';
 
 const CAPS = [
   { n: '01', t: 'CNC Milling (3, 4, 5 Axis)', d: 'Multi-axis milling for complex geometries, contoured surfaces, and precision pockets. Suitable for structural aerospace and defence components.' },
@@ -29,53 +30,65 @@ export default function Capabilities({ setPage }) {
 
       <section style={{ background: 'var(--grey-dark)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div className="sec-label" style={{ color: 'var(--accent)' }}>Technical Capabilities</div>
-          <h2 className="sec-title lt">CNC Machining Services</h2>
+          <Reveal>
+            <div className="sec-label" style={{ color: 'var(--accent)' }}>Technical Capabilities</div>
+            <h2 className="sec-title lt">CNC Machining Services</h2>
+          </Reveal>
           <div className="cap-grid">
             <div>
-              {CAPS.map(c => (
-                <div className="cap-item" key={c.n}>
-                  <div className="cap-num">{c.n}</div>
-                  <div>
-                    <div className="cap-name">{c.t}</div>
-                    <div className="cap-desc">{c.d}</div>
+              {CAPS.map((c, i) => (
+                <Reveal delay={i * 0.15} key={c.n}>
+                  <div className="cap-item">
+                    <div className="cap-num">{c.n}</div>
+                    <div>
+                      <div className="cap-name">{c.t}</div>
+                      <div className="cap-desc">{c.d}</div>
+                    </div>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
-            <div className="cap-imgs">
-              <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=600&q=80" alt="CNC Milling" />
-              <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80" alt="CNC Turning" />
-              <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=900&q=80" alt="5-Axis Machining" className="wide" />
-            </div>
+            <Reveal direction="right">
+              <div className="cap-imgs">
+                <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=600&q=80" alt="CNC Milling" />
+                <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80" alt="CNC Turning" />
+                <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=900&q=80" alt="5-Axis Machining" className="wide" />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      <section style={{ background: 'var(--off-white)' }}>
+      <section style={{ background: 'var(--off)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div className="sec-label">Materials</div>
-          <h2 className="sec-title">Material Expertise</h2>
-          <p className="sec-desc">All materials fully traceable and certified to aerospace and industrial specifications.</p>
+          <Reveal>
+            <div className="sec-label">Materials</div>
+            <h2 className="sec-title">Material Expertise</h2>
+            <p className="sec-desc">All materials fully traceable and certified to aerospace and industrial specifications.</p>
+          </Reveal>
           <div className="mat-grid">
-            {MATERIALS.map(m => (
-              <div className="mat-chip" key={m.n}>
-                <div className="mat-dot" style={{ background: m.c }} />
-                <div>
-                  <div className="mat-name">{m.n}</div>
-                  <div className="mat-spec">{m.s}</div>
+            {MATERIALS.map((m, i) => (
+              <Reveal delay={i * 0.1} key={m.n}>
+                <div className="mat-chip">
+                  <div className="mat-dot" style={{ background: m.c }} />
+                  <div>
+                    <div className="mat-name">{m.n}</div>
+                    <div className="mat-spec">{m.s}</div>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <div className="cta-strip">
-        <h2>Need a Precision Component?</h2>
-        <p>Upload your drawings for a fast detailed quotation.</p>
-        <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>▶&ensp;Request a Quote</button>
-      </div>
+      <Reveal delay={0.1}>
+        <div className="cta-strip">
+          <h2>Need a Precision Component?</h2>
+          <p>Upload your drawings for a fast detailed quotation.</p>
+          <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>▶&ensp;Request a Quote</button>
+        </div>
+      </Reveal>
 
       <Footer setPage={setPage} />
     </div>

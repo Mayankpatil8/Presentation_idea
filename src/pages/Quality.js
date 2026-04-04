@@ -1,6 +1,7 @@
 import React from 'react';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
+import Reveal from '../components/Reveal';
 
 const INFRASTRUCTURE = [
   { icon: '⚙️', t: 'CNC Vertical Machining Centers', d: 'Advanced vertical milling for complex geometries and precision cuts.' },
@@ -61,24 +62,30 @@ export default function Quality({ setPage }) {
 
       <section style={{ background: 'var(--navy-mid)' }}>
         <div className="qual-inner">
-          <div className="qual-img">
-            <img src="/images/ai.png" alt="Manufacturing Infrastructure" />
-            <div className="qual-cert-badge">Advanced Facility</div>
-          </div>
+          <Reveal direction="left">
+            <div className="qual-img">
+              <img src="/images/ai.png" alt="Manufacturing Infrastructure" />
+              <div className="qual-cert-badge">Advanced Facility</div>
+            </div>
+          </Reveal>
           <div>
-            <div className="sec-label" style={{ color: 'var(--accent)' }}>Our Facility</div>
-            <h2 className="sec-title lt">Manufacturing Infrastructure</h2>
-            <p style={{ fontSize: '15px', color: '#c0d0e0', marginBottom: '28px', fontWeight: 300, lineHeight: '1.8' }}>
-              Our facility includes modern machining equipment capable of performing complex machining operations. This infrastructure allows us to manufacture components for both prototype development and production batches.
-            </p>
-            {INFRASTRUCTURE.map(c => (
-              <div className="qual-check" key={c.t}>
-                <div className="qc-icon">{c.icon}</div>
-                <div>
-                  <div className="qc-title">{c.t}</div>
-                  <div className="qc-desc">{c.d}</div>
+            <Reveal>
+              <div className="sec-label" style={{ color: 'var(--accent)' }}>Our Facility</div>
+              <h2 className="sec-title lt">Manufacturing Infrastructure</h2>
+              <p style={{ fontSize: '15px', color: '#c0d0e0', marginBottom: '28px', fontWeight: 300, lineHeight: '1.8' }}>
+                Our facility includes modern machining equipment capable of performing complex machining operations. This infrastructure allows us to manufacture components for both prototype development and production batches.
+              </p>
+            </Reveal>
+            {INFRASTRUCTURE.map((c, i) => (
+              <Reveal delay={0.2 + (i * 0.1)} key={c.t}>
+                <div className="qual-check">
+                  <div className="qc-icon">{c.icon}</div>
+                  <div>
+                    <div className="qc-title">{c.t}</div>
+                    <div className="qc-desc">{c.d}</div>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -86,27 +93,32 @@ export default function Quality({ setPage }) {
 
 
 
-      <section style={{ background: 'var(--off-white)', padding: '80px 20px' }}>
+      <section style={{ background: 'var(--off)', padding: '80px 20px' }}>
         <div className="qual-inner" style={{ alignItems: 'center' }}>
           <div>
-            <div className="sec-label" style={{ color: 'var(--navy-mid)' }}>Quality Control</div>
+            <Reveal direction="left">
+              <div className="sec-label" style={{ color: 'var(--navy-mid)' }}>Quality Control</div>
 
-            <h2 className="sec-title" style={{ color: '#111' }}>Quality Assurance</h2>
+              <h2 className="sec-title" style={{ color: 'var(--navy)' }}>Quality Assurance</h2>
 
-            <p style={{ fontSize: '15px', color: '#555', marginBottom: '28px', fontWeight: 300, lineHeight: '1.8' }}>
-              Quality is central to every stage of production at Microcraft Engineering. All components are inspected to ensure compliance with customer drawings and specifications.
-            </p>
-            {QUALITY_ASSURANCE.map(c => (
-              <div className="qual-check" key={c.t}>
-                <div className="qc-icon">{c.icon}</div>
-                <div>
-                  <div className="qc-title" style={{ color: '#222' }}>{c.t}</div>
-                  <div className="qc-desc" style={{ color: '#666' }}>{c.d}</div>
+              <p style={{ fontSize: '15.5px', color: 'var(--grey-dark)', marginBottom: '28px', fontWeight: 400, lineHeight: '1.85' }}>
+                Quality is central to every stage of production at Microcraft Engineering. All components are inspected to ensure compliance with customer drawings and specifications.
+              </p>
+            </Reveal>
+            {QUALITY_ASSURANCE.map((c, i) => (
+              <Reveal delay={0.2 + (i * 0.1)} direction="left" key={c.t}>
+                <div className="qual-check">
+                  <div className="qc-icon">{c.icon}</div>
+                  <div>
+                    <div className="qc-title" style={{ color: 'var(--navy)', fontWeight: 700 }}>{c.t}</div>
+                    <div className="qc-desc" style={{ color: 'var(--grey-dark)', fontWeight: 400 }}>{c.d}</div>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
-          <div className="qual-img">
+          <Reveal direction="right">
+            <div className="qual-img">
             <img src="/images/qa_inspection.png" alt="Quality Assurance" className="img-cover" />
             <div
               style={{
@@ -167,19 +179,23 @@ export default function Quality({ setPage }) {
               </div>
             </div>
             <div className="qual-cert-badge" style={{ background: 'var(--accent)', color: 'white' }}>Microcraft Engineering</div>
-          </div>
+            </div>
+          </Reveal>
         </div>
 
       </section>
 
-      <section style={{ background: 'var(--off-white)' }}>
+      <section style={{ background: 'var(--off)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div className="sec-label">Project Examples</div>
-          <h2 className="sec-title">Case Studies</h2>
-          <p className="sec-desc">Representative projects demonstrating our precision capability across industries.</p>
+          <Reveal>
+            <div className="sec-label">Project Examples</div>
+            <h2 className="sec-title">Case Studies</h2>
+            <p className="sec-desc">Representative projects demonstrating our precision capability across industries.</p>
+          </Reveal>
           <div className="cases-grid">
-            {CASES.map(c => (
-              <div className="case-card" key={c.t}>
+            {CASES.map((c, i) => (
+              <Reveal delay={i * 0.15} key={c.t} style={{ height: '100%' }}>
+                <div className="case-card" style={{ height: '100%' }}>
                 <div className="case-img">
                   <img src={c.img} alt={c.t} />
                   <div className="case-ind">{c.ind}</div>
@@ -195,16 +211,19 @@ export default function Quality({ setPage }) {
                   <div className="case-result">{c.r}</div>
                 </div>
               </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <div className="cta-strip">
-        <h2>Need Certified Precision Parts?</h2>
-        <p>Full quality documentation included with every order.</p>
-        <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>▶&ensp;Request a Quote</button>
-      </div>
+      <Reveal delay={0.1}>
+        <div className="cta-strip">
+          <h2>Need Certified Precision Parts?</h2>
+          <p>Full quality documentation included with every order.</p>
+          <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>▶&ensp;Request a Quote</button>
+        </div>
+      </Reveal>
 
       <Footer setPage={setPage} />
     </div>

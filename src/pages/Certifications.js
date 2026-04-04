@@ -1,6 +1,7 @@
 import React from 'react';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
+import Reveal from '../components/Reveal';
 
 const CERTS = [
   {
@@ -10,17 +11,22 @@ const CERTS = [
     meta: [{ k: 'Issued by', v: 'Bureau Veritas Certification' }, { k: 'Scope', v: 'CNC Machining, Turning, Milling, Surface Finishing' }, { k: 'Valid until', v: 'December 2026' }, { k: 'Certificate No.', v: 'BV-QMS-2021-04872' }],
   },
   {
-    cls: 'as', logo: 'AS', num: '9100', yr: 'Rev D',
-    tag: 'Aerospace Quality', title: 'AS9100 Rev D',
-    desc: 'The international standard for aviation, space, and defence quality management systems. Validates our capability to produce safety-critical aerospace components with full traceability and zero-defect focus.',
-    meta: [{ k: 'Issued by', v: 'TÜV SÜD Management Service GmbH' }, { k: 'Scope', v: 'Precision CNC — Aerospace & Defence Components' }, { k: 'Valid until', v: 'March 2027' }, { k: 'Certificate No.', v: 'TUV-AS-2022-00391-DE' }],
-  },
-  {
     cls: 'env', logo: 'ISO', num: '14001', yr: ':2015',
     tag: 'Environmental Management', title: 'ISO 14001:2015',
     desc: 'Environmental management system certification demonstrating our commitment to reducing environmental impact, managing waste responsibly, and operating a sustainable precision manufacturing facility.',
     meta: [{ k: 'Issued by', v: 'DNV GL Business Assurance' }, { k: 'Scope', v: 'Manufacturing Operations, Waste & Emissions Control' }, { k: 'Valid until', v: 'September 2026' }, { k: 'Certificate No.', v: 'DNV-EMS-2022-11948' }],
   },
+  {
+    cls: 'safety', logo: 'ISO', num: '45001', yr: ':2018',
+    tag: 'Occupational Health & Safety', title: 'ISO 45001:2018',
+    desc: 'Occupational health and safety management system certification demonstrating our commitment to maintaining a safe workplace, minimizing risks, preventing work-related injuries, and ensuring the well-being of all employees within our precision manufacturing operations.',
+    meta: [
+      { k: 'Issued by', v: 'DNV GL Business Assurance' },
+      { k: 'Scope', v: 'Workplace Safety, Risk Management & Employee Well-being' },
+      { k: 'Valid until', v: 'September 2026' },
+      { k: 'Certificate No.', v: 'DNV-OHS-2022-11949' }
+    ],
+  }
 ];
 
 const STANDARDS = [
@@ -49,14 +55,17 @@ export default function Certifications({ setPage }) {
         subtitle="Internationally recognised quality frameworks ensuring every component delivered meets the highest standards demanded by European clients."
       />
 
-      <section style={{ background: 'var(--off-white)' }}>
+      <section style={{ background: 'var(--off)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div className="sec-label">Quality Credentials</div>
-          <h2 className="sec-title">Our Certifications</h2>
-          <p className="sec-desc">Each certification represents our ongoing commitment to precision, traceability, and continuous improvement.</p>
+          <Reveal>
+            <div className="sec-label">Quality Credentials</div>
+            <h2 className="sec-title">Our Certifications</h2>
+            <p className="sec-desc">Each certification represents our ongoing commitment to precision, traceability, and continuous improvement.</p>
+          </Reveal>
           <div className="cert-grid">
-            {CERTS.map(c => (
-              <div className="cert-card" key={c.title}>
+            {CERTS.map((c, i) => (
+              <Reveal delay={i * 0.15} key={c.title} style={{ height: '100%' }}>
+                <div className="cert-card" style={{ height: '100%' }}>
                 <div className="cert-top">
                   <div className="cert-badge">
                     <div className="cert-ring" />
@@ -85,6 +94,7 @@ export default function Certifications({ setPage }) {
                   </div>
                 </div>
               </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -92,48 +102,60 @@ export default function Certifications({ setPage }) {
 
       <section style={{ background: 'var(--navy)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div className="sec-label" style={{ color: 'var(--accent)' }}>Compliance</div>
-          <h2 className="sec-title lt">Standards &amp; Compliance Framework</h2>
-          <p className="sec-desc lt">In addition to formal certifications, Microcraft operates in compliance with a range of international and European technical standards.</p>
+          <Reveal>
+            <div className="sec-label" style={{ color: 'var(--accent)' }}>Compliance</div>
+            <h2 className="sec-title lt">Standards &amp; Compliance Framework</h2>
+            <p className="sec-desc lt">In addition to formal certifications, Microcraft operates in compliance with a range of international and European technical standards.</p>
+          </Reveal>
           <div className="stds-grid">
-            {STANDARDS.map(s => (
-              <div className="std-item" key={s.n}>
+            {STANDARDS.map((s, i) => (
+              <Reveal delay={i * 0.1} key={s.n} style={{ height: '100%' }}>
+                <div className="std-item" style={{ height: '100%' }}>
                 <div className="std-icon">{s.i}</div>
                 <div className="std-name">{s.n}</div>
                 <div className="std-desc">{s.d}</div>
               </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section style={{ background: 'var(--off-white)' }}>
+      <section style={{ background: 'var(--off)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '72px', alignItems: 'center' }}>
           <div>
-            <div className="sec-label">Metrology</div>
-            <h2 className="sec-title">Certified Inspection Equipment</h2>
-            <p style={{ fontSize: '15px', color: 'var(--grey-mid)', marginTop: '16px', fontWeight: 300, lineHeight: '1.8', marginBottom: '24px' }}>
-              All inspection instruments are calibrated and traceable to national measurement standards. Full documentation provided with every shipment.
-            </p>
-            {EQUIPMENT.map(r => (
-              <div className="insp-row" key={r.t}>
-                <div className="insp-dot" />
-                <div>
-                  <strong>{r.t}</strong><br />
-                  <span style={{ fontSize: '13px', color: 'var(--grey-mid)' }}>{r.d}</span>
+            <Reveal direction="left">
+              <div className="sec-label">Metrology</div>
+              <h2 className="sec-title">Certified Inspection Equipment</h2>
+              <p style={{ fontSize: '15.5px', color: 'var(--grey-dark)', marginTop: '16px', fontWeight: 400, lineHeight: '1.85', marginBottom: '24px' }}>
+                All inspection instruments are calibrated and traceable to national measurement standards. Full documentation provided with every shipment.
+              </p>
+            </Reveal>
+            {EQUIPMENT.map((r, i) => (
+              <Reveal delay={0.2 + (i * 0.1)} key={r.t} direction="left">
+                <div className="insp-row">
+                  <div className="insp-dot" />
+                  <div>
+                    <strong>{r.t}</strong><br />
+                    <span style={{ fontSize: '13.5px', color: 'var(--grey-dark)', fontWeight: 400 }}>{r.d}</span>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
-          <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80" alt="CMM Inspection" style={{ width: '100%', height: '460px', objectFit: 'cover', borderRadius: '4px' }} />
+          <Reveal direction="right">
+            <img src="../images/qa.png" alt="CMM Inspection" style={{ width: '100%', height: '460px', objectFit: 'cover', borderRadius: '4px' }} />
+          </Reveal>
         </div>
       </section>
 
-      <div className="cta-strip">
-        <h2>Need Certification Documentation?</h2>
-        <p>Full quality docs and material certs provided with every order.</p>
-        <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>▶&ensp;Request a Quote</button>
-      </div>
+      <Reveal delay={0.1}>
+        <div className="cta-strip">
+          <h2>Need Certification Documentation?</h2>
+          <p>Full quality docs and material certs provided with every order.</p>
+          <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>▶&ensp;Request a Quote</button>
+        </div>
+      </Reveal>
 
       <Footer setPage={setPage} />
     </div>

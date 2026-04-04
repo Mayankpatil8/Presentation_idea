@@ -192,7 +192,7 @@ export default function Home({ setPage }) {
             }}
           >
             <div className="hero-strip-line" />
-            <span className="hero-strip-text">Precision CNC Manufacturing</span>
+            <span className="hero-strip-text">Trusted Globally</span>
             <div className="live-dot" />
             <span style={{ fontSize: '12px', color: '#3ecf6e', fontWeight: 900, letterSpacing: '.20em' }}>
               ACTIVE SUPPLIER
@@ -208,9 +208,9 @@ export default function Home({ setPage }) {
             marginBottom: '20px',
             letterSpacing: '-0.01em'
           }}>
-            Precision CNC Machining{' '}
+            Proven Performance with{' '}
             <br />
-            for Global{' '}
+
             <em style={{
               color: 'transparent',
               backgroundImage: 'linear-gradient(135deg, #c8921a 0%, #e0a830 50%, #f0c050 100%)',
@@ -218,14 +218,66 @@ export default function Home({ setPage }) {
               backgroundClip: 'text',
               fontStyle: 'normal',
             }}>
-              Engineering Industries
+              real results
             </em>
           </h1>
 
+          <p style={{
+            fontSize: '17px',
+            lineHeight: 1.5,
+            color: 'rgba(240,244,250,0.85)',
+            marginBottom: '22px'
+          }}>
+            Trusted by{' '}
+
+            globally reputed Customers.
+
+            <br />
+            <span style={{ fontSize: '15px', opacity: 0.9 }}>
+              including
+            </span><a> </a>
+            <span style={{
+              color: '#e0a830',
+              fontWeight: 900
+            }}>
+              Keller Precision, ISRO India
+            </span>, & etc.
+          </p>
+
+          {/* Button */}
+          <button
+            onClick={() => setPage('testimonials')}
+            style={{
+              background: 'linear-gradient(135deg,#c8921a,#e0a830)',
+              color: '#04091a',
+              border: 'none',
+              padding: '12px 20px',
+              fontSize: '11px',
+              fontWeight: 900,
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase',
+              borderRadius: '6px',
+              cursor: 'pointer',
+
+              boxShadow: '0 6px 20px rgba(200,146,26,0.35)',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 10px 28px rgba(200, 145, 26, 0.18)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 6px 20px rgba(27, 25, 22, 0.69)';
+            }}
+          >
+            View Testimonials →
+          </button>
+
           {/* Gold divider */}
           <div style={{
-            width: heroLoaded ? '64px' : '0px',
-            height: '2px',
+            width: '64px',
+            animation: 'growLine 0.8s ease', height: '2px',
             background: 'linear-gradient(90deg, #c8921a, #e0a830, transparent)',
             marginBottom: '28px',
             borderRadius: '1px',
@@ -246,7 +298,7 @@ export default function Home({ setPage }) {
               maxWidth: '520px',
               marginBottom: '20px'
             }}>
-              Delivering <span style={{ color: '#e0a830', fontWeight: 500 }}>high-precision CNC components</span>
+              Delivering <span style={{ color: '#e0a830', fontWeight: 500 }}>high-precision CNC components </span>
               for aerospace and industrial applications, with over 25 years of manufacturing excellence.
             </p>
             <p style={{ fontSize: '16px', lineHeight: 1.82, color: 'rgba(200,216,235,0.75)', fontWeight: 300, maxWidth: '620px' }}> We support engineering companies in India and internationally with precision machining solutions used in aerospace, industrial automation, energy systems, and industrial machinery. </p>
@@ -357,7 +409,7 @@ export default function Home({ setPage }) {
               color: '#c8921a',
               fontWeight: 700,
             }}>
-              Trusted Globally
+              Precision CNC Manufacturing
             </div>
 
           </div>
@@ -372,56 +424,17 @@ export default function Home({ setPage }) {
             marginBottom: '18px',
             letterSpacing: '-0.01em'
           }}>
-            Proven performance <br />
-            with real results
-          </h2>
-
-          <p style={{
-            fontSize: '17px',
-            lineHeight: 1.5,
-            color: 'rgba(240,244,250,0.85)',
-            marginBottom: '22px'
-          }}>
-            Trusted by{' '}
-            <span style={{
-              color: '#e0a830',
-              fontWeight: 900
+            Precision CNC Machining for<a> </a>
+            <em style={{
+              color: 'transparent',
+              backgroundImage: 'linear-gradient(135deg, #c8921a 0%, #e0a830 50%, #f0c050 100%)',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              fontStyle: 'normal',
             }}>
-              globally reputed Customers.
-            </span>
-            <p>including Germany, ISRO India, and etc.</p>
-
-          </p>
-
-          {/* Button */}
-          <button
-            onClick={() => setPage('testimonials')}
-            style={{
-              background: 'linear-gradient(135deg,#c8921a,#e0a830)',
-              color: '#04091a',
-              border: 'none',
-              padding: '12px 20px',
-              fontSize: '11px',
-              fontWeight: 900,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              borderRadius: '6px',
-              cursor: 'pointer',
-
-              boxShadow: '0 6px 20px rgba(200,146,26,0.35)',
-              transition: 'all 0.3s ease'
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 10px 28px rgba(200, 145, 26, 0.18)';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 6px 20px rgba(27, 25, 22, 0.69)';
-            }}
-          >
-            View Testimonials →
-          </button>
+              Global Engineering Industries.
+            </em>
+          </h2>
 
         </div>
       </section>
@@ -488,10 +501,9 @@ export default function Home({ setPage }) {
               }}>
                 Our machining expertise has supported projects connected with respected organisations such as{' '}
                 <strong style={{ color: '#000', fontWeight: 700 }}>ISRO</strong>,{' '}
-                <strong style={{ color: '#000', fontWeight: 700 }}>Weatherford India Pvt. Ltd.</strong>,{' '}
-                <strong style={{ color: '#000', fontWeight: 700 }}>Kesar Precision Components</strong>,{' '}
-                <strong style={{ color: '#000', fontWeight: 700 }}>Kelmar Precision Engineering</strong>, and{' '}
-                <strong style={{ color: '#000', fontWeight: 700 }}>Schneider Electric</strong>.
+                <strong style={{ color: '#000', fontWeight: 700 }}>Keller Precision </strong>,{' '}
+                <strong style={{ color: '#000', fontWeight: 700 }}>Schneider Electric Ltd</strong>,{' '}
+                <strong style={{ color: '#000', fontWeight: 700 }}>Weatherford India Ltd.</strong>, and{' '}
               </p>
 
               <p style={{

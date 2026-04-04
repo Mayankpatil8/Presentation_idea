@@ -1,9 +1,156 @@
 import React, { useState } from 'react';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
+import Reveal from '../components/Reveal';
 
 const TESTIMONIALS = [
+  {
 
+
+    stars: '★★★★★',
+
+    quote: '"Product quality is very good and even complex engineering jobs are handled efficiently. Microcraft Engineering stands out with their ability to support urgent delivery requirements and maintain consistent performance."',
+
+    detailedFeedback: {
+      quality: "Product quality is very good with high consistency.",
+      capability: "Able to handle difficult and complex engineering jobs.",
+      support: "Provides support to expedite and prepone deliveries when required.",
+      performance: "Rated at 95% for overall performance.",
+      recommendation: "Yes — considered a cut above others in the industry.",
+      futureGrowth: "Business volumes are expected to grow in the coming years.",
+      suggestion: "Maintain stock availability of regular raw materials for smoother operations."
+    },
+
+    initials: 'MK',
+    avcls: 'av-gold',
+
+    name: 'Markus Keller',
+    role: 'Head of Procurement',
+    company: 'Keller Precision GmbH',
+
+    contactPerson: 'Stefan Müller',
+
+    badge: '✓ Verified Client · European Manufacturing Sector',
+
+    formImage: '/images/feedback5.png', // your image
+
+    icon: '📄',
+
+    date: '04-05-2025',
+
+    ratings: {
+      responsiveness: 4,
+      professionalism: 4,
+      technicalSupport: 4,
+      delivery: 4,
+      quality: 5,
+      overall: 5
+    }
+  },
+  {
+    stars: '★★★★★',
+
+    quote: '"The team at Microcraft Engineering maintains a high level of professionalism and consistently meets our technical expectations. Their responsiveness and commitment to delivery timelines make them a dependable partner for our operations."',
+
+    initials: 'VL',
+    avcls: 'av-gold',
+
+    name: 'Jimmy Wykes',
+    role: 'Senior Engineer',
+    company: 'VEEM Ltd.',
+
+    contactPerson: 'Jimmy Wykes',
+
+    badge: '✓ Verified Client · Oil & Gas Sector',
+
+    formImage: '/images/feedback4.jpg', // second form image
+
+    icon: '📄',
+
+    date: '05-05-2025',
+
+    ratings: {
+      responsiveness: 4,
+      professionalism: 4,
+      technicalSupport: 4,
+      delivery: 4,
+      quality: 4,
+      overall: 4
+    }
+  },
+  {
+    stars: '★★★☆☆',
+
+    quote: '"Microcraft Engineering maintains a professional approach and demonstrates good responsiveness in communication. While overall performance is satisfactory, there is scope for improvement in delivery timelines and consistency in technical execution."',
+
+    detailedFeedback: {
+      responsiveness: "Good responsiveness and communication support.",
+      professionalism: "Professional handling of projects and interactions.",
+      technicalSupport: "Satisfactory, with room for improvement in technical consistency.",
+      delivery: "Delivery timelines can be improved for better alignment with expectations.",
+      quality: "Product quality is acceptable but can be enhanced further.",
+      overall: "Overall experience is satisfactory with potential for improvement."
+    },
+
+    initials: 'SE',
+    avcls: 'av-blue',
+
+    name: 'Mr. Anil Singh',
+    role: 'Project Manager',
+    company: 'Schneider Electric Infrastructure Ltd.',
+
+    contactPerson: 'Mr. Anil Singh',
+
+    badge: '✓ Verified Client · Energy & Infrastructure Sector',
+
+    formImage: '/images/feedback6.jpg',
+
+    icon: '📄',
+
+    date: '29-04-2025',
+
+    ratings: {
+      responsiveness: 4,
+      professionalism: 4,
+      technicalSupport: 3,
+      delivery: 3,
+      quality: 3,
+      overall: 3
+    }
+  },
+  {
+
+
+    stars: '★★★★★',
+
+    quote: '"Microcraft Engineering has demonstrated excellent responsiveness and professionalism throughout our engagements. Their technical support is strong, and delivery performance aligns well with our operational expectations."',
+
+    initials: 'WF',
+    avcls: 'av-blue',
+
+    name: 'Mr. Pradip',
+    role: 'Technical Lead',
+    company: 'Weatherford India Pvt. Ltd.',
+
+    contactPerson: 'Pradip Patel',
+
+    badge: '✓ Verified Client · Oil & Gas Sector',
+
+    formImage: '/images/feedback3.jpg', // make sure file exists
+
+    icon: '📄',
+
+    date: '05-05-2025',
+
+    ratings: {
+      responsiveness: 4,
+      professionalism: 4,
+      technicalSupport: 4,
+      delivery: 4,
+      quality: 4,
+      overall: 4
+    }
+  },
   {
     stars: '★★★★☆',
 
@@ -76,153 +223,7 @@ const TESTIMONIALS = [
       overall: 4
     }
   },
-  {
 
-
-    stars: '★★★★★',
-
-    quote: '"Microcraft Engineering has demonstrated excellent responsiveness and professionalism throughout our engagements. Their technical support is strong, and delivery performance aligns well with our operational expectations."',
-
-    initials: 'WF',
-    avcls: 'av-blue',
-
-    name: 'Mr. Pradip',
-    role: 'Technical Lead',
-    company: 'Weatherford India Pvt. Ltd.',
-
-    contactPerson: 'Pradip Patel',
-
-    badge: '✓ Verified Client · Oil & Gas Sector',
-
-    formImage: '/images/feedback3.jpg', // make sure file exists
-
-    icon: '📄',
-
-    date: '05-05-2025',
-
-    ratings: {
-      responsiveness: 4,
-      professionalism: 4,
-      technicalSupport: 4,
-      delivery: 4,
-      quality: 4,
-      overall: 4
-    }
-  },
-  {
-    stars: '★★★★★',
-
-    quote: '"The team at Microcraft Engineering maintains a high level of professionalism and consistently meets our technical expectations. Their responsiveness and commitment to delivery timelines make them a dependable partner for our operations."',
-
-    initials: 'VL',
-    avcls: 'av-gold',
-
-    name: 'Jimmy Wykes',
-    role: 'Senior Engineer',
-    company: 'VEEM Ltd.',
-
-    contactPerson: 'Jimmy Wykes',
-
-    badge: '✓ Verified Client · Oil & Gas Sector',
-
-    formImage: '/images/feedback4.jpg', // second form image
-
-    icon: '📄',
-
-    date: '05-05-2025',
-
-    ratings: {
-      responsiveness: 4,
-      professionalism: 4,
-      technicalSupport: 4,
-      delivery: 4,
-      quality: 4,
-      overall: 4
-    }
-  },
-  {
-
-
-    stars: '★★★★★',
-
-    quote: '"Product quality is very good and even complex engineering jobs are handled efficiently. Microcraft Engineering stands out with their ability to support urgent delivery requirements and maintain consistent performance."',
-
-    detailedFeedback: {
-      quality: "Product quality is very good with high consistency.",
-      capability: "Able to handle difficult and complex engineering jobs.",
-      support: "Provides support to expedite and prepone deliveries when required.",
-      performance: "Rated at 95% for overall performance.",
-      recommendation: "Yes — considered a cut above others in the industry.",
-      futureGrowth: "Business volumes are expected to grow in the coming years.",
-      suggestion: "Maintain stock availability of regular raw materials for smoother operations."
-    },
-
-    initials: 'MK',
-    avcls: 'av-gold',
-
-    name: 'Markus Keller',
-    role: 'Head of Procurement',
-    company: 'Keller Precision GmbH',
-
-    contactPerson: 'Stefan Müller',
-
-    badge: '✓ Verified Client · European Manufacturing Sector',
-
-    formImage: '/images/feedback5.png', // your image
-
-    icon: '📄',
-
-    date: '04-05-2025',
-
-    ratings: {
-      responsiveness: 4,
-      professionalism: 4,
-      technicalSupport: 4,
-      delivery: 4,
-      quality: 5,
-      overall: 5
-    }
-  },
-  {
-    stars: '★★★☆☆',
-
-    quote: '"Microcraft Engineering maintains a professional approach and demonstrates good responsiveness in communication. While overall performance is satisfactory, there is scope for improvement in delivery timelines and consistency in technical execution."',
-
-    detailedFeedback: {
-      responsiveness: "Good responsiveness and communication support.",
-      professionalism: "Professional handling of projects and interactions.",
-      technicalSupport: "Satisfactory, with room for improvement in technical consistency.",
-      delivery: "Delivery timelines can be improved for better alignment with expectations.",
-      quality: "Product quality is acceptable but can be enhanced further.",
-      overall: "Overall experience is satisfactory with potential for improvement."
-    },
-
-    initials: 'SE',
-    avcls: 'av-blue',
-
-    name: 'Mr. Anil Singh',
-    role: 'Project Manager',
-    company: 'Schneider Electric Infrastructure Ltd.',
-
-    contactPerson: 'Mr. Anil Singh',
-
-    badge: '✓ Verified Client · Energy & Infrastructure Sector',
-
-    formImage: '/images/feedback6.jpg',
-
-    icon: '📄',
-
-    date: '29-04-2025',
-
-    ratings: {
-      responsiveness: 4,
-      professionalism: 4,
-      technicalSupport: 3,
-      delivery: 3,
-      quality: 3,
-      overall: 3
-    }
-  },
   {
     stars: '★★★★☆',
 
@@ -278,21 +279,26 @@ export default function Testimonials({ setPage }) {
         subtitle="Direct verification from our clients. We take pride in our transparency and the high standards of quality confirmed by global engineering leaders."
       />
 
-      <div className="tstat-bar">
-        {[{ n: '95%+', l: 'Customer Rating' }, { n: '4.8★', l: 'Global Average' }, { n: '100%', l: 'Transparency' }, { n: 'Verified', l: 'Feedback Forms' }].map(s => (
-          <div className="tstat" key={s.l}><div className="tstat-num">{s.n}</div><div className="tstat-lbl">{s.l}</div></div>
-        ))}
-      </div>
+      <Reveal delay={0.1}>
+        <div className="tstat-bar">
+          {[{ n: '95%+', l: 'Customer Rating' }, { n: '4.8★', l: 'Global Average' }, { n: '100%', l: 'Transparency' }, { n: 'Verified', l: 'Feedback Forms' }].map(s => (
+            <div className="tstat" key={s.l}><div className="tstat-num">{s.n}</div><div className="tstat-lbl">{s.l}</div></div>
+          ))}
+        </div>
+      </Reveal>
 
-      <section style={{ background: 'var(--off-white)' }}>
+      <section style={{ background: 'var(--off)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div className="sec-label">Verified Feedback</div>
-          <h2 className="sec-title">Real Testimonials from Real Clients</h2>
-          <p className="sec-desc">We believe in absolute transparency. Below are summaries of real feedback forms submitted by our global partners.</p>
+          <Reveal>
+            <div className="sec-label">Verified Feedback</div>
+            <h2 className="sec-title">Real Testimonials from Real Clients</h2>
+            <p className="sec-desc">We believe in absolute transparency. Below are summaries of real feedback forms submitted by our global partners.</p>
+          </Reveal>
 
           <div className="testi-grid">
-            {TESTIMONIALS.map(t => (
-              <div key={t.name} className={`testi-card${t.featured ? ' testi-featured' : ''}`}>
+            {TESTIMONIALS.map((t, i) => (
+              <Reveal delay={i * 0.15} key={t.name} style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                <div className={`testi-card${t.featured ? ' testi-featured' : ''}`}>
                 <div className="testi-stars">{t.stars}</div>
                 <div className="testi-quote">{t.quote}</div>
                 <div className="testi-author">
@@ -312,6 +318,7 @@ export default function Testimonials({ setPage }) {
                   </button>
                 </div>
               </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -340,11 +347,13 @@ export default function Testimonials({ setPage }) {
         </div>
       )}
 
-      <div className="cta-strip">
-        <h2>Ready to Experience Microcraft Quality?</h2>
-        <p>Join our list of satisfied global clients. Send your requirements today.</p>
-        <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>▶&ensp;Request a Quote</button>
-      </div>
+      <Reveal delay={0.1}>
+        <div className="cta-strip">
+          <h2>Ready to Experience Microcraft Quality?</h2>
+          <p>Join our list of satisfied global clients. Send your requirements today.</p>
+          <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>▶&ensp;Request a Quote</button>
+        </div>
+      </Reveal>
 
       <Footer setPage={setPage} />
     </div>

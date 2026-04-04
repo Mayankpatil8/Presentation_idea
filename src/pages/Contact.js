@@ -7,8 +7,7 @@ const COUNTRIES = ['India', 'Germany', 'France', 'United Kingdom', 'Netherlands'
 
 const DETAILS = [
   { icon: '📍', label: 'Address', val: 'GIDC Savli, ELS TOWER, A 15 To 18, Savli - Vadodara Rd, Vadodara, Manjusar, Gujarat 391776' },
-  { icon: '✉️', label: 'Email', val: 'eu@microcraft.in' },
-  { icon: '📞', label: 'Phone / WhatsApp', val: '+91 XXXXX XXXXX' },
+  { icon: '✉️', label: 'Email', val: ['eu@microcraft.in', 'sales@microcraft.in'] },
 ];
 
 const EXPORT_FEATURES = [
@@ -104,7 +103,15 @@ export default function Contact({ setPage }) {
                 <div className="cd-icon">{d.icon}</div>
                 <div>
                   <div className="cd-label">{d.label}</div>
-                  <div className="cd-val">{d.val}</div>
+                  <div className="cd-val">
+                    {Array.isArray(d.val) ? (
+                      d.val.map((v, i) => (
+                        <div key={i}>{v}</div>
+                      ))
+                    ) : (
+                      d.val
+                    )}
+                  </div>
                 </div>
               </div>
             ))}

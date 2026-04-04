@@ -330,7 +330,7 @@ export default function Home({ setPage }) {
         <div style={{
           position: 'absolute',
           right: '5%',
-          top: '76%',
+          top: '74%',
           transform: 'translateY(-40%)',
           zIndex: 4,
           maxWidth: '320px',

@@ -2326,3 +2326,55 @@ img {
 .hero-slide {
   will-change: opacity, transform;
 }
+
+/* ===== MOBILE NAV FIX (ADD ONLY) ===== */
+@media (max-width: 900px) {
+
+  /* Hide desktop links */
+  .nav-links {
+    display: none;
+  }
+
+  /* Show hamburger */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Fix navbar height consistency */
+  .nav {
+    height: 70px;
+    padding: 0 20px;
+  }
+
+  /* Logo size fix */
+  .logo img {
+    height: 42px !important;
+  }
+
+  /* Mobile dropdown */
+  .mob-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #020408;
+    padding: 20px;
+
+    transform: translateY(-120%);
+    transition: 0.3s ease;
+    z-index: 999;
+  }
+
+  .mob-menu.open {
+    transform: translateY(0);
+  }
+
+  .mob-menu button {
+    font-size: 15px;
+    padding: 12px 0;
+  }
+}

@@ -98,6 +98,8 @@ function Reveal({ children, delay = 0, direction = 'up', style = {} }) {
 }
 
 export default function Home({ setPage }) {
+  const isMobile = window.innerWidth < 900;   // ✅ ADD HERE
+
   const [slide, setSlide] = useState(0);
   const [heroLoaded, setHeroLoaded] = useState(false);
 
@@ -119,8 +121,7 @@ export default function Home({ setPage }) {
       ══════════════════════════════════════════════════ */}
       <section style={{
         position: 'relative',
-        height: 'calc(100vh - 90px)',  // 🔥 PERFECT FIX
-        display: 'flex',
+        height: isMobile ? 'auto' : 'calc(100vh - 90px)', display: 'flex',
         alignItems: 'center',
         overflow: 'hidden',
         background: '#020408'
@@ -177,8 +178,8 @@ export default function Home({ setPage }) {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'flex-start',
-          padding: '0 5%',
-          maxWidth: '600px',
+          padding: isMobile ? '20px' : '0 5%',
+          maxWidth: isMobile ? '100%' : '600px',
         }}>
 
           {/* Strip */}
@@ -202,8 +203,7 @@ export default function Home({ setPage }) {
           <h1 style={{
             fontFamily: 'var(--fd)',
             fontWeight: 800,
-            fontSize: 'clamp(25px, 4.0vw, 50px)',  // 🔥 MEDIUM SIZE
-            lineHeight: 1.05,
+            fontSize: isMobile ? '22px' : 'clamp(25px, 4.0vw, 50px)', lineHeight: 1.05,
             color: '#f0f4fa',
             marginBottom: '20px',
             letterSpacing: '-0.01em'
@@ -330,11 +330,12 @@ export default function Home({ setPage }) {
         <div style={{
           position: 'absolute',
           right: '5%',
-          top: '78%',
+          top: '76%',
           transform: 'translateY(-40%)',
           zIndex: 4,
           maxWidth: '320px',
           textAlign: 'left',
+          display: isMobile ? 'none' : 'block',
         }}>
 
           {/* Small label */}
@@ -388,6 +389,8 @@ export default function Home({ setPage }) {
             }}>
               globally reputed Customers.
             </span>
+            <p>including Germany, ISRO India, and etc.</p>
+
           </p>
 
           {/* Button */}
@@ -432,7 +435,7 @@ export default function Home({ setPage }) {
         borderTop: '1px solid rgba(200,146,26,0.25)',
         borderBottom: '1px solid rgba(255,255,255,0.05)',
         display: 'grid',
-        gridTemplateColumns: 'repeat(4,1fr)',
+        gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4,1fr)',
       }}>
         {[
           { n: '25+', l: 'Years Experience' },
@@ -476,38 +479,36 @@ export default function Home({ setPage }) {
                 Trusted Engineering Experience
               </h2>
 
-              <p
-                style={{
-                  fontSize: '15px',
-                  lineHeight: 1.82,
-                  color: 'var(--grey-dark)',
-                  marginBottom: '16px',
-                  fontWeight: 400
-                }}
-              >
+              <p style={{
+                fontSize: '15px',
+                lineHeight: 1.82,
+                color: 'var(--grey-dark)',
+                marginBottom: '16px',
+                fontWeight: 400
+              }}>
                 Our machining expertise has supported projects connected with respected organisations such as{' '}
-                <strong style={{ color: '#000', fontWeight: 700 }}>ABB</strong>,{' '}
+                <strong style={{ color: '#000', fontWeight: 700 }}>ISRO</strong>,{' '}
                 <strong style={{ color: '#000', fontWeight: 700 }}>Weatherford India Pvt. Ltd.</strong>,{' '}
                 <strong style={{ color: '#000', fontWeight: 700 }}>Kesar Precision Components</strong>,{' '}
                 <strong style={{ color: '#000', fontWeight: 700 }}>Kelmar Precision Engineering</strong>, and{' '}
                 <strong style={{ color: '#000', fontWeight: 700 }}>Schneider Electric</strong>.
               </p>
 
-              <p
-                style={{
-                  fontSize: '15px',
-                  lineHeight: 1.82,
-                  color: 'var(--grey-dark)',
-                  fontWeight: 400
-                }}
-              >
+              <p style={{
+                fontSize: '15px',
+                lineHeight: 1.82,
+                color: 'var(--grey-dark)',
+                fontWeight: 400
+              }}>
                 Working with technically demanding industries has helped us develop strong manufacturing processes and quality systems that meet strict engineering standards.
               </p>
-
             </Reveal>
 
-            <div
-              style={{
+            {/* RIGHT SIDE CARDS */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+
+              {/* Weatherford */}
+              <div style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: '16px',
@@ -516,11 +517,8 @@ export default function Home({ setPage }) {
                 borderRadius: '12px',
                 background: '#fff',
                 maxWidth: '420px'
-              }}
-            >
-              {/* Logo Box */}
-              <div
-                style={{
+              }}>
+                <div style={{
                   width: '52px',
                   height: '52px',
                   background: '#0f172a',
@@ -534,38 +532,82 @@ export default function Home({ setPage }) {
                   textAlign: 'center',
                   padding: '6px',
                   lineHeight: '1.2'
-                }}
-              >
-                WF
-              </div>
+                }}>
+                  WF
+                </div>
 
-              {/* Text Content */}
-              <div>
-                <div
-                  style={{
+                <div>
+                  <div style={{
                     fontSize: '15px',
                     fontWeight: 600,
                     color: '#111',
                     marginBottom: '4px'
-                  }}
-                >
-                  Weatherford India Pvt. Ltd.
-                </div>
+                  }}>
+                    Weatherford India Pvt. Ltd.
+                  </div>
 
-                <div
-                  style={{
+                  <div style={{
                     fontSize: '13px',
                     color: 'var(--grey-mid)'
-                  }}
-                >
-                  Oilfield Services & Equipment
+                  }}>
+                    Oilfield Services & Equipment
+                  </div>
                 </div>
               </div>
+
+              {/* ISRO */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                padding: '18px 22px',
+                border: '1px solid #e0e0e0',
+                borderRadius: '12px',
+                background: '#fff',
+                maxWidth: '420px'
+              }}>
+                <div style={{
+                  width: '52px',
+                  height: '52px',
+                  background: '#0f172a',
+                  color: '#facc15',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: '10px',
+                  fontSize: '10px',
+                  fontWeight: 600,
+                  textAlign: 'center',
+                  padding: '6px',
+                  lineHeight: '1.2'
+                }}>
+                  ISRO
+                </div>
+
+                <div>
+                  <div style={{
+                    fontSize: '15px',
+                    fontWeight: 600,
+                    color: '#111',
+                    marginBottom: '4px'
+                  }}>
+                    ISRO
+                  </div>
+
+                  <div style={{
+                    fontSize: '13px',
+                    color: 'var(--grey-mid)'
+                  }}>
+                    Indian Space Research Organisation
+                  </div>
+                </div>
+              </div>
+
             </div>
+
           </div>
         </div>
       </section>
-
 
       {/* ══════════════════════════════════════════════════
           CORE CAPABILITIES
@@ -586,7 +628,7 @@ export default function Home({ setPage }) {
             <h2 className="sec-title lt" style={{ marginBottom: '52px' }}>Core Capabilities</h2>
           </Reveal>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '14px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap: '14px' }}>
             {CAPABILITIES.map((cap, i) => (
               <Reveal key={cap.label} delay={i * 0.07}>
                 <div style={{
@@ -714,7 +756,7 @@ export default function Home({ setPage }) {
               Why Companies Trust Microcraft Engineering
             </h2>
           </Reveal>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '14px', textAlign: 'left' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap: '14px', textAlign: 'left' }}>
             {TRUST_POINTS.map((pt, i) => (
               <Reveal key={pt.text} delay={i * 0.08}>
                 <div style={{

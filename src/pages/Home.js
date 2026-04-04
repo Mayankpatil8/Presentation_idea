@@ -114,7 +114,7 @@ export default function Home({ setPage }) {
   }, []);
 
   return (
-    <div className="page">
+    <div className="page" style={{ overflowX: 'hidden' }}>
 
       {/* ══════════════════════════════════════════════════
           HERO — Cinematic full-bleed background slider

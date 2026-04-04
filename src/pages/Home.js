@@ -240,7 +240,7 @@ export default function Home({ setPage }) {
               color: '#e0a830',
               fontWeight: 900
             }}>
-              Keller Precision, ISRO India
+              Keller Precision GMBH, ISRO India
             </span>, & etc.
           </p>
 
@@ -501,8 +501,8 @@ export default function Home({ setPage }) {
               }}>
                 Our machining expertise has supported projects connected with respected organisations such as{' '}
                 <strong style={{ color: '#000', fontWeight: 700 }}>ISRO</strong>,{' '}
-                <strong style={{ color: '#000', fontWeight: 700 }}>Keller Precision </strong>,{' '}
-                <strong style={{ color: '#000', fontWeight: 700 }}>Schneider Electric Ltd</strong>,{' '}
+                <strong style={{ color: '#000', fontWeight: 700 }}>Keller Precision GMBH </strong>,{' '}
+                <strong style={{ color: '#000', fontWeight: 700 }}>Schneider Electric Ltd.</strong>,{' '}
                 <strong style={{ color: '#000', fontWeight: 700 }}>Weatherford India Ltd.</strong>, and{' '}
               </p>
 
@@ -555,7 +555,7 @@ export default function Home({ setPage }) {
                     color: '#111',
                     marginBottom: '4px'
                   }}>
-                    Weatherford India Pvt. Ltd.
+                    Keller Precision GMBH
                   </div>
 
                   <div style={{

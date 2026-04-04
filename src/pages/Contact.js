@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 const COUNTRIES = ['India', 'Germany', 'France', 'United Kingdom', 'Netherlands', 'Sweden', 'Italy', 'Spain', 'Poland', 'Belgium', 'Switzerland', 'Austria', 'Denmark', 'Norway', 'Finland', 'United States', 'Canada', 'Japan', 'South Korea', 'Other'];
 
 const DETAILS = [
-  { icon: '📍', label: 'Address', val: 'GIDC Savli, ELS TOWER, A 15 To 18, Savli - Vadodara Rd, Vadodara, Manjusar, Gujarat 391776' },
+  { icon: '📍', label: 'Address', val: 'GIDC Savli, ELS Tower, A 15 To 18, Savli - Vadodara Rd, Vadodara, Manjusar, Gujarat 391776' },
   { icon: '✉️', label: 'Email', val: ['eu@microcraft.in', 'sales@microcraft.in'] },
 ];
 

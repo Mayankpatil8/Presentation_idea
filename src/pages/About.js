@@ -44,7 +44,7 @@ const BULLETS = [
 ];
 
 const STATS = [
-  { n: '15+', l: 'Years Experience', d: 'Over 15 years of precision manufacturing experience' },
+  { n: '20+', l: 'Years Experience', d: 'Over 20+ years of precision manufacturing experience' },
   { n: '5-Axis', l: 'CNC Technology', d: 'Advanced 5-axis machining for complex geometries' },
   { n: 'ISO', l: 'Certified QMS', d: 'ISO 9001:2015 certified quality management system' },
   { n: '40+', l: 'European Clients', d: 'Trusted by European aerospace and industrial companies' },
@@ -57,7 +57,7 @@ export default function About({ setPage }) {
         bgImage="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=1400&q=80"
         label="Who We Are"
         title="About Microcraft Engineering"
-        subtitle="A precision CNC manufacturing company built for the demands of European aerospace, defence, and industrial sectors."
+        subtitle="A precision CNC manufacturing company built for the demands of International aerospace, defence, and industrial sectors."
       />
 
       <section style={{ background: 'var(--off)' }}>
@@ -75,7 +75,7 @@ export default function About({ setPage }) {
             </Reveal>
             <Reveal delay={0.1}>
               <p style={{ fontSize: '15.5px', color: 'var(--grey-dark)', marginTop: '16px', fontWeight: 400, lineHeight: '1.85' }}>
-                Microcraft Engineering is a precision CNC manufacturing company based in India, purpose-built to serve the demanding requirements of European aerospace, defence, industrial machinery, and automation sectors.
+                Microcraft Engineering is a precision CNC manufacturing company based in India, purpose-built to serve the demanding requirements of International aerospace, defence, industrial machinery, and automation sectors.
               </p>
             </Reveal>
             <Reveal delay={0.2}>

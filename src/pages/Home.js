@@ -54,7 +54,7 @@ const MATERIALS = [
 ];
 
 const TRUST_POINTS = [
-  { icon: '🕐', text: '25+ years precision machining experience' },
+  { icon: '🕐', text: '20+ years precision machining experience' },
   { icon: '👷', text: 'Skilled engineers and technicians' },
   { icon: '🏭', text: 'Advanced CNC manufacturing equipment' },
   { icon: '📐', text: 'Structured quality inspection processes' },
@@ -241,7 +241,7 @@ export default function Home({ setPage }) {
               fontWeight: 900
             }}>
               Keller Precision GMBH, ISRO India
-            </span>, & etc.
+            </span>, etc.
           </p>
 
           {/* Button */}
@@ -299,7 +299,7 @@ export default function Home({ setPage }) {
               marginBottom: '20px'
             }}>
               Delivering <span style={{ color: '#e0a830', fontWeight: 500 }}>high-precision CNC components </span>
-              for aerospace and industrial applications, with over 25 years of manufacturing excellence.
+              for aerospace and industrial applications, with over 20+ years of manufacturing excellence.
             </p>
             <p style={{ fontSize: '16px', lineHeight: 1.82, color: 'rgba(200,216,235,0.75)', fontWeight: 300, maxWidth: '620px' }}> We support engineering companies in India and internationally with precision machining solutions used in aerospace, industrial automation, energy systems, and industrial machinery. </p>
           </div>
@@ -451,7 +451,7 @@ export default function Home({ setPage }) {
         gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4,1fr)',
       }}>
         {[
-          { n: '25+', l: 'Years Experience' },
+          { n: '20+', l: 'Years Experience' },
           { n: '5-Axis', l: 'CNC Technology' },
           { n: 'ISO', l: 'Certified QMS' },
           { n: '40+', l: 'Global Clients' },
@@ -503,7 +503,7 @@ export default function Home({ setPage }) {
                 <strong style={{ color: '#000', fontWeight: 700 }}>ISRO</strong>,{' '}
                 <strong style={{ color: '#000', fontWeight: 700 }}>Keller Precision GMBH </strong>,{' '}
                 <strong style={{ color: '#000', fontWeight: 700 }}>Schneider Electric Ltd.</strong>,{' '}
-                <strong style={{ color: '#000', fontWeight: 700 }}>Weatherford India Ltd.</strong>, and{' '}
+                <strong style={{ color: '#000', fontWeight: 700 }}>Weatherford India Ltd.</strong>, etc{' '}
               </p>
 
               <p style={{
@@ -699,8 +699,8 @@ export default function Home({ setPage }) {
 
             <Reveal direction="left">
               <div className="sec-label">Raw Materials</div>
-              <h2 className="sec-title" style={{ marginBottom: '18px' }}>Materials Expertise</h2>
-              <p style={{ fontSize: '15px', lineHeight: 1.82, color: 'var(--text-secondary)', fontWeight: 300 }}>
+              <h2 className="sec-title" style={{ marginBottom: '18px', color: 'var(--navy)' }}>Materials Expertise</h2>
+              <p style={{ fontSize: '15px', lineHeight: 1.82, color: 'var(--grey-dark)', fontWeight: 400 }}>
                 We machine a wide range of engineering materials including carbon steels, exotic
                 alloys, titanium, and high-temperature materials for the most demanding industrial
                 and aerospace applications.
@@ -714,24 +714,24 @@ export default function Home({ setPage }) {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '12px',
-                    background: 'rgba(255,255,255,0.02)',
-                    border: '1px solid rgba(255,255,255,0.07)',
+                    background: 'rgba(15, 23, 42, 0.02)',
+                    border: '1px solid rgba(15, 23, 42, 0.08)',
                     borderRadius: '8px',
                     padding: '13px 18px',
-                    fontSize: '13px',
-                    fontWeight: 500,
-                    color: 'var(--text-primary)',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    color: 'var(--navy)',
                     transition: 'all 0.25s ease',
                     cursor: 'default',
                   }}
                     onMouseEnter={e => {
-                      e.currentTarget.style.border = '1px solid rgba(200,146,26,0.3)';
-                      e.currentTarget.style.background = 'rgba(200,146,26,0.05)';
+                      e.currentTarget.style.border = '1px solid rgba(200,146,26,0.5)';
+                      e.currentTarget.style.background = 'rgba(200,146,26,0.08)';
                       e.currentTarget.style.transform = 'translateX(3px)';
                     }}
                     onMouseLeave={e => {
-                      e.currentTarget.style.border = '1px solid rgba(255,255,255,0.07)';
-                      e.currentTarget.style.background = 'rgba(255,255,255,0.02)';
+                      e.currentTarget.style.border = '1px solid rgba(15, 23, 42, 0.08)';
+                      e.currentTarget.style.background = 'rgba(15, 23, 42, 0.02)';
                       e.currentTarget.style.transform = 'none';
                     }}
                   >

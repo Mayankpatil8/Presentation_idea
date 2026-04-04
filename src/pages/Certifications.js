@@ -52,7 +52,7 @@ export default function Certifications({ setPage }) {
         bgImage="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1400&q=80"
         label="Our Standards"
         title="Certifications & Accreditations"
-        subtitle="Internationally recognised quality frameworks ensuring every component delivered meets the highest standards demanded by European clients."
+        subtitle="Internationally recognised quality frameworks ensuring every component delivered meets the highest standards demanded by International clients."
       />
 
       <section style={{ background: 'var(--off)' }}>
@@ -66,34 +66,34 @@ export default function Certifications({ setPage }) {
             {CERTS.map((c, i) => (
               <Reveal delay={i * 0.15} key={c.title} style={{ height: '100%' }}>
                 <div className="cert-card" style={{ height: '100%' }}>
-                <div className="cert-top">
-                  <div className="cert-badge">
-                    <div className="cert-ring" />
-                    <div className={`cert-inner ${c.cls}`}>
-                      <div className="cert-logo">{c.logo}</div>
-                      <div className="cert-num">{c.num}</div>
-                      <div className="cert-yr">{c.yr}</div>
+                  <div className="cert-top">
+                    <div className="cert-badge">
+                      <div className="cert-ring" />
+                      <div className={`cert-inner ${c.cls}`}>
+                        <div className="cert-logo">{c.logo}</div>
+                        <div className="cert-num">{c.num}</div>
+                        <div className="cert-yr">{c.yr}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="cert-body">
+                    <div className="cert-tag">{c.tag}</div>
+                    <div className="cert-title">{c.title}</div>
+                    <div className="cert-desc">{c.desc}</div>
+                    <div className="cert-meta">
+                      {c.meta.map(m => (
+                        <div className="cert-meta-row" key={m.k}>
+                          <span className="cert-mk">{m.k}</span>
+                          <span className="cert-mv">{m.v}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="cert-status">
+                      <div className="cert-status-dot" />
+                      <span>Currently Active &amp; Audited Annually</span>
                     </div>
                   </div>
                 </div>
-                <div className="cert-body">
-                  <div className="cert-tag">{c.tag}</div>
-                  <div className="cert-title">{c.title}</div>
-                  <div className="cert-desc">{c.desc}</div>
-                  <div className="cert-meta">
-                    {c.meta.map(m => (
-                      <div className="cert-meta-row" key={m.k}>
-                        <span className="cert-mk">{m.k}</span>
-                        <span className="cert-mv">{m.v}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="cert-status">
-                    <div className="cert-status-dot" />
-                    <span>Currently Active &amp; Audited Annually</span>
-                  </div>
-                </div>
-              </div>
               </Reveal>
             ))}
           </div>
@@ -111,10 +111,10 @@ export default function Certifications({ setPage }) {
             {STANDARDS.map((s, i) => (
               <Reveal delay={i * 0.1} key={s.n} style={{ height: '100%' }}>
                 <div className="std-item" style={{ height: '100%' }}>
-                <div className="std-icon">{s.i}</div>
-                <div className="std-name">{s.n}</div>
-                <div className="std-desc">{s.d}</div>
-              </div>
+                  <div className="std-icon">{s.i}</div>
+                  <div className="std-name">{s.n}</div>
+                  <div className="std-desc">{s.d}</div>
+                </div>
               </Reveal>
             ))}
           </div>

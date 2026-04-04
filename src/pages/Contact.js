@@ -6,8 +6,8 @@ import Footer from '../components/Footer';
 const COUNTRIES = ['India', 'Germany', 'France', 'United Kingdom', 'Netherlands', 'Sweden', 'Italy', 'Spain', 'Poland', 'Belgium', 'Switzerland', 'Austria', 'Denmark', 'Norway', 'Finland', 'United States', 'Canada', 'Japan', 'South Korea', 'Other'];
 
 const DETAILS = [
-  { icon: '🏢', label: 'Company', val: 'Microcraft Engineering' },
-  { icon: '✉️', label: 'Email', val: 'info@microcraft.in' },
+  { icon: '📍', label: 'Address', val: 'GIDC Savli, ELS TOWER, A 15 To 18, Savli - Vadodara Rd, Vadodara, Manjusar, Gujarat 391776' },
+  { icon: '✉️', label: 'Email', val: 'eu@microcraft.in' },
   { icon: '📞', label: 'Phone / WhatsApp', val: '+91 XXXXX XXXXX' },
 ];
 
@@ -45,31 +45,41 @@ export default function Contact({ setPage }) {
   const fmtSize = (b) => b < 1048576 ? (b / 1024).toFixed(1) + ' KB' : (b / 1048576).toFixed(1) + ' MB';
 
   // ── NEW: submit handler ──
-  const handleSubmit = async () => {
-    setError('');
-    if (!form.name || !form.email || !form.description) {
-      setError('Please fill in Name, Email, and Project Description.');
-      return;
-    }
-    setLoading(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     try {
-      const res = await fetch('http://localhost:5000/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, fileNames: files.map(f => f.name) }),
+      const res = await fetch("/contact.php", {   // ✅ IMPORTANT
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          country: form.country,
+          quantity: form.quantity,
+          material: form.material,
+          description: form.description
+        }),
       });
+
       const data = await res.json();
+      console.log(data);
+
       if (data.success) {
-        setSubmitted(true);
+        alert("✅ Message sent successfully!");
       } else {
-        setError(data.message || 'Something went wrong. Please try again.');
+        alert("❌ Failed: " + data.message);
       }
-    } catch {
-      setError('Could not reach the server. Please email us at info@microcraft.in');
-    } finally {
-      setLoading(false);
+
+    } catch (err) {
+      console.error(err);
+      alert("❌ Server error");
     }
   };
+
 
   return (
     <div className="page">
@@ -86,7 +96,7 @@ export default function Contact({ setPage }) {
           <div>
             <div className="sec-label">Contact Details</div>
             <h2 style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: '26px', color: 'var(--navy)', margin: '16px 0 12px' }}>Microcraft Engineering</h2>
-            <p style={{ fontSize: '14px', color: 'var(--grey-mid)', fontWeight: 300, lineHeight: '1.8', marginBottom: '32px' }}>
+            <p style={{ fontSize: '15.5px', color: 'var(--grey-dark)', fontWeight: 400, lineHeight: '1.85', marginBottom: '32px' }}>
               Microcraft Engineering is a precision CNC manufacturer serving global clients across India, Europe, and beyond. We support aerospace, defence, industrial, and automation sectors with high-accuracy components, full documentation, and reliable international delivery.
             </p>
             {DETAILS.map(d => (
@@ -123,7 +133,7 @@ export default function Contact({ setPage }) {
                       color: '#fff', letterSpacing: '.06em',
                     }}>{r.abbr}</div>
                     <div style={{ fontFamily: 'var(--fd)', fontWeight: 700, fontSize: '14px', color: '#fff', marginBottom: '4px' }}>{r.label}</div>
-                    <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>{r.desc}</div>
+                    <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.5 }}>{r.desc}</div>
                   </div>
                 ))}
               </div>
@@ -136,12 +146,12 @@ export default function Contact({ setPage }) {
               <div style={{ textAlign: 'center', padding: '60px 20px' }}>
                 <div style={{ fontSize: '48px', marginBottom: '16px' }}>✅</div>
                 <div style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: '28px', color: 'var(--navy)', marginBottom: '8px' }}>Request Submitted!</div>
-                <p style={{ fontSize: '15px', color: 'var(--grey-mid)', fontWeight: 300 }}>Our technical team will review your enquiry and respond within 24 hours.</p>
+                <p style={{ fontSize: '15px', color: 'var(--grey-dark)', fontWeight: 400 }}>Our technical team will review your enquiry and respond within 24 hours.</p>
               </div>
             ) : (
               <>
                 <div style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: '26px', color: 'var(--navy)', marginBottom: '6px' }}>Request for Quotation</div>
-                <div style={{ fontSize: '13px', color: 'var(--grey-mid)', marginBottom: '28px' }}>Fill in your details — we respond within 24 hours.</div>
+                <div style={{ fontSize: '13.5px', color: 'var(--grey-dark)', fontWeight: 500, marginBottom: '28px' }}>Fill in your details — we respond within 24 hours.</div>
                 <div className="form-grid">
                   <div className="fg"><label>Full Name *</label><input type="text" placeholder="Your name" onChange={set('name')} /></div>
                   <div className="fg"><label>Company *</label><input type="text" placeholder="Company name" onChange={set('company')} /></div>
@@ -178,7 +188,7 @@ export default function Contact({ setPage }) {
                       <div style={{ fontWeight: 700, fontSize: '13px', color: 'var(--navy)', marginBottom: '3px' }}>
                         {dragging ? '⬇ Drop files here' : 'Click or drag & drop files'}
                       </div>
-                      <p style={{ fontSize: '12px', color: 'var(--grey-mid)', margin: 0 }}>DWG, DXF, PDF, STEP, IGES, STL — Max 25 MB each</p>
+                      <p style={{ fontSize: '12px', color: 'var(--grey-dark)', fontWeight: 500, margin: 0 }}>DWG, DXF, PDF, STEP, IGES, STL — Max 25 MB each</p>
                     </div>
                     {files.length > 0 && (
                       <div style={{ marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '5px' }}>
@@ -191,7 +201,7 @@ export default function Contact({ setPage }) {
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
                               <span style={{ flexShrink: 0 }}>📄</span>
                               <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--navy)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{f.name}</span>
-                              <span style={{ fontSize: '11px', color: 'var(--grey-mid)', flexShrink: 0 }}>{fmtSize(f.size)}</span>
+                              <span style={{ fontSize: '11px', color: 'var(--grey-dark)', flexShrink: 0 }}>{fmtSize(f.size)}</span>
                             </div>
                             <button onClick={e => { e.stopPropagation(); removeFile(f.name); }}
                               style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#c0392b', fontSize: '18px', fontWeight: 700, lineHeight: 1, padding: '0 4px', flexShrink: 0 }}
@@ -227,7 +237,7 @@ export default function Contact({ setPage }) {
               <div key={f.t} style={{ background: 'rgba(255,255,255,.04)', border: '1px solid rgba(255,255,255,.08)', borderRadius: '4px', padding: '24px 20px' }}>
                 <div style={{ fontSize: '26px', marginBottom: '10px' }}>{f.i}</div>
                 <div style={{ fontFamily: 'var(--fd)', fontWeight: 700, fontSize: '18px', color: 'var(--white)', marginBottom: '6px' }}>{f.t}</div>
-                <div style={{ fontSize: '13px', color: 'var(--grey-light)', fontWeight: 300 }}>{f.d}</div>
+                <div style={{ fontSize: '13.5px', color: 'rgba(255,255,255,0.95)', fontWeight: 450, lineHeight: 1.6 }}>{f.d}</div>
               </div>
             ))}
           </div>

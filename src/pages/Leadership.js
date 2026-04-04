@@ -12,7 +12,7 @@ const LEADERS = [
     flag: '🇮🇳',
     linkedin: 'https://www.linkedin.com/in/ashvin-chaudhari-6485853b/',
     email: 'ashvin@microcraft.in',
-    bio: 'Leads Microcraft\'s manufacturing operations and strategic growth. With profound expertise in mechanical engineering and precision machining, Ashvin oversees CNC production for aerospace, defence, and industrial machinery, ensuring strict ISO compliance and unparalleled precision.',
+    bio: 'Driving Microcraft’s manufacturing excellence and strategic growth, Ashvin brings deep expertise in mechanical engineering and precision machining. He leads advanced CNC operations across aerospace, defence, and industrial sectors, ensuring rigorous ISO compliance and uncompromising precision in every component.',
     tags: ['Manufacturing Operations', 'Strategic Growth', 'ISO Compliance'],
   },
   {
@@ -24,7 +24,7 @@ const LEADERS = [
     flag: '🇪🇺',
     linkedin: 'https://www.linkedin.com/in/schaudhari23/',
     email: 'eu@microcraft.in',
-    bio: 'Drives strategic business development and European market operations. Swati coordinates seamlessly with international aerospace, defence, and industrial clients, ensuring robust project management, supply chain reliability, and outstanding customer satisfaction.',
+    bio: 'Leading strategic business expansion across European markets, Swati drives high-value partnerships in aerospace, defence, and industrial sectors. With exceptional precision in project execution and supply chain excellence, she ensures seamless coordination, reliability, and an uncompromising standard of customer satisfaction.',
     tags: ['International Business', 'Client Relations', 'Project Management'],
   },
 ];
@@ -61,14 +61,24 @@ export default function Leadership({ setPage }) {
                 key={l.name}
                 style={{
                   background: 'var(--white)',
-                  borderRadius: '6px',
+                  borderRadius: '12px',
                   overflow: 'hidden',
-                  border: '1px solid var(--grey-pale)',
-                  boxShadow: '0 4px 24px rgba(0,0,0,.07)',
-                  transition: 'transform .3s, box-shadow .3s',
+                  border: '1px solid rgba(15, 23, 42, 0.12)',
+                  boxShadow: '0 10px 40px rgba(0,0,0,0.05), 0 2px 10px rgba(0,0,0,0.03)',
+                  transition: 'all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)',
+                  display: 'flex',
+                  flexDirection: 'column'
                 }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(0,0,0,.12)'; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 24px rgba(0,0,0,.07)'; }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.transform = 'translateY(-8px)';
+                  e.currentTarget.style.boxShadow = '0 30px 60px rgba(0,0,0,0.12), 0 4px 20px rgba(0,0,0,0.06)';
+                  e.currentTarget.style.borderColor = 'rgba(232, 160, 32, 0.2)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 10px 40px rgba(0,0,0,0.05), 0 2px 10px rgba(0,0,0,0.03)';
+                  e.currentTarget.style.borderColor = 'rgba(15, 23, 42, 0.12)';
+                }}
               >
                 {/* Card top banner */}
                 <div style={{ background: 'linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%)', padding: '40px 32px 28px', position: 'relative' }}>
@@ -86,9 +96,8 @@ export default function Leadership({ setPage }) {
                   <div style={{ fontSize: '13px', color: 'var(--accent)', fontWeight: 600, letterSpacing: '.04em' }}>{l.role}</div>
                 </div>
 
-                {/* Card body */}
                 <div style={{ padding: '28px 32px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                  <p style={{ fontSize: '14px', color: 'var(--grey-mid)', lineHeight: '1.8', fontWeight: 300, marginBottom: '24px', flex: 1 }}>{l.bio}</p>
+                  <p style={{ fontSize: '15.5px', color: 'var(--grey-dark)', lineHeight: '1.85', fontWeight: 450, marginBottom: '24px', flex: 1 }}>{l.bio}</p>
 
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '24px' }}>
                     {l.tags.map(tag => (
@@ -150,7 +159,7 @@ export default function Leadership({ setPage }) {
                 <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'var(--accent)', opacity: i === 0 ? 1 : 0.3 }} />
                 <div style={{ fontSize: '34px', marginBottom: '16px' }}>{p.icon}</div>
                 <div style={{ fontFamily: 'var(--fd)', fontWeight: 700, fontSize: '20px', color: 'var(--white)', marginBottom: '10px' }}>{p.title}</div>
-                <div style={{ fontSize: '13px', color: 'var(--grey-light)', fontWeight: 300, lineHeight: '1.7' }}>{p.desc}</div>
+                <div style={{ fontSize: '13.5px', color: 'rgba(255,255,255,0.92)', fontWeight: 400, lineHeight: '1.7' }}>{p.desc}</div>
               </div>
             ))}
           </div>

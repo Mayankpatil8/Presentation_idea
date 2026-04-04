@@ -86,7 +86,7 @@ const TESTIMONIALS = [
     initials: 'WF',
     avcls: 'av-blue',
 
-    name: 'Weather Ford',
+    name: 'Mr. Pradip',
     role: 'Technical Lead',
     company: 'Weatherford India Pvt. Ltd.',
 
@@ -117,9 +117,9 @@ const TESTIMONIALS = [
     initials: 'VL',
     avcls: 'av-gold',
 
-    name: 'Veem Ltd.',
+    name: 'Jimmy Wykes',
     role: 'Senior Engineer',
-    company: 'Weatherford India Pvt. Ltd.',
+    company: 'VEEM Ltd.',
 
     contactPerson: 'Jimmy Wykes',
 
@@ -200,7 +200,7 @@ const TESTIMONIALS = [
     initials: 'SE',
     avcls: 'av-blue',
 
-    name: 'Schneider Electric Infra',
+    name: 'Mr. Anil Singh',
     role: 'Project Manager',
     company: 'Schneider Electric Infrastructure Ltd.',
 

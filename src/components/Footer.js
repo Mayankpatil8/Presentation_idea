@@ -39,6 +39,12 @@ export default function Footer({ setPage }) {
             Precision CNC machining for European aerospace, defence, and industrial manufacturers.
             ISO-certified quality, reliable export logistics.
           </p>
+          <div style={{ marginTop: '20px', fontSize: '13px', color: 'var(--grey-light)', lineHeight: '1.6' }}>
+            <span style={{ color: 'var(--white)', fontWeight: 600, display: 'block', marginBottom: '4px' }}>Registered Office:</span>
+            GIDC Savli, ELS TOWER, A 15 To 18,<br />
+            Savli - Vadodara Rd, Vadodara,<br />
+            Manjusar, Gujarat 391776
+          </div>
         </div>
 
         <div>

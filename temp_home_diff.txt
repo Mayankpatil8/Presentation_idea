@@ -1,0 +1,581 @@
+diff --git a/src/pages/Home.js b/src/pages/Home.js
+index 8dac08cb..4afe47da 100644
+--- a/src/pages/Home.js
++++ b/src/pages/Home.js
+@@ -2,11 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
+ import Footer from '../components/Footer';
+ 
+ const SLIDES = [
+-  {
+-    img: '/images/photoking.jpg',
+-    tag: 'Welding & Fabrication',
+-    title: 'High-Quality Welding Solutions\nfor Strong and Durable Structures',
+-  },
+   {
+     img: '/images/photo2.jpg',
+     tag: 'Automotive Components',
+@@ -32,20 +27,25 @@ const SLIDES = [
+     tag: 'Mechanical Parts',
+     title: 'Precision Mechanical Components\nBuilt to Tight Tolerances',
+   },
+-    {
++  {
+     img: '/images/cap1.jpg',
+     tag: 'CNC Machine',
+     title: 'CNC Mechanical Machine\nDesign to Tight Tolerances',
+   },
++  {
++    img: '/images/photoking.jpg',
++    tag: 'Welding & Fabrication',
++    title: 'High-Quality Welding Solutions\nfor Strong and Durable Structures',
++  },
+ ];
+ 
+ const CAPABILITIES = [
+-  { label: 'CNC Milling',            detail: '3-Axis, 4-Axis & 5-Axis precision machining' },
+-  { label: 'CNC Turning',            detail: 'High-accuracy rotational components' },
+-  { label: 'Wire-Cut EDM',           detail: 'Precision cutting for complex geometries' },
+-  { label: 'Welding & Fabrication',  detail: 'Robust structural and custom fabrication' },
+-  { label: 'Tooling & Fixtures',     detail: 'Custom jigs, dies & production tooling' },
+-  { label: 'Mechanical Components',  detail: 'Tight tolerance precision parts' },
++  { label: 'CNC Milling', detail: '3-Axis, 4-Axis & 5-Axis precision machining' },
++  { label: 'CNC Turning', detail: 'High-accuracy rotational components' },
++  { label: 'Wire-Cut EDM', detail: 'Precision cutting for complex geometries' },
++  { label: 'Welding & Fabrication', detail: 'Robust structural and custom fabrication' },
++  { label: 'Tooling & Fixtures', detail: 'Custom jigs, dies & production tooling' },
++  { label: 'Mechanical Components', detail: 'Tight tolerance precision parts' },
+ ];
+ 
+ const MATERIALS = [
+@@ -117,14 +117,15 @@ export default function Home({ setPage }) {
+       {/* ══════════════════════════════════════════════════
+           HERO — Cinematic full-bleed background slider
+       ══════════════════════════════════════════════════ */}
+-<section style={{ 
+-  position: 'relative', 
+-  height: 'calc(100vh - 90px)',  // 🔥 PERFECT FIX
+-  display: 'flex',
+-  alignItems: 'center',
+-  overflow: 'hidden',
+-  background: '#020408'
+-}}>
++      <section style={{
++        position: 'relative',
++        height: '100vh',
++        minHeight: '600px',
++        display: 'flex',
++        alignItems: 'center',
++        overflow: 'hidden',
++        background: '#020408'
++      }}>
+ 
+         {/* Background image slides */}
+         {SLIDES.map((s, i) => (
+@@ -138,25 +139,25 @@ export default function Home({ setPage }) {
+               zIndex: 0,
+             }}
+           >
+-<img
+-  src={s.img}
+-  alt=""
+-  style={{
+-    width: '100%',
+-    height: '100%',
+-    objectFit: 'cover',
+-    objectPosition: 'center',
+-    display: 'block',
+-    filter: 'saturate(0.6) brightness(0.9)'
+-  }}
+-/>
++            <img
++              src={s.img}
++              alt=""
++              style={{
++                width: '100%',
++                height: '100%',
++                objectFit: 'cover',
++                objectPosition: 'center',
++                display: 'block',
++                filter: 'saturate(0.6) brightness(0.9)'
++              }}
++            />
+           </div>
+         ))}
+ 
+         {/* Cinematic overlays — layered depth */}
+         <div style={{
+           position: 'absolute', inset: 0, zIndex: 1,
+-          background: 'linear-gradient(105deg, rgba(2,4,8,0.92) 0%, rgba(2,4,8,0.75) 45%, rgba(2,4,8,0.35) 100%)',
++          background: 'linear-gradient(105deg, rgba(2, 4, 8, 0.94) 0%, rgba(2, 4, 8, 0.73) 45%, rgba(2, 4, 8, 0.43) 100%)',
+         }} />
+         <div style={{
+           position: 'absolute', inset: 0, zIndex: 1,
+@@ -170,15 +171,17 @@ export default function Home({ setPage }) {
+ 
+         {/* ── Hero content ── */}
+         <div style={{
+-  position: 'relative',
+-  zIndex: 3,
+-  height: '100%',              // 🔥 ADD THIS
+-  display: 'flex',             // 🔥 ADD
+-  flexDirection: 'column',     // 🔥 ADD
+-  justifyContent: 'center',    // 🔥 ADD
+-  padding: '0 5%',
+-  maxWidth: '620px',
+-          }}>
++          position: 'relative',
++          zIndex: 3,
++          height: '100%',
++          display: 'flex',
++          flexDirection: 'column',
++          justifyContent: 'center',
++          alignItems: 'flex-start',   // ⭐ NEW
++
++          padding: '0 5%',
++          maxWidth: '600px',
++        }}>
+ 
+           {/* Strip */}
+           <div
+@@ -192,21 +195,21 @@ export default function Home({ setPage }) {
+             <div className="hero-strip-line" />
+             <span className="hero-strip-text">Precision CNC Manufacturing</span>
+             <div className="live-dot" />
+-            <span style={{ fontSize: '9px', color: '#3ecf6e', fontWeight: 700, letterSpacing: '.12em' }}>
++            <span style={{ fontSize: '12px', color: '#3ecf6e', fontWeight: 900, letterSpacing: '.20em' }}>
+               ACTIVE SUPPLIER
+             </span>
+           </div>
+ 
+           {/* H1 */}
+-<h1 style={{
+-  fontFamily: 'var(--fd)',
+-  fontWeight: 800,
+-  fontSize: 'clamp(25px, 4.0vw, 45px)',  // 🔥 MEDIUM SIZE
+-  lineHeight: 1.05,
+-  color: '#f0f4fa',
+-  marginBottom: '18px',
+-  letterSpacing: '-0.01em'
+-}}>
++          <h1 style={{
++            fontFamily: 'var(--fd)',
++            fontWeight: 800,
++            fontSize: 'clamp(35px, 4.2vw, 35px)',
++            lineHeight: 1.05,
++            color: '#f0f4fa',
++            marginBottom: '28px',
++            letterSpacing: '-0.01em'
++          }}>
+             Precision CNC Machining{' '}
+             <br />
+             for Global{' '}
+@@ -237,18 +240,18 @@ export default function Home({ setPage }) {
+             transform: heroLoaded ? 'none' : 'translateY(20px)',
+             transition: 'opacity 0.8s ease 0.55s, transform 0.8s ease 0.55s',
+           }}>
+-<p style={{
+-  fontSize: '15px',
+-  lineHeight: 1.7,
+-  color: 'rgba(200,216,235,0.85)',
+-  fontWeight: 300,
+-  maxWidth: '520px',
+-  marginBottom: '20px'
+-}}>
+-  Delivering <span style={{ color: '#e0a830', fontWeight: 500 }}>high-precision CNC components</span> 
+-  for aerospace and industrial applications, with over 25 years of manufacturing excellence.
+-</p>
+-<p style={{ fontSize: '16px', lineHeight: 1.82, color: 'rgba(200,216,235,0.75)', fontWeight: 300, maxWidth: '620px' }}> We support engineering companies in India and internationally with precision machining solutions used in aerospace, industrial automation, energy systems, and industrial machinery. </p>
++            <p style={{
++              fontSize: '17px',
++              lineHeight: 1.7,
++              color: 'rgba(240,246,255,0.95)',
++              fontWeight: 400,
++              maxWidth: '580px',
++              marginBottom: '24px'
++            }}>
++              Delivering <span style={{ color: '#e0a830', fontWeight: 600 }}>high-precision CNC components</span>
++              for aerospace and industrial applications, with over 25 years of manufacturing excellence.
++            </p>
++            <p style={{ fontSize: '18px', lineHeight: 1.82, color: 'rgba(240,246,255,0.85)', fontWeight: 300, maxWidth: '680px' }}> We support engineering companies in India and internationally with precision machining solutions used in aerospace, industrial automation, energy systems, and industrial machinery. </p>
+           </div>
+ 
+           {/* Slide indicator dots */}
+@@ -282,9 +285,11 @@ export default function Home({ setPage }) {
+         {/* Slide caption — bottom right */}
+         <div style={{
+           position: 'absolute',
+-          bottom: '20px', right: '5%',
++          bottom: '20px',
++          right: '5%',   // ✅ change here
+           zIndex: 4,
+-          textAlign: 'right',
++          display: 'none',
++          textAlign: 'left', // optional but better
+         }}>
+           {SLIDES.map((s, i) => (
+             <div
+@@ -324,7 +329,100 @@ export default function Home({ setPage }) {
+           ))}
+         </div>
+ 
++        <div style={{
++          position: 'absolute',
++          right: '5%',
++          top: '85%',
++          transform: 'translateY(-80%)',
++          zIndex: 4,
++          maxWidth: '320px',
++          textAlign: 'left',
++        }}>
++
++          {/* Small label */}
++          <div style={{
++            display: 'flex',
++            alignItems: 'center',
++            gap: '10px',
++            marginBottom: '12px'
++          }}>
++
++            {/* Line */}
++            <div className="hero-strip-line" />
++
++            {/* Text */}
++            <div style={{
++              fontSize: '15px',
++              letterSpacing: '0.1em',
++              textTransform: 'uppercase',
++              color: '#c8921a',
++              fontWeight: 700,
++            }}>
++              Trusted Globally
++            </div>
++
++          </div>
++
++          {/* Main text */}
++          <h2 style={{
++            fontFamily: 'var(--fd)',
++            fontWeight: 800,
++            fontSize: 'clamp(28px, 3.2vw, 36px)',  // ⭐ better scale
++            lineHeight: 1.1,
++            color: '#f0f4fa',
++            marginBottom: '18px',
++            letterSpacing: '-0.01em'
++          }}>
++            Proven performance <br />
++            with real results
++          </h2>
++
++          <p style={{
++            fontSize: '17px',
++            lineHeight: 1.5,
++            color: 'rgba(240,244,250,0.85)',
++            marginBottom: '22px'
++          }}>
++            Trusted by{' '}
++            <span style={{
++              color: '#e0a830',
++              fontWeight: 900
++            }}>
++              globally reputed Customers.
++            </span>
++          </p>
++
++          {/* Button */}
++          <button
++            onClick={() => setPage('testimonials')}
++            style={{
++              background: 'linear-gradient(135deg,#c8921a,#e0a830)',
++              color: '#04091a',
++              border: 'none',
++              padding: '12px 20px',
++              fontSize: '11px',
++              fontWeight: 900,
++              letterSpacing: '0.14em',
++              textTransform: 'uppercase',
++              borderRadius: '6px',
++              cursor: 'pointer',
++
++              boxShadow: '0 6px 20px rgba(200,146,26,0.35)',
++              transition: 'all 0.3s ease'
++            }}
++            onMouseEnter={e => {
++              e.currentTarget.style.transform = 'translateY(-2px)';
++              e.currentTarget.style.boxShadow = '0 10px 28px rgba(200, 145, 26, 0.18)';
++            }}
++            onMouseLeave={e => {
++              e.currentTarget.style.transform = 'translateY(0)';
++              e.currentTarget.style.boxShadow = '0 6px 20px rgba(27, 25, 22, 0.69)';
++            }}
++          >
++            View Testimonials →
++          </button>
+ 
++        </div>
+       </section>
+ 
+       {/* ══════════════════════════════════════════════════
+@@ -355,7 +453,7 @@ export default function Home({ setPage }) {
+           >
+             <div style={{
+               fontFamily: 'var(--fd)', fontWeight: 900,
+-              fontSize: '30px', color: '#c8921a', lineHeight: 1,
++              fontSize: '42px', color: '#c8921a', lineHeight: 1,
+             }}>{s.n}</div>
+             <div style={{
+               fontSize: '9px', color: 'rgba(120,150,180,0.8)',
+@@ -369,69 +467,101 @@ export default function Home({ setPage }) {
+       {/* ══════════════════════════════════════════════════
+           TRUSTED EXPERIENCE
+       ══════════════════════════════════════════════════ */}
+-      <section style={{ background: 'var(--off)', padding: '96px 5%' }}>
+-        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
++      <section style={{ background: 'var(--off)', padding: '120px 5%' }}>
++        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '72px', alignItems: 'center' }}>
+ 
+             <Reveal direction="left">
+               <div className="sec-label">Our Track Record</div>
+-              <h2 className="sec-title" style={{ marginBottom: '20px' }}>
++              <h2 className="sec-title" style={{ marginBottom: '28px' }}>
+                 Trusted Engineering Experience
+               </h2>
+-              <p style={{ fontSize: '15px', lineHeight: 1.82, color: 'var(--text-secondary)', marginBottom: '16px', fontWeight: 300 }}>
+-                Our machining expertise has supported projects connected with respected organisations
+-                such as <strong style={{ color: 'var(--text-primary)', fontWeight: 600 }}>ABB</strong> and the{' '}
+-                <strong style={{ color: 'var(--text-primary)', fontWeight: 600 }}>Indian Space Research Organisation</strong>.
++
++              <p
++                style={{
++                  fontSize: '15px',
++                  lineHeight: 1.82,
++                  color: 'var(--grey-dark)',
++                  marginBottom: '16px',
++                  fontWeight: 400
++                }}
++              >
++                Our machining expertise has supported projects connected with respected organisations such as{' '}
++                <strong style={{ color: '#000', fontWeight: 700 }}>ABB</strong>,{' '}
++                <strong style={{ color: '#000', fontWeight: 700 }}>Weatherford India Pvt. Ltd.</strong>,{' '}
++                <strong style={{ color: '#000', fontWeight: 700 }}>Kesar Precision Components</strong>,{' '}
++                <strong style={{ color: '#000', fontWeight: 700 }}>Kelmar Precision Engineering</strong>, and{' '}
++                <strong style={{ color: '#000', fontWeight: 700 }}>Schneider Electric</strong>.
+               </p>
+-              <p style={{ fontSize: '15px', lineHeight: 1.82, color: 'var(--text-secondary)', fontWeight: 300 }}>
+-                Working with technically demanding industries has helped us develop strong
+-                manufacturing processes and quality systems that meet strict engineering standards.
++
++              <p
++                style={{
++                  fontSize: '15px',
++                  lineHeight: 1.82,
++                  color: 'var(--grey-dark)',
++                  fontWeight: 400
++                }}
++              >
++                Working with technically demanding industries has helped us develop strong manufacturing processes and quality systems that meet strict engineering standards.
+               </p>
++
+             </Reveal>
+ 
+-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+-              {[
+-                { name: 'ABB',  sub: 'Automation & Electrical Technology',  delay: 0.1 },
+-                { name: 'ISRO', sub: 'Indian Space Research Organisation',   delay: 0.25 },
+-              ].map(org => (
+-                <Reveal key={org.name} direction="right" delay={org.delay}>
+-                  <div style={{
+-                    display: 'flex',
+-                    alignItems: 'center',
+-                    gap: '20px',
+-                    background: 'rgba(255,255,255,0.02)',
+-                    border: '1px solid rgba(200,146,26,0.2)',
+-                    borderLeft: '3px solid #c8921a',
+-                    borderRadius: '10px',
+-                    padding: '22px 28px',
+-                    transition: 'all 0.3s ease',
+-                    cursor: 'default',
++            <div
++              style={{
++                display: 'flex',
++                alignItems: 'center',
++                gap: '16px',
++                padding: '18px 22px',
++                border: '1px solid #e0e0e0',
++                borderRadius: '12px',
++                background: '#fff',
++                maxWidth: '420px'
++              }}
++            >
++              {/* Logo Box */}
++              <div
++                style={{
++                  width: '52px',
++                  height: '52px',
++                  background: '#0f172a',
++                  color: '#facc15',
++                  display: 'flex',
++                  alignItems: 'center',
++                  justifyContent: 'center',
++                  borderRadius: '10px',
++                  fontSize: '10px',
++                  fontWeight: 600,
++                  textAlign: 'center',
++                  padding: '6px',
++                  lineHeight: '1.2'
++                }}
++              >
++                WF
++              </div>
++
++              {/* Text Content */}
++              <div>
++                <div
++                  style={{
++                    fontSize: '15px',
++                    fontWeight: 600,
++                    color: '#111',
++                    marginBottom: '4px'
+                   }}
+-                    onMouseEnter={e => { e.currentTarget.style.background = 'rgba(200,146,26,0.06)'; e.currentTarget.style.transform = 'translateX(4px)'; }}
+-                    onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.02)'; e.currentTarget.style.transform = 'none'; }}
+-                  >
+-                    <div style={{
+-                      width: '52px', height: '52px',
+-                      borderRadius: '10px',
+-                      background: 'linear-gradient(135deg,#0a1628,#0f1e38)',
+-                      border: '1px solid rgba(200,146,26,0.3)',
+-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+-                      color: '#c8921a', fontWeight: 900,
+-                      fontSize: org.name === 'ISRO' ? '11px' : '13px',
+-                      letterSpacing: '0.06em', flexShrink: 0,
+-                      fontFamily: 'var(--fd)',
+-                    }}>
+-                      {org.name}
+-                    </div>
+-                    <div>
+-                      <div style={{ fontWeight: 700, fontSize: '16px', color: 'var(--text-primary)', marginBottom: '3px', fontFamily: 'var(--fd)' }}>
+-                        {org.name}
+-                      </div>
+-                      <div style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>{org.sub}</div>
+-                    </div>
+-                  </div>
+-                </Reveal>
+-              ))}
++                >
++                  Weatherford India Pvt. Ltd.
++                </div>
++
++                <div
++                  style={{
++                    fontSize: '13px',
++                    color: 'var(--grey-mid)'
++                  }}
++                >
++                  Oilfield Services & Equipment
++                </div>
++              </div>
+             </div>
+           </div>
+         </div>
+@@ -440,23 +570,23 @@ export default function Home({ setPage }) {
+       {/* ══════════════════════════════════════════════════
+           CORE CAPABILITIES
+       ══════════════════════════════════════════════════ */}
+-      <section style={{ background: 'var(--navy)', padding: '96px 5%', position: 'relative', overflow: 'hidden' }}>
++      <section style={{ background: 'var(--navy)', padding: '120px 5%', position: 'relative', overflow: 'hidden' }}>
+         {/* Ambient glow */}
+         <div style={{
+           position: 'absolute', top: '50%', left: '50%',
+           transform: 'translate(-50%,-50%)',
+-          width: '700px', height: '400px',
++          width: '800px', height: '500px',
+           background: 'radial-gradient(ellipse, rgba(200,146,26,0.06) 0%, transparent 70%)',
+           pointerEvents: 'none',
+         }} />
+ 
+-        <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
++        <div style={{ maxWidth: '1280px', margin: '0 auto', position: 'relative' }}>
+           <Reveal>
+             <div className="sec-label">What We Do</div>
+             <h2 className="sec-title lt" style={{ marginBottom: '52px' }}>Core Capabilities</h2>
+           </Reveal>
+ 
+-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '14px' }}>
++          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '20px' }}>
+             {CAPABILITIES.map((cap, i) => (
+               <Reveal key={cap.label} delay={i * 0.07}>
+                 <div style={{
+@@ -509,9 +639,9 @@ export default function Home({ setPage }) {
+       {/* ══════════════════════════════════════════════════
+           MATERIALS EXPERTISE
+       ══════════════════════════════════════════════════ */}
+-      <section style={{ background: 'var(--off)', padding: '96px 5%' }}>
+-        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+-          <div style={{ display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '72px', alignItems: 'center' }}>
++      <section style={{ background: 'var(--off)', padding: '120px 5%' }}>
++        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
++          <div style={{ display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '80px', alignItems: 'center' }}>
+ 
+             <Reveal direction="left">
+               <div className="sec-label">Raw Materials</div>
+@@ -570,21 +700,21 @@ export default function Home({ setPage }) {
+       {/* ══════════════════════════════════════════════════
+           WHY TRUST US
+       ══════════════════════════════════════════════════ */}
+-      <section style={{ background: 'var(--navy)', padding: '96px 5%', position: 'relative', overflow: 'hidden' }}>
++      <section style={{ background: 'var(--navy)', padding: '120px 5%', position: 'relative', overflow: 'hidden' }}>
+         <div style={{
+           position: 'absolute', bottom: '-100px', right: '-100px',
+           width: '500px', height: '500px',
+           background: 'radial-gradient(circle, rgba(200,146,26,0.05) 0%, transparent 70%)',
+           pointerEvents: 'none',
+         }} />
+-        <div style={{ maxWidth: '1050px', margin: '0 auto', textAlign: 'center', position: 'relative' }}>
++        <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center', position: 'relative' }}>
+           <Reveal>
+             <div className="sec-label" style={{ justifyContent: 'center' }}>Our Promise</div>
+             <h2 className="sec-title lt" style={{ textAlign: 'center', margin: '0 auto 52px' }}>
+               Why Companies Trust Microcraft Engineering
+             </h2>
+           </Reveal>
+-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '14px', textAlign: 'left' }}>
++          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '20px', textAlign: 'left' }}>
+             {TRUST_POINTS.map((pt, i) => (
+               <Reveal key={pt.text} delay={i * 0.08}>
+                 <div style={{
+@@ -620,7 +750,7 @@ export default function Home({ setPage }) {
+                   }}>
+                     {pt.icon}
+                   </div>
+-                  <span style={{ color: 'rgba(200,216,235,0.85)', fontSize: '14px', fontWeight: 400, lineHeight: 1.65, paddingTop: '9px' }}>
++                  <span style={{ color: 'rgba(240,248,255,0.95)', fontSize: '14px', fontWeight: 400, lineHeight: 1.65, paddingTop: '9px' }}>
+                     {pt.text}
+                   </span>
+                 </div>
+@@ -633,9 +763,9 @@ export default function Home({ setPage }) {
+       {/* ══════════════════════════════════════════════════
+           INDUSTRIES TEASER
+       ══════════════════════════════════════════════════ */}
+-      <section style={{ background: 'var(--off)', textAlign: 'center', padding: '96px 5%' }}>
++      <section style={{ background: 'var(--off)', textAlign: 'center', padding: '120px 5%' }}>
+         <Reveal>
+-          <div style={{ maxWidth: '700px', margin: '0 auto' }}>
++          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+             <div className="sec-label" style={{ justifyContent: 'center' }}>What We Serve</div>
+             <h2 className="sec-title" style={{ textAlign: 'center', margin: '0 auto 18px' }}>
+               Industries We Serve
+@@ -657,11 +787,11 @@ export default function Home({ setPage }) {
+       <div className="cta-strip">
+         <Reveal>
+           <h2>Ready to Source Precision Components?</h2>
+-          <p>
++          <p style={{ fontSize: '18px', maxWidth: '600px', margin: '0 auto 36px' }}>
+             Upload your CAD drawing and request a quotation. We respond with a detailed
+             quote within 48 hours.
+           </p>
+-          <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>
++          <button className="btn-p" style={{ margin: '0 auto', padding: '20px 44px', fontSize: '18px' }} onClick={() => setPage('contact')}>
+             ▶&ensp;Upload Drawing & Request Quote
+           </button>
+         </Reveal>

@@ -17,49 +17,27 @@
   --fb: 'Barlow', sans-serif;
 }
 
-/* ===== MOBILE & TABLET RESPONSIVE CLEAN ===== */
+/* FIX STATS OVERFLOW */
+.stats-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding: 0 16px; /* 🔥 FIX SIDE SPACE */
+}
 
+/* Tablet */
 @media (max-width: 900px) {
-  .page {
-    padding-top: 70px;
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 768px) {
-
-  /* Image fix */
-  .about-img-wrap img,
-  .qual-img img,
-  .cap-imgs img {
-    height: auto;
-  }
-
-  /* Hero fix */
-  .hero {
-    height: auto;
-    min-height: 100vh;
-  }
-
-  /* Text width */
-  .sec-desc {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 540px) {
-
-  /* Section spacing */
-  section {
-    padding: 70px 5%;
-  }
-}
-
-@media (max-width: 480px) {
-
-  /* Button full width */
-  .btn-p {
-    width: 100%;
-    justify-content: center;
+/* Mobile */
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -943,7 +921,6 @@ section {
   margin-top: 4px;
   font-weight: 600;
 }
-
 /* ABOUT */
 .about-inner {
   display: grid;
@@ -952,6 +929,16 @@ section {
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 16px; /* 🔥 FIX SIDE SPACE */
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .about-inner {
+    grid-template-columns: 1fr; /* 🔥 STACK */
+    gap: 32px; /* 🔥 REDUCE GAP */
+    padding: 0 16px;
+  }
 }
 
 .about-img-wrap {

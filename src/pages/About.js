@@ -98,8 +98,8 @@ export default function About({ setPage }) {
       </section>
 
       <section style={{ background: 'var(--navy)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '32px' }}>
-          {STATS.map((s, i) => (
+<div className="stats-grid">
+            {STATS.map((s, i) => (
             <Reveal delay={i * 0.15} key={s.l} style={{ height: '100%' }}>
               <div style={{ background: 'rgba(255,255,255,.04)', border: '1px solid rgba(255,255,255,.08)', borderRadius: '4px', padding: '28px 24px', textAlign: 'center', height: '100%' }}>
                 <div style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: '36px', color: 'var(--accent)', lineHeight: 1 }}>{s.n}</div>

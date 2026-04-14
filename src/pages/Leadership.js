@@ -58,8 +58,8 @@ export default function Leadership({ setPage }) {
             </p>
           </Reveal>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
-            {LEADERS.map((l, i) => (
+<div className="leaders-grid">
+              {LEADERS.map((l, i) => (
               <Reveal delay={i * 0.15} key={l.name} style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <div
                   style={{

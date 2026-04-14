@@ -1020,10 +1020,10 @@ section {
   margin-top: 2px;
 }
 
-/* ===== LEADERSHIP / STRENGTH GRID FIX ===== */
+/* ===== FINAL FORCE FIX ===== */
 
 .str-grid {
-  display: grid;
+  display: grid !important;
   grid-template-columns: repeat(4, 1fr);
   gap: 2px;
 }
@@ -1031,14 +1031,19 @@ section {
 /* Tablet */
 @media (max-width: 900px) {
   .str-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 
-/* Mobile (MAIN FIX) */
+/* Mobile (FORCE SINGLE COLUMN) */
 @media (max-width: 600px) {
   .str-grid {
-    grid-template-columns: 1fr; /* 🔥 ONE BY ONE */
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+
+  .str-card {
+    width: 100% !important;
   }
 }
 

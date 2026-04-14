@@ -153,10 +153,10 @@ export default function Leadership({ setPage }) {
             </p>
           </Reveal>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '2px' }}>
-            {PHILOSOPHY.map((p, i) => (
-              <Reveal delay={i * 0.1} key={p.title} style={{ height: '100%', display: 'flex' }}>
-                <div
+<div className="philosophy-grid">
+              {PHILOSOPHY.map((p, i) => (
+<Reveal delay={i * 0.1} key={p.title} style={{ height: '100%' }}>
+                  <div
                   style={{ background: 'rgba(255,255,255,.03)', border: '1px solid rgba(255,255,255,.06)', padding: '36px 28px', position: 'relative', overflow: 'hidden', transition: 'background .2s', cursor: 'default' }}
                   onMouseEnter={e => { e.currentTarget.style.background = 'rgba(30,106,191,.12)'; }}
                   onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,.03)'; }}

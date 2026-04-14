@@ -7,7 +7,7 @@ const CAPS = [
   { n: '01', t: 'CNC Milling (3, 4, 5 Axis)', d: 'Multi-axis milling for complex geometries, contoured surfaces, and precision pockets. Suitable for structural aerospace and defence components.' },
   { n: '02', t: 'CNC Turning', d: 'High-precision turning for shafts, bushings, and rotational components. Live tooling capability for combined turning-milling operations.' },
   { n: '03', t: 'Multi Axis Machining', d: '5-axis simultaneous machining for the most demanding geometries — reducing setups, improving accuracy, and delivering superior surface quality.' },
-  { n: '04', t: 'Surface Finishing', d: 'Complete surface treatment including anodising, hard chrome, nickel plating, polishing, and blasting to meet European surface specifications.' },
+  { n: '04', t: 'Surface Finishing', d: 'Complete surface treatment including anodising, hard chrome, nickel plating, polishing, and blasting to meet worldwide quality standards.' },
 ];
 
 const MATERIALS = [

@@ -843,7 +843,7 @@ export default function Home({ setPage }) {
           <h2>Ready to Source Precision Components?</h2>
           <p>
             Upload your CAD drawing and request a quotation. We respond with a detailed
-            quote within 48 hours.
+            quote within 24 hours.
           </p>
           <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>
             ▶&ensp;Upload Drawing & Request Quote

@@ -17,6 +17,52 @@
   --fb: 'Barlow', sans-serif;
 }
 
+/* ===== MOBILE & TABLET RESPONSIVE CLEAN ===== */
+
+@media (max-width: 900px) {
+  .page {
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Image fix */
+  .about-img-wrap img,
+  .qual-img img,
+  .cap-imgs img {
+    height: auto;
+  }
+
+  /* Hero fix */
+  .hero {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  /* Text width */
+  .sec-desc {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 540px) {
+
+  /* Section spacing */
+  section {
+    padding: 70px 5%;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* Button full width */
+  .btn-p {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 *,
 *::before,
 *::after {

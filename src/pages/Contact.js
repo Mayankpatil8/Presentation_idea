@@ -13,7 +13,7 @@ const DETAILS = [
 const EXPORT_FEATURES = [
   { i: '📦', t: 'Secure Packaging', d: 'Custom export packaging with VCI protection and foam-secured component trays.' },
   { i: '📄', t: 'Full Documentation', d: 'Commercial invoices, packing lists, COO certificates, material certs, and inspection reports.' },
-  { i: '🤝', t: 'EU Business Support', d: 'Dedicated European sales and technical support for RFQs, samples, and supply agreements.' },
+  { i: '🤝', t: 'Global Business Support', d: 'Dedicated worldwide sales and technical support for RFQs, samples, and long-term supply partnerships.' },
   { i: '🔁', t: 'Reliable Lead Times', d: 'From 2-week prototype samples to high-volume repeat supply programs.' },
 ];
 
@@ -44,40 +44,49 @@ export default function Contact({ setPage }) {
   const fmtSize = (b) => b < 1048576 ? (b / 1024).toFixed(1) + ' KB' : (b / 1048576).toFixed(1) + ' MB';
 
   // ── NEW: submit handler ──
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    try {
-      const res = await fetch("/contact.php", {   // ✅ IMPORTANT
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          company: form.company,
-          country: form.country,
-          quantity: form.quantity,
-          material: form.material,
-          description: form.description
-        }),
-      });
+    setLoading(true); // ✅ START
 
-      const data = await res.json();
-      console.log(data);
 
-      if (data.success) {
-        alert("✅ Message sent successfully!");
-      } else {
-        alert("❌ Failed: " + data.message);
-      }
+  try {
+    const formData = new FormData();
 
-    } catch (err) {
-      console.error(err);
-      alert("❌ Server error");
+    // ✅ Normal fields
+    formData.append("name", form.name);
+    formData.append("email", form.email);
+    formData.append("company", form.company);
+    formData.append("country", form.country);
+    formData.append("quantity", form.quantity);
+    formData.append("material", form.material);
+    formData.append("description", form.description);
+
+    // ✅ FILES (IMPORTANT)
+    files.forEach((file) => {
+      formData.append("files[]", file);
+    });
+
+    const res = await fetch("/contact.php", {
+      method: "POST",
+      body: formData,   // ❗ no headers
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      alert("✅ Message sent successfully!");
+    } else {
+      alert("❌ Failed: " + data.error);
     }
-  };
+
+  } catch (err) {
+    console.error(err);
+    alert("❌ Server error");
+  }
+    setLoading(false); // ✅ ADD THIS (VERY IMPORTANT)
+
+};
 
 
   return (
@@ -223,6 +232,11 @@ export default function Contact({ setPage }) {
                     {error && (
                       <p style={{ color: '#c0392b', fontSize: '13px', marginBottom: '10px', fontWeight: 500 }}>{error}</p>
                     )}
+                      {loading && (
+                        <p style={{ fontSize: "13px", color: "#555", marginBottom: "10px" }}>
+                          Please wait... sending your request ⏳
+                        </p>
+                      )}
                     <button className="form-btn" onClick={handleSubmit} disabled={loading}>
                       {loading ? 'Sending…' : '▶\u2005Submit Request for Quotation'}
                     </button>
@@ -238,7 +252,7 @@ export default function Contact({ setPage }) {
       <section style={{ background: 'var(--navy)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div className="sec-label" style={{ color: 'var(--accent)' }}>Global Reach</div>
-          <h2 className="sec-title lt">European Export &amp; Client Support</h2>
+          <h2 className="sec-title lt">Global Business Support &amp; Client Support</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '24px', marginTop: '40px' }}>
             {EXPORT_FEATURES.map(f => (
               <div key={f.t} style={{ background: 'rgba(255,255,255,.04)', border: '1px solid rgba(255,255,255,.08)', borderRadius: '4px', padding: '24px 20px' }}>

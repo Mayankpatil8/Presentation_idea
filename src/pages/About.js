@@ -37,8 +37,8 @@ function Reveal({ children, delay = 0, direction = 'up', style = {} }) {
 }
 
 const BULLETS = [
-  'Modern CNC infrastructure with 3, 4, and 5-axis machining capability',
-  'Dedicated European account management and technical support',
+  'Modern CNC infrastructure with 3-axis, 4-axis, and 5-axis machining capabilities',
+  'Dedicated worldwide client support and technical account management',
   'End-to-end documentation, secure packaging, and reliable export logistics',
   'ISO-certified quality system with full traceability and inspection records',
 ];
@@ -47,7 +47,7 @@ const STATS = [
   { n: '20+', l: 'Years Experience', d: 'Over 20+ years of precision manufacturing experience' },
   { n: '5-Axis', l: 'CNC Technology', d: 'Advanced 5-axis machining for complex geometries' },
   { n: 'ISO', l: 'Certified QMS', d: 'ISO 9001:2015 certified quality management system' },
-  { n: '40+', l: 'European Clients', d: 'Trusted by European aerospace and industrial companies' },
+  { n: '30+', l: 'Globally Clients', d: 'Trusted CNC partner for aerospace and industrial companies worldwide.' },
 ];
 
 export default function About({ setPage }) {
@@ -65,7 +65,7 @@ export default function About({ setPage }) {
           <Reveal direction="left">
             <div className="about-img-wrap">
               <img src="/images/cylinder_piston.png" alt="Cylinder Piston CNC" className="img-cover" />
-              <div className="about-img-badge">Est. India · Serving Europe</div>
+              <div className="about-img-badge">Est. India · Serving Globally</div>
             </div>
           </Reveal>
           <div>
@@ -75,12 +75,12 @@ export default function About({ setPage }) {
             </Reveal>
             <Reveal delay={0.1}>
               <p style={{ fontSize: '15.5px', color: 'var(--grey-dark)', marginTop: '16px', fontWeight: 400, lineHeight: '1.85' }}>
-                Microcraft Engineering is a precision CNC manufacturing company based in India, purpose-built to serve the demanding requirements of International aerospace, defence, industrial machinery, and automation sectors.
+                Microcraft Engineering is a leading precision CNC machining and manufacturing company in India, specializing in high-quality components for the aerospace, defence, industrial machinery, and automation industries worldwide.
               </p>
             </Reveal>
             <Reveal delay={0.2}>
               <p style={{ fontSize: '15.5px', color: 'var(--grey-dark)', marginTop: '14px', fontWeight: 400, lineHeight: '1.85' }}>
-                Our modern facility is equipped with advanced multi-axis CNC machines, CMM inspection systems, and a rigorous quality management framework — enabling us to deliver components that meet the strictest European standards at competitive cost.
+                Our modern facility is equipped with advanced multi-axis CNC machines, CMM inspection systems, and a rigorous quality management framework — enabling us to deliver components that meet the strictest global standards at competitive cost.
               </p>
             </Reveal>
             <div style={{ marginTop: '28px' }}>
@@ -114,7 +114,7 @@ export default function About({ setPage }) {
       <Reveal delay={0.1}>
         <div className="cta-strip">
           <h2>Work With Microcraft</h2>
-          <p>Send us your drawings for a detailed quotation within 48 hours.</p>
+          <p>Send us your drawings for a detailed quotation within 24 hours.</p>
           <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>▶&ensp;Request a Quote</button>
         </div>
       </Reveal>

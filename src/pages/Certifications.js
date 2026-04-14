@@ -32,7 +32,7 @@ const CERTS = [
 const STANDARDS = [
   { i: '📐', n: 'EN 9102', d: 'First Article Inspection requirements for aerospace manufacturing' },
   { i: '🔩', n: 'DIN Standards', d: 'German DIN dimensional and material standards for industrial components' },
-  { i: '📋', n: 'REACH Compliance', d: 'European chemical regulation compliance for materials and surface treatments' },
+  { i: '📋', n: 'REACH Compliance', d: 'Worldwide chemical regulation compliance for materials and surface treatments' },
   { i: '🛡️', n: 'RoHS Compliant', d: 'Restriction of hazardous substances compliance for applicable components' },
   { i: '🔬', n: 'ASTM / AMS', d: 'Aerospace material specifications for aluminium, titanium, and steel alloys' },
   { i: '📦', n: 'MIL-SPEC Packaging', d: 'Military-specification packaging for defence component shipments' },
@@ -105,7 +105,7 @@ export default function Certifications({ setPage }) {
           <Reveal>
             <div className="sec-label" style={{ color: 'var(--accent)' }}>Compliance</div>
             <h2 className="sec-title lt">Standards &amp; Compliance Framework</h2>
-            <p className="sec-desc lt">In addition to formal certifications, Microcraft operates in compliance with a range of international and European technical standards.</p>
+            <p className="sec-desc lt">In addition to formal certifications, Microcraft operates in compliance with a range of international and Worldwide technical standards.</p>
           </Reveal>
           <div className="stds-grid">
             {STANDARDS.map((s, i) => (

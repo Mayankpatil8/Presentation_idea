@@ -49,7 +49,7 @@ const INDUSTRIES = [
     img: '/images/cnc_automotive.png',
     n: 'Automotive',
     sub: 'Advanced Engineering',
-    d: 'Providing engine blocks, transmission components, and performance chassis parts machined to strict European automotive standards. Our facility is optimized for high-volume production, ensuring every single batch maintains identical quality, supported by comprehensive PPAP validation.',
+    d: 'Providing engine blocks, transmission components, and performance chassis parts machined to strict worldwide automotive standards. Our facility is optimized for high-volume production, ensuring every single batch maintains identical quality, supported by comprehensive PPAP validation.',
     features: ['Tier-1 Automotive Supply', 'Engine & Transmission', 'PPAP Validation'],
     num: '05'
   },

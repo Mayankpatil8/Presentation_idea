@@ -57,15 +57,34 @@
   }
 }
 
-/* ===== PHILOSOPHY GRID FIX ===== */
+/* ===== FINAL PHILOSOPHY GRID FIX ===== */
+
 .philosophy-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2px;
+  padding: 0 16px;
+  align-items: stretch; /* 🔥 IMPORTANT */
 }
 
+/* ===== FIX EQUAL HEIGHT CARDS ===== */
+
+.philosophy-grid > * {
+  display: flex;
+}
+
+.philosophy-grid > * > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+/* Text alignment fix */
+.philosophy-grid div > div > div:last-child {
+  flex-grow: 1;
+}
 /* Tablet */
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .philosophy-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -74,7 +93,7 @@
 /* Mobile */
 @media (max-width: 600px) {
   .philosophy-grid {
-    grid-template-columns: 1fr; /* 🔥 STACK */
+    grid-template-columns: 1fr !important; /* 🔥 FORCE FIX */
   }
 }
 

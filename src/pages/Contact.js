@@ -253,8 +253,8 @@ const handleSubmit = async (e) => {
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div className="sec-label" style={{ color: 'var(--accent)' }}>Global Reach</div>
           <h2 className="sec-title lt">Global Business Support &amp; Client Support</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '24px', marginTop: '40px' }}>
-            {EXPORT_FEATURES.map(f => (
+<div className="export-grid">
+              {EXPORT_FEATURES.map(f => (
               <div key={f.t} style={{ background: 'rgba(255,255,255,.04)', border: '1px solid rgba(255,255,255,.08)', borderRadius: '4px', padding: '24px 20px' }}>
                 <div style={{ fontSize: '26px', marginBottom: '10px' }}>{f.i}</div>
                 <div style={{ fontFamily: 'var(--fd)', fontWeight: 700, fontSize: '18px', color: 'var(--white)', marginBottom: '6px' }}>{f.t}</div>

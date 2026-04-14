@@ -97,6 +97,35 @@
   }
 }
 
+/* ===== EXPORT GRID FIX ===== */
+
+.export-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+/* FIX CONTACT SIDE SPACE */
+.contact-inner {
+  padding: 0 16px;
+}
+.contact-form {
+  width: 100%;
+}
+/* Tablet */
+@media (max-width: 900px) {
+  .export-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .export-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 *,
 *::before,
 *::after {

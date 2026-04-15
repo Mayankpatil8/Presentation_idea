@@ -1,31 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
 import Reveal from '../components/Reveal';
 
 const CERTS = [
   {
-    cls: 'iso', logo: 'ISO', num: '9001', yr: ':2015',
-    tag: 'Quality Management', title: 'ISO 9001:2015',
-    desc: 'Our foundational quality management system certification, ensuring consistent processes, customer focus, and continuous improvement across all operations — from raw material receipt to final shipment.',
-    meta: [{ k: 'Issued by', v: 'Bureau Veritas Certification' }, { k: 'Scope', v: 'CNC Machining, Turning, Milling, Surface Finishing' }, { k: 'Valid until', v: 'December 2026' }, { k: 'Certificate No.', v: 'BV-QMS-2021-04872' }],
-  },
-  {
-    cls: 'env', logo: 'ISO', num: '14001', yr: ':2015',
-    tag: 'Environmental Management', title: 'ISO 14001:2015',
-    desc: 'Environmental management system certification demonstrating our commitment to reducing environmental impact, managing waste responsibly, and operating a sustainable precision manufacturing facility.',
-    meta: [{ k: 'Issued by', v: 'DNV GL Business Assurance' }, { k: 'Scope', v: 'Manufacturing Operations, Waste & Emissions Control' }, { k: 'Valid until', v: 'September 2026' }, { k: 'Certificate No.', v: 'DNV-EMS-2022-11948' }],
-  },
-  {
-    cls: 'safety', logo: 'ISO', num: '45001', yr: ':2018',
-    tag: 'Occupational Health & Safety', title: 'ISO 45001:2018',
-    desc: 'Occupational health and safety management system certification demonstrating our commitment to maintaining a safe workplace, minimizing risks, preventing work-related injuries, and ensuring the well-being of all employees within our precision manufacturing operations.',
+    cls: 'iso',
+    logo: 'ISO',
+    num: '14001',
+    yr: ':2015',
+
+    tag: 'Environmental Management',
+
+    title: 'ISO 14001:2015',
+
+    desc: 'Our Environmental Management System certification demonstrates Microcraft Engineering’s commitment to sustainable manufacturing practices, reducing environmental impact, efficient resource utilization, and continuous improvement in all operations related to engineering component manufacturing.',
+
     meta: [
-      { k: 'Issued by', v: 'DNV GL Business Assurance' },
-      { k: 'Scope', v: 'Workplace Safety, Risk Management & Employee Well-being' },
-      { k: 'Valid until', v: 'September 2026' },
-      { k: 'Certificate No.', v: 'DNV-OHS-2022-11949' }
+      { k: 'Issued by', v: 'Royal Assessments Pvt. Ltd.' },
+      { k: 'Scope', v: 'Manufacturing and Machining Job Work for Engineering Components' },
+      { k: 'Valid until', v: '03 March 2029' },
+      { k: 'Certificate No.', v: 'E20260347075' }
     ],
+    link: '/images/certificate1.jpg', // Placeholder image for testing
+  },
+  {
+    cls: 'qms',
+    logo: 'ISO',
+    num: '9001',
+    yr: ':2015',
+
+    tag: 'Quality Management',
+
+    title: 'ISO 9001:2015',
+
+    desc: 'Our Quality Management System certification from TÜV SÜD demonstrates Microcraft Engineering’s commitment to consistent quality, precision manufacturing, and continuous improvement in engineering component production processes.',
+
+    meta: [
+      { k: 'Issued by', v: 'TÜV SÜD South Asia Private Limited' },
+      { k: 'Scope', v: 'Manufacturing and Machining Job Work for Engineering Components' },
+      { k: 'Valid until', v: '09 July 2027' },
+      { k: 'Certificate No.', v: '99 100 18762' }
+    ],
+    link: '/images/certificate2.jpg',
+  },
+  {
+    cls: 'safety',
+    logo: 'ISO',
+    num: '45001',
+    yr: ':2018',
+
+    tag: 'Occupational Health & Safety',
+
+    title: 'ISO 45001:2018',
+
+    desc: 'Our Occupational Health and Safety Management System certification demonstrates Microcraft Engineering’s commitment to maintaining a safe and healthy workplace, minimizing operational risks, preventing work-related injuries, and ensuring employee well-being across all manufacturing and machining operations.',
+
+    meta: [
+      { k: 'Issued by', v: 'Royal Assessments Pvt. Ltd.' },
+      { k: 'Scope', v: 'Manufacturing and Machining Job Work for Engineering Components' },
+      { k: 'Valid until', v: '03 March 2029' },
+      { k: 'Certificate No.', v: 'E20260347076' }
+    ],
+    link: '/images/certificate3.jpg',
   }
 ];
 
@@ -46,6 +83,18 @@ const EQUIPMENT = [
 ];
 
 export default function Certifications({ setPage }) {
+  const [selectedCert, setSelectedCert] = useState(null);
+
+  const openModal = (cert) => {
+    setSelectedCert(cert);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    setSelectedCert(null);
+    document.body.style.overflow = 'auto';
+  };
+
   return (
     <div className="page">
       <PageHero
@@ -92,6 +141,13 @@ export default function Certifications({ setPage }) {
                       <div className="cert-status-dot" />
                       <span>Currently Active &amp; Audited Annually</span>
                     </div>
+                    {c.link && (
+                      <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
+                        <button onClick={() => openModal(c)} className="btn-cert-view">
+                          <span>View Certificate</span>
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               </Reveal>
@@ -156,6 +212,29 @@ export default function Certifications({ setPage }) {
           <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>▶&ensp;Request a Quote</button>
         </div>
       </Reveal>
+
+      {/* Lightbox Modal */}
+      {selectedCert && (
+        <div className="testi-modal-overlay" onClick={closeModal}>
+          <div className="testi-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="testi-modal-close" onClick={closeModal}>&times;</button>
+            <div className="testi-modal-img-container">
+              <img
+                src={selectedCert.link}
+                alt={`${selectedCert.title} Certificate`}
+                style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+              />
+              <div className="testi-modal-caption">
+                <div className="testi-modal-info">
+                  <h3>{selectedCert.title} Certificate</h3>
+                  <p>Valid until {selectedCert.meta.find(m => m.k === 'Valid until')?.v || 'N/A'}</p>
+                </div>
+                <button className="btn-p" style={{ padding: '8px 20px', fontSize: '12px' }} onClick={closeModal}>Close View</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer setPage={setPage} />
     </div>

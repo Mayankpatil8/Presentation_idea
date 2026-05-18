@@ -2398,8 +2398,17 @@ section {
     padding: 90px 5% 90px;
   }
 
-  .hero-stats {
+  .hero-stats,
+  .tstat-bar {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tstat:nth-child(2) {
+    border-right: none;
+  }
+  .tstat:nth-child(1),
+  .tstat:nth-child(2) {
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
   }
 
   .about-inner,
@@ -2434,7 +2443,8 @@ section {
 }
 
 @media(max-width: 540px) {
-  .hero-stats {
+  .hero-stats,
+  .tstat-bar {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -2458,6 +2468,18 @@ section {
 
   .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .testi-footer,
+  .testi-modal-caption {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .testi-modal-caption {
+    align-items: center;
+    text-align: center;
   }
 }
 

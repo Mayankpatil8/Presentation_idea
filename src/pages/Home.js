@@ -187,7 +187,7 @@ export default function Home({ setPage }) {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'flex-start',
-          padding: isMobile ? '20px' : '0 5%',
+          padding: isMobile ? '40px 20px 80px' : '0 5%',
           maxWidth: isMobile ? '100%' : '600px',
         }}>
 
@@ -212,7 +212,7 @@ export default function Home({ setPage }) {
           <h1 style={{
             fontFamily: 'var(--fd)',
             fontWeight: 800,
-            fontSize: isMobile ? '20px' : 'clamp(22px, 3.5vw, 42px)', lineHeight: 1.1,
+            fontSize: isMobile ? '28px' : 'clamp(32px, 4vw, 46px)', lineHeight: 1.15,
             color: '#f0f4fa',
             marginBottom: '16px',
             letterSpacing: '-0.01em'
@@ -232,10 +232,10 @@ export default function Home({ setPage }) {
           </h1>
 
           <p style={{
-            fontSize: '15px',
-            lineHeight: 1.5,
+            fontSize: isMobile ? '15px' : '17px',
+            lineHeight: 1.55,
             color: 'rgba(240,244,250,0.85)',
-            marginBottom: '18px'
+            marginBottom: '22px'
           }}>
             A trusted custom metal parts supplier for{' '}
 
@@ -259,8 +259,8 @@ export default function Home({ setPage }) {
               background: 'linear-gradient(135deg,#c8921a,#e0a830)',
               color: '#04091a',
               border: 'none',
-              padding: '10px 18px',
-              fontSize: '10px',
+              padding: isMobile ? '12px 20px' : '14px 24px',
+              fontSize: isMobile ? '11px' : '12px',
               fontWeight: 900,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
@@ -303,13 +303,13 @@ export default function Home({ setPage }) {
               lineHeight: 1.6,
               color: 'rgba(200,216,235,0.85)',
               fontWeight: 300,
-              maxWidth: '520px',
+              maxWidth: isMobile ? '85%' : '520px',
               marginBottom: '16px'
             }}>
               Delivering <span style={{ color: '#e0a830', fontWeight: 500 }}>high-precision CNC machining services in India </span>
               for global aerospace, automation, and energy industries with 20+ years of manufacturing excellence.
             </p>
-            <p style={{ fontSize: '14px', lineHeight: 1.7, color: 'rgba(200,216,235,0.75)', fontWeight: 300, maxWidth: '620px' }}> As a trusted custom metal parts supplier, we provide ISO-certified precision manufacturing solutions to engineering companies worldwide, meeting strict quality benchmarks. </p>
+            <p style={{ fontSize: '14px', lineHeight: 1.7, color: 'rgba(200,216,235,0.75)', fontWeight: 300, maxWidth: isMobile ? '85%' : '620px' }}> As a trusted custom metal parts supplier, we provide ISO-certified precision manufacturing solutions to engineering companies worldwide, meeting strict quality benchmarks. </p>
           </div>
 
           {/* Slide indicator dots */}

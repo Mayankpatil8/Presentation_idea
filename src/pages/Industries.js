@@ -57,6 +57,13 @@ const INDUSTRIES = [
 ];
 
 export default function Industries({ setPage }) {
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth < 900);
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 900);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="page">
       <SEO
@@ -71,24 +78,24 @@ export default function Industries({ setPage }) {
         subtitle="Trusted by procurement and engineering teams across five high-performance International industries."
       />
 
-      <section style={{ background: 'var(--white)', padding: '80px 20px' }}>
+      <section style={{ background: 'var(--white)', padding: isMobile ? '40px 16px' : '80px 20px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <Reveal>
             <div className="sec-label" style={{ textAlign: 'center' }}>Our Sectors</div>
             <h2 className="sec-title" style={{ textAlign: 'center', marginBottom: '64px' }}>Precision Manufacturing Across Industries</h2>
           </Reveal>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '40px' : '80px' }}>
             {INDUSTRIES.map((ind, i) => (
               <Reveal delay={0.1} key={ind.n}>
                 <div
                   style={{
                     display: 'grid',
-                    gridTemplateColumns: i % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr',
-                    gap: '52px',
+                    gridTemplateColumns: isMobile ? '1fr' : (i % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr'),
+                    gap: isMobile ? '28px' : '52px',
                     alignItems: 'center',
                     background: 'var(--white)',
                     borderRadius: '16px',
-                    padding: '48px',
+                    padding: isMobile ? '24px 16px' : '48px',
                     position: 'relative',
                     boxShadow: '0 12px 40px rgba(0,0,0,0.04), 0 2px 12px rgba(0,0,0,0.02)',
                     border: '1px solid rgba(0,0,0,0.06)',
@@ -109,9 +116,9 @@ export default function Industries({ setPage }) {
                   {/* Giant faint background number */}
                   <div style={{
                     position: 'absolute',
-                    top: '-40px',
-                    [i % 2 === 0 ? 'right' : 'left']: '40px',
-                    fontSize: '200px',
+                    top: isMobile ? '-20px' : '-40px',
+                    [i % 2 === 0 || isMobile ? 'right' : 'left']: isMobile ? '20px' : '40px',
+                    fontSize: isMobile ? '100px' : '200px',
                     fontWeight: 900,
                     color: 'rgba(37, 99, 235, 0.03)',
                     fontFamily: 'var(--fd)',
@@ -124,7 +131,7 @@ export default function Industries({ setPage }) {
                   {i % 2 === 0 ? (
                     <>
                       {/* Image Left */}
-                      <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', height: '420px', boxShadow: '0 24px 48px rgba(0,0,0,0.12)', zIndex: 1 }}>
+                      <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', height: isMobile ? '260px' : '420px', boxShadow: '0 24px 48px rgba(0,0,0,0.12)', zIndex: 1, order: isMobile ? 1 : 1 }}>
                         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)', zIndex: 1 }} />
                         <img src={ind.img} alt={ind.n + ' precision CNC machined components - Microcraft Engineering'} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
                         <div style={{ position: 'absolute', bottom: '24px', left: '24px', zIndex: 2 }}>
@@ -135,21 +142,21 @@ export default function Industries({ setPage }) {
                       </div>
 
                       {/* Content Right */}
-                      <div style={{ zIndex: 1, paddingRight: '20px' }}>
+                      <div style={{ zIndex: 1, paddingRight: isMobile ? '0' : '20px', order: isMobile ? 2 : 2 }}>
                         <div style={{ display: 'inline-block', padding: '6px 14px', background: 'rgba(37, 99, 235, 0.1)', color: 'var(--accent)', borderRadius: '20px', fontSize: '13px', fontWeight: 700, marginBottom: '20px', letterSpacing: '1px', textTransform: 'uppercase' }}>
                           {ind.sub}
                         </div>
-                        <h3 style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: 'clamp(32px, 4vw, 42px)', color: 'var(--navy)', marginBottom: '24px', lineHeight: '1.1' }}>
+                        <h3 style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: 'clamp(28px, 4vw, 42px)', color: 'var(--navy)', marginBottom: '20px', lineHeight: '1.1' }}>
                           {ind.n}
                         </h3>
-                        <p style={{ fontSize: '16.5px', color: 'var(--grey-dark)', fontWeight: 400, lineHeight: '1.85', marginBottom: '32px' }}>
+                        <p style={{ fontSize: isMobile ? '15px' : '16.5px', color: 'var(--grey-dark)', fontWeight: 400, lineHeight: '1.8', marginBottom: '24px' }}>
                           {ind.d}
                         </p>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '40px' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(200px, 1fr))', gap: '14px', marginBottom: '32px' }}>
                           {ind.features.map(f => (
                             <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                               <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(37, 99, 235, 0.1)', color: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', flexShrink: 0 }}>✓</div>
-                              <span style={{ fontSize: '14.5px', color: 'var(--navy)', fontWeight: 700 }}>{f}</span>
+                              <span style={{ fontSize: '14px', color: 'var(--navy)', fontWeight: 700 }}>{f}</span>
                             </div>
                           ))}
                         </div>
@@ -159,21 +166,21 @@ export default function Industries({ setPage }) {
                   ) : (
                     <>
                       {/* Content Left */}
-                      <div style={{ zIndex: 1, paddingLeft: '20px' }}>
+                      <div style={{ zIndex: 1, paddingLeft: isMobile ? '0' : '20px', order: isMobile ? 2 : 1 }}>
                         <div style={{ display: 'inline-block', padding: '6px 14px', background: 'rgba(37, 99, 235, 0.1)', color: 'var(--accent)', borderRadius: '20px', fontSize: '13px', fontWeight: 700, marginBottom: '20px', letterSpacing: '1px', textTransform: 'uppercase' }}>
                           {ind.sub}
                         </div>
-                        <h3 style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: 'clamp(32px, 4vw, 42px)', color: 'var(--navy)', marginBottom: '24px', lineHeight: '1.1' }}>
+                        <h3 style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: 'clamp(28px, 4vw, 42px)', color: 'var(--navy)', marginBottom: '20px', lineHeight: '1.1' }}>
                           {ind.n}
                         </h3>
-                        <p style={{ fontSize: '16.5px', color: 'var(--grey-dark)', fontWeight: 400, lineHeight: '1.85', marginBottom: '32px' }}>
+                        <p style={{ fontSize: isMobile ? '15px' : '16.5px', color: 'var(--grey-dark)', fontWeight: 400, lineHeight: '1.8', marginBottom: '24px' }}>
                           {ind.d}
                         </p>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '40px' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(200px, 1fr))', gap: '14px', marginBottom: '32px' }}>
                           {ind.features.map(f => (
                             <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                               <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(37, 99, 235, 0.1)', color: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', flexShrink: 0 }}>✓</div>
-                              <span style={{ fontSize: '14.5px', color: 'var(--navy)', fontWeight: 700 }}>{f}</span>
+                              <span style={{ fontSize: '14px', color: 'var(--navy)', fontWeight: 700 }}>{f}</span>
                             </div>
                           ))}
                         </div>
@@ -181,7 +188,7 @@ export default function Industries({ setPage }) {
                       </div>
 
                       {/* Image Right */}
-                      <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', height: '420px', boxShadow: '0 24px 48px rgba(0,0,0,0.12)', zIndex: 1 }}>
+                      <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', height: isMobile ? '260px' : '420px', boxShadow: '0 24px 48px rgba(0,0,0,0.12)', zIndex: 1, order: isMobile ? 1 : 2 }}>
                         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)', zIndex: 1 }} />
                         <img src={ind.img} alt={ind.n + ' precision CNC machined components - Microcraft Engineering'} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
                         <div style={{ position: 'absolute', bottom: '24px', left: '24px', zIndex: 2 }}>

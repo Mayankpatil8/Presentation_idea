@@ -2533,6 +2533,9 @@ img {
     height: 70px;
     padding: 0 20px;
   }
+  .page {
+    padding-top: 70px;
+  }
 
   /* Logo size fix */
   .logo img {

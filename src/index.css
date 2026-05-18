@@ -2460,6 +2460,15 @@ section {
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+    gap: 16px;
+  }
+
+  .footer-bottom > div:first-child {
+    justify-content: center;
+  }
+
+  .footer-badges {
+    justify-content: center;
   }
 
   .contact-form {

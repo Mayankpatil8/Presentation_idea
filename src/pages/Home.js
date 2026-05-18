@@ -492,7 +492,7 @@ export default function Home({ setPage }) {
       ══════════════════════════════════════════════════ */}
       <section style={{ background: 'var(--off)', padding: '120px 5%' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '72px', alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? '32px' : '72px', alignItems: 'center' }}>
 
             <Reveal direction="left">
               <div className="sec-label">Our Track Record</div>
@@ -525,7 +525,7 @@ export default function Home({ setPage }) {
             </Reveal>
 
             {/* RIGHT SIDE CARDS */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%', alignItems: isMobile ? 'stretch' : 'flex-start' }}>
 
               {/* Weatherford */}
               <div style={{
@@ -536,7 +536,7 @@ export default function Home({ setPage }) {
                 border: '1px solid #e0e0e0',
                 borderRadius: '12px',
                 background: '#fff',
-                maxWidth: '420px'
+                maxWidth: isMobile ? '100%' : '420px'
               }}>
                 <div style={{
                   width: '52px',
@@ -584,7 +584,7 @@ export default function Home({ setPage }) {
                 border: '1px solid #e0e0e0',
                 borderRadius: '12px',
                 background: '#fff',
-                maxWidth: '420px'
+                maxWidth: isMobile ? '100%' : '420px'
               }}>
                 <div style={{
                   width: '52px',
@@ -703,7 +703,7 @@ export default function Home({ setPage }) {
       ══════════════════════════════════════════════════ */}
       <section style={{ background: 'var(--off)', padding: '96px 5%' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '72px', alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '5fr 7fr', gap: isMobile ? '32px' : '72px', alignItems: 'center' }}>
 
             <Reveal direction="left">
               <div className="sec-label">Raw Materials</div>
@@ -715,7 +715,7 @@ export default function Home({ setPage }) {
               </p>
             </Reveal>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '10px' }}>
               {MATERIALS.map((mat, i) => (
                 <Reveal key={mat} delay={i * 0.06}>
                   <div style={{

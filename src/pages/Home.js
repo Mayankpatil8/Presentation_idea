@@ -282,15 +282,7 @@ export default function Home({ setPage }) {
             Read Global Client Reviews →
           </button>
 
-          {/* Gold divider */}
-          <div style={{
-            width: '64px',
-            animation: 'growLine 0.8s ease', height: '2px',
-            background: 'linear-gradient(90deg, #c8921a, #e0a830, transparent)',
-            marginBottom: '28px',
-            borderRadius: '1px',
-            transition: 'width 0.8s ease 0.45s',
-          }} />
+          <div style={{ marginBottom: '28px' }} />
 
           {/* Body text */}
           <div style={{

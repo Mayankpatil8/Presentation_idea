@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Footer({ setPage }) {
   const go = (id) => { setPage(id); window.scrollTo({ top: 0, behavior: 'smooth' }); };
@@ -7,34 +8,36 @@ export default function Footer({ setPage }) {
     <footer className="footer">
       <div className="footer-grid">
         <div>
-          <button
-            className="logo"
-            onClick={() => go('home')}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              padding: '5px 0'
-            }}
-          >
-            <img
-              src="../images/logo3.png"
-              alt="Microcraft Engineering"
+          <Link to="/" onClick={(e) => { e.preventDefault(); go('home'); }} style={{ textDecoration: 'none', display: 'flex' }}>
+            <button
+              className="logo"
+              tabIndex={-1}
               style={{
-                height: '40px',          // 🔥 adjust between 60–80 based on navbar height
-                width: 'auto',
-                objectFit: 'contain',
-
-                // 🔥 Make logo POP on black navbar
-                filter: 'brightness(1.3) contrast(1.2)',
-
-                // 🔥 subtle glow for visibility
-                dropShadow: '0 0 8px rgba(255,140,0,0.6)'
+                display: 'flex',
+                alignItems: 'center',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: '5px 0'
               }}
-            />
-          </button>
+            >
+              <img
+                src="../images/logo3.png"
+                alt="Microcraft Engineering"
+                style={{
+                  height: '40px',          // 🔥 adjust between 60–80 based on navbar height
+                  width: 'auto',
+                  objectFit: 'contain',
+
+                  // 🔥 Make logo POP on black navbar
+                  filter: 'brightness(1.3) contrast(1.2)',
+
+                  // 🔥 subtle glow for visibility
+                  dropShadow: '0 0 8px rgba(255,140,0,0.6)'
+                }}
+              />
+            </button>
+          </Link>
           <p className="footer-desc">
             Precision CNC machining for International aerospace, defence, and industrial manufacturers.
             ISO-certified quality, reliable export logistics.
@@ -50,32 +53,32 @@ export default function Footer({ setPage }) {
         <div>
           <div className="footer-col-title">Services</div>
           <div className="footer-links">
-            <button onClick={() => go('capabilities')}>CNC Milling (3/4/5 Axis)</button>
-            <button onClick={() => go('capabilities')}>CNC Turning</button>
-            <button onClick={() => go('capabilities')}>Multi-Axis Machining</button>
-            <button onClick={() => go('capabilities')}>Surface Finishing</button>
-            <button onClick={() => go('quality')}>Quality Inspection</button>
+            <Link to="/capabilities" onClick={(e) => { e.preventDefault(); go('capabilities'); }} style={{ textDecoration: 'none' }}><button tabIndex={-1}>CNC Milling (3/4/5 Axis)</button></Link>
+            <Link to="/capabilities" onClick={(e) => { e.preventDefault(); go('capabilities'); }} style={{ textDecoration: 'none' }}><button tabIndex={-1}>CNC Turning</button></Link>
+            <Link to="/capabilities" onClick={(e) => { e.preventDefault(); go('capabilities'); }} style={{ textDecoration: 'none' }}><button tabIndex={-1}>Multi-Axis Machining</button></Link>
+            <Link to="/capabilities" onClick={(e) => { e.preventDefault(); go('capabilities'); }} style={{ textDecoration: 'none' }}><button tabIndex={-1}>Surface Finishing</button></Link>
+            <Link to="/quality" onClick={(e) => { e.preventDefault(); go('quality'); }} style={{ textDecoration: 'none' }}><button tabIndex={-1}>Quality Inspection</button></Link>
           </div>
         </div>
 
         <div>
           <div className="footer-col-title">Industries</div>
           <div className="footer-links">
-            <button onClick={() => go('industries')}>Aerospace</button>
-            <button onClick={() => go('industries')}>Defence</button>
-            <button onClick={() => go('industries')}>Industrial Machinery</button>
-            <button onClick={() => go('industries')}>Robotics &amp; Automation</button>
-            <button onClick={() => go('industries')}>Automotive</button>
+            <Link to="/industries" onClick={(e) => { e.preventDefault(); go('industries'); }} style={{ textDecoration: 'none' }}><button tabIndex={-1}>Aerospace</button></Link>
+            <Link to="/industries" onClick={(e) => { e.preventDefault(); go('industries'); }} style={{ textDecoration: 'none' }}><button tabIndex={-1}>Defence</button></Link>
+            <Link to="/industries" onClick={(e) => { e.preventDefault(); go('industries'); }} style={{ textDecoration: 'none' }}><button tabIndex={-1}>Industrial Machinery</button></Link>
+            <Link to="/industries" onClick={(e) => { e.preventDefault(); go('industries'); }} style={{ textDecoration: 'none' }}><button tabIndex={-1}>Robotics &amp; Automation</button></Link>
+            <Link to="/industries" onClick={(e) => { e.preventDefault(); go('industries'); }} style={{ textDecoration: 'none' }}><button tabIndex={-1}>Automotive</button></Link>
           </div>
         </div>
 
         <div>
           <div className="footer-col-title">Company</div>
           <div className="footer-links">
-            <button onClick={() => go('about')}>About Us</button>
-            <button onClick={() => go('certifications')}>Certifications</button>
-            <button onClick={() => go('testimonials')}>Testimonials</button>
-            <button onClick={() => go('contact')}>Request a Quote</button>
+            <Link to="/about" onClick={(e) => { e.preventDefault(); go('about'); }} style={{ textDecoration: 'none' }}><button tabIndex={-1}>About Us</button></Link>
+            <Link to="/certifications" onClick={(e) => { e.preventDefault(); go('certifications'); }} style={{ textDecoration: 'none' }}><button tabIndex={-1}>Certifications</button></Link>
+            <Link to="/testimonials" onClick={(e) => { e.preventDefault(); go('testimonials'); }} style={{ textDecoration: 'none' }}><button tabIndex={-1}>Testimonials</button></Link>
+            <Link to="/contact" onClick={(e) => { e.preventDefault(); go('contact'); }} style={{ textDecoration: 'none' }}><button tabIndex={-1}>Request a Quote</button></Link>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import SEO from '../components/SEO';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
 
@@ -91,6 +92,11 @@ const handleSubmit = async (e) => {
 
   return (
     <div className="page">
+      <SEO
+        title="Contact Us | Request for Quotation | Microcraft Engineering"
+        description="Contact Microcraft Engineering for precision CNC machining quotations. We respond within 24 hours for all aerospace, defence, and industrial component enquiries."
+        canonical="/contact"
+      />
       <PageHero
         bgImage="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1400&q=80"
         label="Get In Touch"

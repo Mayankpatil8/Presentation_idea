@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import SEO from '../components/SEO';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
 import Reveal from '../components/Reveal';
@@ -38,8 +39,14 @@ const PHILOSOPHY = [
 ];
 
 export default function Leadership({ setPage }) {
+
   return (
     <div className="page">
+      <SEO
+        title="Leadership Team | CNC Machining Services India"
+        description="Meet the leadership behind Microcraft Engineering, dedicated to delivering superior CNC machining for global clients across aerospace, defence, and industrial sectors."
+        canonical="/leadership"
+      />
       <PageHero
         bgImage="../images/test.png"
         label="Our Team"

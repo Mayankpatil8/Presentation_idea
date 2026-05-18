@@ -3,10 +3,131 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Microcraft Engineering – Precision CNC Machining for European Aerospace, Defence and Industrial Industries" />
-    <title>Microcraft Engineering</title>
+
+    <!-- Base SEO (overridden per-page by react-helmet-async) -->
+    <title>Microcraft Engineering | Precision CNC Machining India</title>
+    <meta name="description" content="Microcraft Engineering — ISO-certified precision CNC machining and manufacturing company in India. Serving aerospace, defence, automotive, and industrial sectors globally." />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- GEO targeting -->
+    <meta name="geo.region" content="IN-GJ" />
+    <meta name="geo.placename" content="Vadodara, Gujarat, India" />
+    <meta name="geo.position" content="22.3072;73.1812" />
+    <meta name="ICBM" content="22.3072, 73.1812" />
+
+    <!-- Open Graph fallback -->
+    <meta property="og:site_name" content="Microcraft Engineering" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:image" content="https://microcraft.in/images/logo3.png" />
+
+    <!-- Twitter Card fallback -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Canonical fallback -->
+    <link rel="canonical" href="https://microcraft.in/" />
+
+    <!-- Preconnect for performance (fonts & CDNs) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+
+    <!-- Google Fonts — non-blocking load to prevent render-blocking -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@300;400;500;600&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <!-- Organization JSON-LD Schema (GEO + Google Knowledge Panel) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Microcraft Engineering",
+      "alternateName": "Microcraft",
+      "url": "https://microcraft.in",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://microcraft.in/images/logo3.png",
+        "width": 300,
+        "height": 100
+      },
+      "description": "ISO-certified precision CNC machining and manufacturing company in India, specialising in high-accuracy components for aerospace, defence, automotive, industrial machinery, and automation industries worldwide.",
+      "foundingDate": "2004",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "GIDC Savli, ELS Tower, A 15 To 18, Savli - Vadodara Rd, Manjusar",
+        "addressLocality": "Vadodara",
+        "addressRegion": "Gujarat",
+        "postalCode": "391776",
+        "addressCountry": "IN"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "email": "sales@microcraft.in",
+          "contactType": "sales",
+          "areaServed": ["IN","GB","DE","FR","NL","SE","US"],
+          "availableLanguage": ["English"]
+        },
+        {
+          "@type": "ContactPoint",
+          "email": "eu@microcraft.in",
+          "contactType": "customer service",
+          "areaServed": ["GB","DE","FR","NL","SE","BE","AT","DK","NO","FI"],
+          "availableLanguage": ["English"]
+        }
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/ashvin-chaudhari-6485853b/",
+        "https://www.linkedin.com/in/schaudhari23/"
+      ],
+      "knowsAbout": [
+        "CNC Machining",
+        "5-Axis Machining",
+        "Precision Manufacturing",
+        "Aerospace Components",
+        "Defence Manufacturing",
+        "Automotive Components",
+        "Wire-Cut EDM",
+        "CNC Turning",
+        "CNC Milling",
+        "ISO 9001 Quality Management"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "ISO 9001:2015",
+          "description": "Quality Management System Certification"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "ISO 14001:2015",
+          "description": "Environmental Management System Certification"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "ISO 45001:2018",
+          "description": "Occupational Health and Safety Management System Certification"
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

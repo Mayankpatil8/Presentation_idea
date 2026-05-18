@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SEO from '../components/SEO';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
 import Reveal from '../components/Reveal';
@@ -272,6 +273,11 @@ export default function Testimonials({ setPage }) {
 
   return (
     <div className="page">
+      <SEO
+        title="Client Testimonials | Global CNC Machining Reviews"
+        description="Read verified testimonials from Microcraft Engineering's global clients including Keller Precision GmbH, Weatherford India, Schneider Electric, and more."
+        canonical="/testimonials"
+      />
       <PageHero
         bgImage="../images/led.png"
         label="Client Feedback"

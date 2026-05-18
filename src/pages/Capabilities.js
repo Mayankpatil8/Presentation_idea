@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/SEO';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
 import Reveal from '../components/Reveal';
@@ -21,6 +22,11 @@ const MATERIALS = [
 export default function Capabilities({ setPage }) {
   return (
     <div className="page">
+      <SEO
+        title="CNC Machining Capabilities | 5-Axis Milling & Turning India"
+        description="Explore Microcraft Engineering's CNC machining capabilities: 3, 4 & 5-axis milling, CNC turning, wire-cut EDM, and surface finishing for aerospace and industrial applications."
+        canonical="/capabilities"
+      />
       <PageHero
         bgImage="../images/cap1.jpg"
         label="What We Do"
@@ -50,9 +56,9 @@ export default function Capabilities({ setPage }) {
             </div>
             <Reveal direction="right">
               <div className="cap-imgs">
-                <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=600&q=80" alt="CNC Milling" />
-                <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80" alt="CNC Turning" />
-                <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=900&q=80" alt="5-Axis Machining" className="wide" />
+                <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=600&q=80" alt="CNC Milling Precision Machining - Microcraft Engineering" loading="lazy" />
+                <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80" alt="CNC Turning Operations - Microcraft Engineering" loading="lazy" />
+                <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=900&q=80" alt="5-Axis CNC Machining Capabilities - Microcraft Engineering" className="wide" loading="lazy" />
               </div>
             </Reveal>
           </div>

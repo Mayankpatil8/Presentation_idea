@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import SEO from '../components/SEO';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
 
@@ -53,18 +54,23 @@ const STATS = [
 export default function About({ setPage }) {
   return (
     <div className="page">
+      <SEO
+        title="About Us | Custom Metal Parts Supplier & CNC Machining India"
+        description="Learn about Microcraft Engineering, a top-tier custom metal parts supplier and industrial components manufacturer serving aerospace, defence, and commercial sectors globally."
+        canonical="/about"
+      />
       <PageHero
         bgImage="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=1400&q=80"
         label="Who We Are"
         title="About Microcraft Engineering"
-        subtitle="A precision CNC manufacturing company built for the demands of International aerospace, defence, and industrial sectors."
+        subtitle="An industrial components manufacturer and precision CNC company built for the demands of International aerospace, defence, and industrial sectors."
       />
 
       <section style={{ background: 'var(--off)' }}>
         <div className="about-inner">
           <Reveal direction="left">
             <div className="about-img-wrap">
-              <img src="/images/cylinder_piston.png" alt="Cylinder Piston CNC" className="img-cover" />
+              <img src="https://res.cloudinary.com/dyelfz2ku/image/upload/v1778125543/cylinder_piston_mdshws.jpg" alt="Custom Cylinder Piston Machining for Industrial Applications" className="img-cover" loading="lazy" />
               <div className="about-img-badge">Est. India · Serving Globally</div>
             </div>
           </Reveal>
@@ -80,7 +86,7 @@ export default function About({ setPage }) {
             </Reveal>
             <Reveal delay={0.2}>
               <p style={{ fontSize: '15.5px', color: 'var(--grey-dark)', marginTop: '14px', fontWeight: 400, lineHeight: '1.85' }}>
-                Our modern facility is equipped with advanced multi-axis CNC machines, CMM inspection systems, and a rigorous quality management framework — enabling us to deliver components that meet the strictest global standards at competitive cost.
+                Our modern facility is equipped with advanced multi-axis CNC machines, CMM inspection systems, and a rigorous quality management framework — enabling us to deliver components that meet the strictest global standards at competitive cost. Our commitment to high quality and consistent lead times makes us a trusted custom metal parts supplier.
               </p>
             </Reveal>
             <div style={{ marginTop: '28px' }}>
@@ -98,8 +104,8 @@ export default function About({ setPage }) {
       </section>
 
       <section style={{ background: 'var(--navy)' }}>
-<div className="stats-grid">
-            {STATS.map((s, i) => (
+        <div className="stats-grid">
+          {STATS.map((s, i) => (
             <Reveal delay={i * 0.15} key={s.l} style={{ height: '100%' }}>
               <div style={{ background: 'rgba(255,255,255,.04)', border: '1px solid rgba(255,255,255,.08)', borderRadius: '4px', padding: '28px 24px', textAlign: 'center', height: '100%' }}>
                 <div style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: '36px', color: 'var(--accent)', lineHeight: 1 }}>{s.n}</div>
@@ -115,7 +121,7 @@ export default function About({ setPage }) {
         <div className="cta-strip">
           <h2>Work With Microcraft</h2>
           <p>Send us your drawings for a detailed quotation within 24 hours.</p>
-          <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>▶&ensp;Request a Quote</button>
+          <button className="btn-p" style={{ margin: '0 auto' }} onClick={() => setPage('contact')}>▶&ensp;Contact Our Engineering Team</button>
         </div>
       </Reveal>
 

@@ -1,39 +1,40 @@
 import React, { useState, useEffect, useRef } from 'react';
+import SEO from '../components/SEO';
 import Footer from '../components/Footer';
 
 const SLIDES = [
   {
-    img: '/images/photo2.jpg',
+    img: 'https://res.cloudinary.com/dyelfz2ku/image/upload/v1778125569/photo2_wucgbk.jpg',
     tag: 'Automotive Components',
     title: 'Precision Automotive Parts\nEngineered for Performance & Reliability',
   },
   {
-    img: '/images/photo7.jpg',
+    img: 'https://res.cloudinary.com/dyelfz2ku/image/upload/v1778125591/photo7_h9sbmn.jpg',
     tag: 'Aerospace Components',
     title: 'Advanced Aerospace Components\nManufactured with Extreme Accuracy',
   },
   {
-    img: '/images/photo1.jpg',
+    img: 'https://res.cloudinary.com/dyelfz2ku/image/upload/v1778125568/photo1_zajwyj.jpg',
     tag: 'Large Machine Manufacturing',
     title: 'Heavy-Duty Industrial Machinery\nBuilt for Strength and Scale',
   },
   {
-    img: '/images/photo3.jpg',
+    img: 'https://res.cloudinary.com/dyelfz2ku/image/upload/v1778125570/photo3_kuzyxv.jpg',
     tag: 'Internal Engine Components',
     title: 'High-Precision Engine Parts\nDesigned for Maximum Efficiency',
   },
   {
-    img: '/images/photo5.png',
+    img: 'https://res.cloudinary.com/dyelfz2ku/image/upload/v1778125571/photo5_uvtigf.png',
     tag: 'Mechanical Parts',
     title: 'Precision Mechanical Components\nBuilt to Tight Tolerances',
   },
   {
-    img: '/images/cap1.jpg',
+    img: 'https://res.cloudinary.com/dyelfz2ku/image/upload/v1778125542/cap1_fl1dmv.jpg',
     tag: 'CNC Machine',
     title: 'CNC Mechanical Machine\nDesign to Tight Tolerances',
   },
   {
-    img: '/images/photoking.jpg',
+    img: 'https://res.cloudinary.com/dyelfz2ku/image/upload/v1778125592/photoking_rngt7z.jpg',
     tag: 'Welding & Fabrication',
     title: 'High-Quality Welding Solutions\nfor Strong and Durable Structures',
   },
@@ -100,6 +101,8 @@ function Reveal({ children, delay = 0, direction = 'up', style = {} }) {
 export default function Home({ setPage }) {
   const isMobile = window.innerWidth < 900;   // ✅ ADD HERE
 
+
+
   const [slide, setSlide] = useState(0);
   const [heroLoaded, setHeroLoaded] = useState(false);
 
@@ -115,6 +118,11 @@ export default function Home({ setPage }) {
 
   return (
     <div className="page" style={{ overflowX: 'hidden' }}>
+      <SEO
+        title="CNC Machining Services India | Precision Components Manufacturer"
+        description="Microcraft Engineering provides high-quality 5-axis CNC machining in India, precision components, and manufacturing solutions for global aerospace, defence, and industrial industries."
+        canonical="/"
+      />
 
       {/* ══════════════════════════════════════════════════
           HERO — Cinematic full-bleed background slider
@@ -141,7 +149,8 @@ export default function Home({ setPage }) {
           >
             <img
               src={s.img}
-              alt=""
+              alt={s.tag + " - Precision CNC machined component"}
+              loading={i === 0 ? 'eager' : 'lazy'}
               style={{
                 width: '100%',
                 height: '100%',
@@ -203,12 +212,12 @@ export default function Home({ setPage }) {
           <h1 style={{
             fontFamily: 'var(--fd)',
             fontWeight: 800,
-            fontSize: isMobile ? '22px' : 'clamp(25px, 4.0vw, 50px)', lineHeight: 1.05,
+            fontSize: isMobile ? '20px' : 'clamp(22px, 3.5vw, 42px)', lineHeight: 1.1,
             color: '#f0f4fa',
-            marginBottom: '20px',
+            marginBottom: '16px',
             letterSpacing: '-0.01em'
           }}>
-            Proven Performance with{' '}
+            Precision Components Manufacturer with{' '}
             <br />
 
             <em style={{
@@ -223,17 +232,16 @@ export default function Home({ setPage }) {
           </h1>
 
           <p style={{
-            fontSize: '17px',
+            fontSize: '15px',
             lineHeight: 1.5,
             color: 'rgba(240,244,250,0.85)',
-            marginBottom: '22px'
+            marginBottom: '18px'
           }}>
-            Trusted by{' '}
+            A trusted custom metal parts supplier for{' '}
 
-            globally reputed Customers.
-
+            globally reputed customers.
             <br />
-            <span style={{ fontSize: '15px', opacity: 0.9 }}>
+            <span style={{ fontSize: '13px', opacity: 0.9 }}>
               including
             </span><a> </a>
             <span style={{
@@ -251,8 +259,8 @@ export default function Home({ setPage }) {
               background: 'linear-gradient(135deg,#c8921a,#e0a830)',
               color: '#04091a',
               border: 'none',
-              padding: '12px 20px',
-              fontSize: '11px',
+              padding: '10px 18px',
+              fontSize: '10px',
               fontWeight: 900,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
@@ -271,7 +279,7 @@ export default function Home({ setPage }) {
               e.currentTarget.style.boxShadow = '0 6px 20px rgba(27, 25, 22, 0.69)';
             }}
           >
-            View Testimonials →
+            Read Global Client Reviews →
           </button>
 
           {/* Gold divider */}
@@ -291,17 +299,17 @@ export default function Home({ setPage }) {
             transition: 'opacity 0.8s ease 0.55s, transform 0.8s ease 0.55s',
           }}>
             <p style={{
-              fontSize: '15px',
-              lineHeight: 1.7,
+              fontSize: '14px',
+              lineHeight: 1.6,
               color: 'rgba(200,216,235,0.85)',
               fontWeight: 300,
               maxWidth: '520px',
-              marginBottom: '20px'
+              marginBottom: '16px'
             }}>
-              Delivering <span style={{ color: '#e0a830', fontWeight: 500 }}>high-precision CNC components </span>
-              for aerospace and industrial applications, with over 20+ years of manufacturing excellence.
+              Delivering <span style={{ color: '#e0a830', fontWeight: 500 }}>high-precision CNC machining services in India </span>
+              for global aerospace, automation, and energy industries with 20+ years of manufacturing excellence.
             </p>
-            <p style={{ fontSize: '16px', lineHeight: 1.82, color: 'rgba(200,216,235,0.75)', fontWeight: 300, maxWidth: '620px' }}> We support engineering companies in India and internationally with precision machining solutions used in aerospace, industrial automation, energy systems, and industrial machinery. </p>
+            <p style={{ fontSize: '14px', lineHeight: 1.7, color: 'rgba(200,216,235,0.75)', fontWeight: 300, maxWidth: '620px' }}> As a trusted custom metal parts supplier, we provide ISO-certified precision manufacturing solutions to engineering companies worldwide, meeting strict quality benchmarks. </p>
           </div>
 
           {/* Slide indicator dots */}
@@ -499,7 +507,7 @@ export default function Home({ setPage }) {
                 marginBottom: '16px',
                 fontWeight: 400
               }}>
-                Our machining expertise has supported projects connected with respected organisations such as{' '}
+                Our CNC machining services in India have supported projects connected with respected global organisations such as{' '}
                 <strong style={{ color: '#000', fontWeight: 700 }}>ISRO</strong>,{' '}
                 <strong style={{ color: '#000', fontWeight: 700 }}>Keller Precision GMBH </strong>,{' '}
                 <strong style={{ color: '#000', fontWeight: 700 }}>Schneider Electric Ltd.</strong>,{' '}
@@ -637,7 +645,7 @@ export default function Home({ setPage }) {
         <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
           <Reveal>
             <div className="sec-label">What We Do</div>
-            <h2 className="sec-title lt" style={{ marginBottom: '52px' }}>Core Capabilities</h2>
+            <h2 className="sec-title lt" style={{ marginBottom: '52px' }}>Precision CNC Machining Services India</h2>
           </Reveal>
 
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap: '14px' }}>
@@ -684,7 +692,7 @@ export default function Home({ setPage }) {
 
           <Reveal delay={0.3} style={{ marginTop: '44px' }}>
             <button className="btn-p" onClick={() => setPage('capabilities')}>
-              View Full Capabilities →
+              Explore Our 5 Axis Machining India Capabilities →
             </button>
           </Reveal>
         </div>

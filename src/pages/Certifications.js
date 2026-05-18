@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SEO from '../components/SEO';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
 import Reveal from '../components/Reveal';
@@ -97,6 +98,11 @@ export default function Certifications({ setPage }) {
 
   return (
     <div className="page">
+      <SEO
+        title="ISO Certifications | Quality Accreditations | Microcraft Engineering"
+        description="Microcraft Engineering holds ISO 9001:2015, ISO 14001:2015, and ISO 45001:2018 certifications, ensuring internationally recognised quality standards in precision CNC manufacturing."
+        canonical="/certifications"
+      />
       <PageHero
         bgImage="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1400&q=80"
         label="Our Standards"
@@ -200,7 +206,7 @@ export default function Certifications({ setPage }) {
             ))}
           </div>
           <Reveal direction="right">
-            <img src="../images/qa.png" alt="CMM Inspection" style={{ width: '100%', height: '460px', objectFit: 'cover', borderRadius: '4px' }} />
+            <img src="https://res.cloudinary.com/dyelfz2ku/image/upload/v1778125598/qa_orcvog.png" alt="CMM Inspection Equipment at Microcraft Engineering" style={{ width: '100%', height: '460px', objectFit: 'cover', borderRadius: '4px' }} loading="lazy" />
           </Reveal>
         </div>
       </section>

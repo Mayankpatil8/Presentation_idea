@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/SEO';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
 import Reveal from '../components/Reveal';
@@ -6,7 +7,7 @@ import Reveal from '../components/Reveal';
 
 const INDUSTRIES = [
   {
-    img: '/images/aero.jpg',
+    img: 'https://res.cloudinary.com/dyelfz2ku/image/upload/v1778125527/aero_ixxdzi.jpg',
     n: 'Aerospace',
     sub: 'Manufacturing Applications',
     d: 'Delivering mission-critical precision for structural components, complex aerospace housings, brackets, and full assemblies. We specialize in working with exotic alloys capable of withstanding extreme environmental stressors while guaranteeing lightweight performance. Full material traceability and First Article Inspection (FAI) documentation are rigorously maintained.',
@@ -22,7 +23,7 @@ const INDUSTRIES = [
     num: '02'
   },
   {
-    img: '../images/virat.png',
+    img: 'https://res.cloudinary.com/dyelfz2ku/image/upload/v1778125598/virat_oww2xl.png',
     n: 'Industrial',
     sub: 'BFW Virat Series',
 
@@ -46,7 +47,7 @@ const INDUSTRIES = [
     num: '04'
   },
   {
-    img: '/images/cnc_automotive.png',
+    img: 'https://res.cloudinary.com/dyelfz2ku/image/upload/v1778125542/cnc_automotive_ul8quf.jpg',
     n: 'Automotive',
     sub: 'Advanced Engineering',
     d: 'Providing engine blocks, transmission components, and performance chassis parts machined to strict worldwide automotive standards. Our facility is optimized for high-volume production, ensuring every single batch maintains identical quality, supported by comprehensive PPAP validation.',
@@ -58,6 +59,11 @@ const INDUSTRIES = [
 export default function Industries({ setPage }) {
   return (
     <div className="page">
+      <SEO
+        title="Industries Served | Aerospace, Defence & Automotive CNC Machining"
+        description="Microcraft Engineering serves aerospace, defence, industrial, robotics, and automotive industries with precision CNC machined components meeting the strictest international standards."
+        canonical="/industries"
+      />
       <PageHero
         bgImage="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?w=1400&q=80"
         label="Sectors We Serve"
@@ -120,7 +126,7 @@ export default function Industries({ setPage }) {
                       {/* Image Left */}
                       <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', height: '420px', boxShadow: '0 24px 48px rgba(0,0,0,0.12)', zIndex: 1 }}>
                         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)', zIndex: 1 }} />
-                        <img src={ind.img} alt={ind.n} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <img src={ind.img} alt={ind.n + ' precision CNC machined components - Microcraft Engineering'} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
                         <div style={{ position: 'absolute', bottom: '24px', left: '24px', zIndex: 2 }}>
                           <div style={{ fontSize: '13px', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 700, color: '#fff', background: 'var(--accent)', padding: '4px 10px', borderRadius: '4px', display: 'inline-block' }}>
                             Sector {ind.num}
@@ -177,7 +183,7 @@ export default function Industries({ setPage }) {
                       {/* Image Right */}
                       <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', height: '420px', boxShadow: '0 24px 48px rgba(0,0,0,0.12)', zIndex: 1 }}>
                         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)', zIndex: 1 }} />
-                        <img src={ind.img} alt={ind.n} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <img src={ind.img} alt={ind.n + ' precision CNC machined components - Microcraft Engineering'} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
                         <div style={{ position: 'absolute', bottom: '24px', left: '24px', zIndex: 2 }}>
                           <div style={{ fontSize: '13px', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 700, color: '#fff', background: 'var(--accent)', padding: '4px 10px', borderRadius: '4px', display: 'inline-block' }}>
                             Sector {ind.num}

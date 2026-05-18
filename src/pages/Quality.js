@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/SEO';
 import PageHero from '../components/PageHero';
 import Footer from '../components/Footer';
 import Reveal from '../components/Reveal';
@@ -53,6 +54,11 @@ const CASES = [
 export default function Quality({ setPage }) {
   return (
     <div className="page">
+      <SEO
+        title="Quality Assurance | ISO Certified CNC Manufacturer India"
+        description="Microcraft Engineering's ISO-certified quality management ensures every precision component meets stringent dimensional accuracy, surface finish, and material specification requirements."
+        canonical="/quality"
+      />
       <PageHero
         bgImage="/images/ai.png"
         label="Our Commitment"
@@ -64,7 +70,7 @@ export default function Quality({ setPage }) {
         <div className="qual-inner">
           <Reveal direction="left">
             <div className="qual-img">
-              <img src="/images/ai.png" alt="Manufacturing Infrastructure" />
+              <img src="https://res.cloudinary.com/dyelfz2ku/image/upload/v1778125547/ai_yd6bu4.png" alt="Manufacturing Infrastructure at Microcraft Engineering" loading="lazy" />
               <div className="qual-cert-badge">Advanced Facility</div>
             </div>
           </Reveal>
@@ -119,66 +125,66 @@ export default function Quality({ setPage }) {
           </div>
           <Reveal direction="right">
             <div className="qual-img">
-            <img src="/images/qa_inspection.png" alt="Quality Assurance" className="img-cover" />
-            <div
-              style={{
-                background: 'linear-gradient(135deg, #0f172a, #1e293b)',
-                borderRadius: '12px',
-                padding: '25px',
-                marginBottom: '30px',
-                color: 'white',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-                border: '1px solid rgba(255,255,255,0.08)'
-              }}
-            >
-              <div style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '8px' }}>
-                QUALITY DOCUMENTATION
+              <img src="https://res.cloudinary.com/dyelfz2ku/image/upload/v1778126116/qa_inspection_qqiohr.jpg" alt="Quality Assurance and Inspection at Microcraft Engineering" className="img-cover" loading="lazy" />
+              <div
+                style={{
+                  background: 'linear-gradient(135deg, #0f172a, #1e293b)',
+                  borderRadius: '12px',
+                  padding: '25px',
+                  marginBottom: '30px',
+                  color: 'white',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                  border: '1px solid rgba(255,255,255,0.08)'
+                }}
+              >
+                <div style={{ fontSize: '14px', color: '#94a3b8', marginBottom: '8px' }}>
+                  QUALITY DOCUMENTATION
+                </div>
+
+                <h3 style={{ margin: '0 0 10px 0', fontSize: '20px' }}>
+                  Instrument Calibration Records
+                </h3>
+
+                <p style={{ fontSize: '14px', color: '#cbd5f5', marginBottom: '20px', lineHeight: '1.6' }}>
+                  Comprehensive list of calibrated instruments, accuracy standards, and inspection capabilities ensuring precision compliance.
+                </p>
+
+                <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+
+                  <a
+                    href="/docs/instruction.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      padding: '10px 18px',
+                      background: 'white',
+                      color: '#111',
+                      borderRadius: '6px',
+                      textDecoration: 'none',
+                      fontWeight: '500'
+                    }}
+                  >
+                    👁 View Document
+                  </a>
+
+                  <a
+                    href="/docs/instruments.pdf"
+                    download
+                    style={{
+                      padding: '10px 18px',
+                      background: 'var(--accent)',
+                      color: '#fff',
+                      borderRadius: '6px',
+                      textDecoration: 'none',
+                      fontWeight: '500'
+                    }}
+                  >
+                    📄 Download PDF
+                  </a>
+
+                </div>
               </div>
-
-              <h3 style={{ margin: '0 0 10px 0', fontSize: '20px' }}>
-                Instrument Calibration Records
-              </h3>
-
-              <p style={{ fontSize: '14px', color: '#cbd5f5', marginBottom: '20px', lineHeight: '1.6' }}>
-                Comprehensive list of calibrated instruments, accuracy standards, and inspection capabilities ensuring precision compliance.
-              </p>
-
-              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-
-                <a
-                  href="/docs/instruction.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    padding: '10px 18px',
-                    background: 'white',
-                    color: '#111',
-                    borderRadius: '6px',
-                    textDecoration: 'none',
-                    fontWeight: '500'
-                  }}
-                >
-                  👁 View Document
-                </a>
-
-                <a
-                  href="/docs/instruments.pdf"
-                  download
-                  style={{
-                    padding: '10px 18px',
-                    background: 'var(--accent)',
-                    color: '#fff',
-                    borderRadius: '6px',
-                    textDecoration: 'none',
-                    fontWeight: '500'
-                  }}
-                >
-                  📄 Download PDF
-                </a>
-
-              </div>
-            </div>
-            <div className="qual-cert-badge" style={{ background: 'var(--accent)', color: 'white' }}>Microcraft Engineering</div>
+              <div className="qual-cert-badge" style={{ background: 'var(--accent)', color: 'white' }}>Microcraft Engineering</div>
             </div>
           </Reveal>
         </div>
@@ -196,21 +202,21 @@ export default function Quality({ setPage }) {
             {CASES.map((c, i) => (
               <Reveal delay={i * 0.15} key={c.t} style={{ height: '100%' }}>
                 <div className="case-card" style={{ height: '100%' }}>
-                <div className="case-img">
-                  <img src={c.img} alt={c.t} />
-                  <div className="case-ind">{c.ind}</div>
+                  <div className="case-img">
+                    <img src={c.img} alt={c.t + ' - Microcraft Engineering precision component'} loading="lazy" />
+                    <div className="case-ind">{c.ind}</div>
+                  </div>
+                  <div className="case-body">
+                    <div className="case-title">{c.t}</div>
+                    {c.specs.map(s => (
+                      <div className="case-spec" key={s.k}>
+                        <div className="spec-k">{s.k}</div>
+                        <div className="spec-v">{s.v}</div>
+                      </div>
+                    ))}
+                    <div className="case-result">{c.r}</div>
+                  </div>
                 </div>
-                <div className="case-body">
-                  <div className="case-title">{c.t}</div>
-                  {c.specs.map(s => (
-                    <div className="case-spec" key={s.k}>
-                      <div className="spec-k">{s.k}</div>
-                      <div className="spec-v">{s.v}</div>
-                    </div>
-                  ))}
-                  <div className="case-result">{c.r}</div>
-                </div>
-              </div>
               </Reveal>
             ))}
           </div>

@@ -84,7 +84,7 @@ export default function Footer({ setPage }) {
       </div>
 
       <div className="footer-bottom">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
+        <div className="footer-meta">
           <span>© 2025 Microcraft Engineering. All rights reserved.</span>
           <a href="https://www.linkedin.com/company/microcraftengineering/" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--grey-light)', textDecoration: 'none', fontWeight: 600, transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'} onMouseLeave={e => e.currentTarget.style.color = 'var(--grey-light)'}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
